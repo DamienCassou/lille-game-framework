@@ -7,4 +7,9 @@
   </parent>
   <artifactId>gameframework</artifactId>
   <name>Our game framework</name>
+
+  <properties>
+    <project.build.jacoco.coveredRatio>0.01</project.build.jacoco.coveredRatio>
+  </properties>
+
 </project>
