@@ -172,17 +172,18 @@ public class GameDefaultImpl implements Game, Observer {
 		for (GameLevel level : gameLevels) {
 			endOfGame = new ObservableValue<Boolean>(false);
 			endOfGame.addObserver(this);
+			if (currentPlayedLevel != null && currentPlayedLevel.isAlive()) {
+				currentPlayedLevel.interrupt();
+				currentPlayedLevel = null;
+			}
+			currentPlayedLevel = (GameLevelDefaultImpl) level;
+			levelNumber++;
+			currentLevelValue.setText(Integer.toString(levelNumber));
+			currentPlayedLevel.start();
 			try {
-				if (currentPlayedLevel != null && currentPlayedLevel.isAlive()) {
-					currentPlayedLevel.interrupt();
-					currentPlayedLevel = null;
-				}
-				currentPlayedLevel = (GameLevelDefaultImpl) level;
-				levelNumber++;
-				currentLevelValue.setText(Integer.toString(levelNumber));
-				currentPlayedLevel.start();
 				currentPlayedLevel.join();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
+				// that's ok, we just haven't finished sleeping
 			}
 		}
 
