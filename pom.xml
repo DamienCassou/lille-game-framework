@@ -5,8 +5,6 @@
     <artifactId>sujetscoo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>fr.univlille1.fil.coo</groupId>
   <artifactId>gameframework</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>Our game framework</name>
 </project>
