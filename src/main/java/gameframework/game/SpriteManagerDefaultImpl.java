@@ -5,6 +5,7 @@ import gameframework.base.DrawableImage;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,12 +24,17 @@ public class SpriteManagerDefaultImpl implements SpriteManager {
 	private int currentRow;
 	private final int renderingSize;
 
-	public SpriteManagerDefaultImpl(String filename, Canvas canvas,
+	public SpriteManagerDefaultImpl(URL filename, Canvas canvas,
 			int renderingSize, int maxSpriteNumber) {
 		this.renderingSize = renderingSize;
 		image = new DrawableImage(filename, canvas);
 		this.maxSpriteNumber = maxSpriteNumber;
 		this.spriteSize = image.getImage().getWidth(null) / maxSpriteNumber;
+	}
+
+	public SpriteManagerDefaultImpl(String filename, Canvas canvas,
+			int renderingSize, int maxSpriteNumber) {
+		this(SpriteManagerDefaultImpl.class.getResource(filename),canvas,renderingSize,maxSpriteNumber);
 	}
 
 	@Override

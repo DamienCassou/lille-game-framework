@@ -2,11 +2,12 @@ package gameframework.base;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.net.URL;
 
 public class BackgroundImage extends DrawableImage {
 
-	public BackgroundImage(String filename, Canvas canvas) {
-		super(filename, canvas);
+	public BackgroundImage(URL url, Canvas canvas) {
+		super(url, canvas);
 	}
 
 	@Override

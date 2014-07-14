@@ -5,21 +5,34 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.net.URL;
 
 public class DrawableImage implements Drawable {
 	protected Image image;
 	protected Canvas canvas;
 
-	public DrawableImage(String filename, Canvas canvas) {
+	public DrawableImage(URL imageUrl, Canvas canvas) {
 		this.canvas = canvas;
+		if (imageUrl == null) {
+			throw new IllegalArgumentException("Null imageUrl parameter");
+		}
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		image = toolkit.createImage(filename);
+		image = toolkit.createImage(imageUrl);
 		MediaTracker tracker = new MediaTracker(canvas);
 		tracker.addImage(image, 0);
 		try {
 			tracker.waitForAll();
+			if (tracker.isErrorAny()) {
+				throw new RuntimeException("Problem while loading an image " + imageUrl);
+			}
 		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
 		}
+	}
+
+	public DrawableImage(String filename, Canvas canvas) {
+		this(DrawableImage.class.getResource(filename), canvas);
 	}
 
 	public Image getImage() {

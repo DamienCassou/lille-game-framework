@@ -6,6 +6,7 @@ import gameframework.base.Drawable;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.net.URL;
 import java.util.Iterator;
 
 public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
@@ -23,12 +24,8 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 		this.universe = universe;
 	}
 
-	protected String backgroundImage() {
-		return "/images/background_image.gif";
-	}
-
-	public void setBackground(String filename) {
-		background = new BackgroundImage(filename, canvas);
+	protected URL backgroundImage() {
+		return this.getClass().getResource("/images/background_image.gif");
 	}
 
 	public void paint() {
