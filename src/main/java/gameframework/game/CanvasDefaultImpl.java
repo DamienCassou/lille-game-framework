@@ -16,7 +16,6 @@ public class CanvasDefaultImpl extends Canvas {
 
 	@Override
 	public void paint(Graphics g) {
-		// Graphics gReal = getGraphics();
 		try {
 			drawingGameBoard.paint();
 		} catch (NullPointerException e) {

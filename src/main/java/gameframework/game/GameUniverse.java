@@ -13,7 +13,7 @@ public interface GameUniverse {
 
 	public void removeGameEntity(GameEntity gameEntity);
 
-	Iterator<GameEntity> gameEntities();
+	public Iterator<GameEntity> gameEntities();
 
 	public void allOneStepMoves();
 

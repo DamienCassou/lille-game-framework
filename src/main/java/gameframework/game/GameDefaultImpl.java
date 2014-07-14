@@ -198,12 +198,10 @@ public class GameDefaultImpl implements Game, Observer {
 
 	public void pause() {
 		System.out.println("pause(): Unimplemented operation");
-		// currentPlayedLevel.suspend();
 	}
 
 	public void resume() {
 		System.out.println("resume(): Unimplemented operation");
-		// currentPlayedLevel.resume();
 	}
 
 	public ObservableValue<Integer>[] score() {
