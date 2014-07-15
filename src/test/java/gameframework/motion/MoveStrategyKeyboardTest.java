@@ -1,4 +1,6 @@
-package gameframework.base;
+package gameframework.motion;
+
+import gameframework.motion.MoveStrategyKeyboard;
 
 import java.awt.event.KeyEvent;
 

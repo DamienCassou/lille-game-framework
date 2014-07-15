@@ -1,6 +1,6 @@
-package gameframework.game;
+package gameframework.motion.overlapping;
 
-import gameframework.base.Overlap;
+import gameframework.game.GameUniverse;
 
 import java.util.Vector;
 

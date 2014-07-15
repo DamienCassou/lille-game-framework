@@ -1,4 +1,4 @@
-package gameframework.base;
+package gameframework.motion;
 
 import java.awt.Polygon;
 import java.awt.Rectangle;

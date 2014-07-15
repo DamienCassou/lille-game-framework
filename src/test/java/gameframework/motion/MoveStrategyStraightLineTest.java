@@ -1,4 +1,6 @@
-package gameframework.base;
+package gameframework.motion;
+
+import gameframework.motion.MoveStrategyStraightLine;
 
 import java.awt.Point;
 

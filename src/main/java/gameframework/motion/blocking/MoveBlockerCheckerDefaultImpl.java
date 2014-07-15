@@ -1,8 +1,8 @@
-package gameframework.game;
+package gameframework.motion.blocking;
 
-import gameframework.base.IntersectTools;
-import gameframework.base.Movable;
-import gameframework.base.SpeedVector;
+import gameframework.motion.IntersectTools;
+import gameframework.motion.Movable;
+import gameframework.motion.SpeedVector;
 
 import java.awt.Rectangle;
 import java.awt.Shape;

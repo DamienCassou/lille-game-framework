@@ -1,7 +1,10 @@
 package gameframework.game;
 
-import gameframework.base.Overlappable;
-import gameframework.base.Movable;
+import gameframework.motion.Movable;
+import gameframework.motion.blocking.MoveBlocker;
+import gameframework.motion.blocking.MoveBlockerChecker;
+import gameframework.motion.overlapping.OverlapProcessor;
+import gameframework.motion.overlapping.Overlappable;
 
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;

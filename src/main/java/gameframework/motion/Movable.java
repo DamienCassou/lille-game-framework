@@ -1,4 +1,6 @@
-package gameframework.base;
+package gameframework.motion;
+
+import gameframework.base.ObjectWithBoundedBox;
 
 import java.awt.Point;
 

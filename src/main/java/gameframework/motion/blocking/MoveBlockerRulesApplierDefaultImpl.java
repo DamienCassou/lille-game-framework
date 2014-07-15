@@ -1,6 +1,6 @@
-package gameframework.game;
+package gameframework.motion.blocking;
 
-import gameframework.base.Movable;
+import gameframework.motion.Movable;
 
 import java.lang.reflect.Method;
 import java.util.Vector;

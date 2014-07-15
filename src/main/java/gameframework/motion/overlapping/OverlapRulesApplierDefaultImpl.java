@@ -1,7 +1,4 @@
-package gameframework.game;
-
-import gameframework.base.Overlap;
-import gameframework.base.Overlappable;
+package gameframework.motion.overlapping;
 
 import java.lang.reflect.Method;
 import java.util.Vector;

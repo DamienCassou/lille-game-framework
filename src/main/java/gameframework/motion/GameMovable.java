@@ -1,8 +1,4 @@
-package gameframework.game;
-
-import gameframework.base.Movable;
-import gameframework.base.SpeedVector;
-import gameframework.base.SpeedVectorDefaultImpl;
+package gameframework.motion;
 
 import java.awt.Point;
 

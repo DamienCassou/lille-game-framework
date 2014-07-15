@@ -1,7 +1,7 @@
-package gameframework.game;
+package gameframework.motion.blocking;
 
-import gameframework.base.Movable;
-import gameframework.base.SpeedVector;
+import gameframework.motion.Movable;
+import gameframework.motion.SpeedVector;
 
 public interface MoveBlockerChecker {
 	public void addMoveBlocker(MoveBlocker p);

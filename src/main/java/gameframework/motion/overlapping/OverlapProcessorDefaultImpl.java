@@ -1,11 +1,9 @@
-package gameframework.game;
+package gameframework.motion.overlapping;
 
-import gameframework.base.IntersectTools;
-import gameframework.base.Movable;
-import gameframework.base.Overlap;
-import gameframework.base.Overlappable;
-import gameframework.base.SpeedVector;
-import gameframework.base.SpeedVectorDefaultImpl;
+import gameframework.motion.IntersectTools;
+import gameframework.motion.Movable;
+import gameframework.motion.SpeedVector;
+import gameframework.motion.SpeedVectorDefaultImpl;
 
 import java.awt.Rectangle;
 import java.awt.Shape;

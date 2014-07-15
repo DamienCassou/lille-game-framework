@@ -1,10 +1,13 @@
 package gameframework.base;
 
+import gameframework.motion.SpeedVector;
+import gameframework.motion.SpeedVectorDefaultImpl;
+
 import java.awt.Point;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class SpeedVectorDefaultImplTest {
 

@@ -1,4 +1,4 @@
-package gameframework.game;
+package gameframework.motion.blocking;
 
 import gameframework.base.ObjectWithBoundedBox;
 

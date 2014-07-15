@@ -1,4 +1,4 @@
-package gameframework.game;
+package gameframework.motion;
 
 public class IllegalMoveException extends Exception {
 

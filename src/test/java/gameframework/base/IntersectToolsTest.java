@@ -1,5 +1,10 @@
 package gameframework.base;
 
+import gameframework.motion.IntersectTools;
+import gameframework.motion.Movable;
+import gameframework.motion.SpeedVector;
+import gameframework.motion.SpeedVectorDefaultImpl;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Polygon;

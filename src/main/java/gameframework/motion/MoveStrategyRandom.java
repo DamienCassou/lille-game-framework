@@ -1,4 +1,4 @@
-package gameframework.base;
+package gameframework.motion;
 
 import java.awt.Point;
 import java.util.Random;

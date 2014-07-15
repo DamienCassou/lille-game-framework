@@ -1,4 +1,4 @@
-package gameframework.base;
+package gameframework.motion.overlapping;
 
 public class Overlap {
 

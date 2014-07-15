@@ -1,10 +1,7 @@
-package gameframework.game;
+package gameframework.motion;
 
-import gameframework.base.Movable;
-import gameframework.base.MoveStrategy;
-import gameframework.base.MoveStrategyDefaultImpl;
-import gameframework.base.SpeedVector;
-import gameframework.base.SpeedVectorDefaultImpl;
+import gameframework.motion.blocking.MoveBlockerChecker;
+import gameframework.motion.blocking.MoveBlockerCheckerDefaultImpl;
 
 public class GameMovableDriverDefaultImpl implements GameMovableDriver {
 	protected MoveBlockerChecker moveBlockerChecker;
