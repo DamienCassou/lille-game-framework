@@ -92,23 +92,16 @@ public class GameDefaultImpl implements Game, Observer {
 	private void createMenuBar() {
 		MenuBar menuBar = new MenuBar();
 		Menu file = new Menu("file");
-		MenuItem start = new MenuItem("new game");
 		MenuItem quit = new MenuItem("quit");
 		menuBar.add(file);
 		f.setMenuBar(menuBar);
 
-		start.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				start();
-			}
-		});
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
 
-		file.add(start);
 		file.add(quit);
 	}
 
