@@ -3,7 +3,6 @@ package gameframework.motion.overlapping;
 import gameframework.motion.IntersectTools;
 import gameframework.motion.Movable;
 import gameframework.motion.SpeedVector;
-import gameframework.motion.SpeedVector;
 
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -19,29 +18,29 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 	 * overlaps. We distinguish between movable and non-movable because two
 	 * non-movables never overlap.
 	 */
-	private ConcurrentLinkedQueue<Overlappable> overlappablesNonMovable;
-	private ConcurrentLinkedQueue<Overlappable> overlappablesMovable;
+	protected ConcurrentLinkedQueue<Overlappable> nonMovableOverlappables;
+	protected ConcurrentLinkedQueue<Overlappable> movableOverlappables;
 
-	private OverlapRulesApplier overlapRules;
+	protected OverlapRulesApplier overlapRules;
 
 	public OverlapProcessorDefaultImpl() {
-		overlappablesNonMovable = new ConcurrentLinkedQueue<Overlappable>();
-		overlappablesMovable = new ConcurrentLinkedQueue<Overlappable>();
+		nonMovableOverlappables = new ConcurrentLinkedQueue<Overlappable>();
+		movableOverlappables = new ConcurrentLinkedQueue<Overlappable>();
 	}
 
 	public void addOverlappable(Overlappable p) {
 		if (p instanceof Movable) {
-			overlappablesMovable.add(p);
+			movableOverlappables.add(p);
 		} else {
-			overlappablesNonMovable.add(p);
+			nonMovableOverlappables.add(p);
 		}
 	}
 
 	public void removeOverlappable(Overlappable p) {
 		if (p instanceof Movable) {
-			overlappablesMovable.remove(p);
+			movableOverlappables.remove(p);
 		} else {
-			overlappablesNonMovable.remove(p);
+			nonMovableOverlappables.remove(p);
 		}
 	}
 
@@ -55,43 +54,43 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 	public void processOverlapsAll() {
 		Vector<Overlap> overlaps = new Vector<Overlap>();
 
-		movablesTmp = new Vector<Overlappable>(overlappablesMovable);
-		for (Overlappable overlappable : overlappablesMovable) {
-			movablesTmp.remove(overlappable);
-			computeOneOverlap(overlappable, overlaps);
+		movablesTmp = new Vector<Overlappable>(movableOverlappables);
+		for (Overlappable movableOverlappable : movableOverlappables) {
+			movablesTmp.remove(movableOverlappable);
+			computeOneOverlap(movableOverlappable, overlaps);
 		}
 		overlapRules.applyOverlapRules(overlaps);
 	}
 
-	private void computeOneOverlap(Overlappable overlappable,
+	protected void computeOneOverlap(Overlappable movableOverlappable,
 			Vector<Overlap> overlaps) {
 		Area overlappableArea, targetArea;
 		Rectangle boundingBoxTarget, boundingBoxOverlappable;
 
-		Shape intersectShape = intersectionComputation(overlappable);
+		Shape intersectShape = intersectionComputation(movableOverlappable);
 
 		overlappableArea = new Area(intersectShape);
 		boundingBoxOverlappable = intersectShape.getBounds();
 
-		for (Overlappable targetOverlappable : overlappablesNonMovable) {
-			if (targetOverlappable != overlappable) {
+		for (Overlappable targetNonMovableOverlappable : nonMovableOverlappables) {
+			if (targetNonMovableOverlappable != movableOverlappable) { // I don't see how this test could fail
 				Shape targetShape;
-				targetShape = targetOverlappable.getBoundingBox();
+				targetShape = targetNonMovableOverlappable.getBoundingBox();
 				boundingBoxTarget = targetShape.getBounds();
 
 				if (boundingBoxOverlappable.intersects(boundingBoxTarget)) {
 					targetArea = new Area(targetShape);
 					targetArea.intersect(overlappableArea);
 					if (!targetArea.isEmpty()) {
-						overlaps.add(new Overlap(overlappable,
-								targetOverlappable));
+						overlaps.add(new Overlap(movableOverlappable,
+								targetNonMovableOverlappable));
 					}
 				}
 			}
 		}
 
 		for (Overlappable targetOverlappable : movablesTmp) {
-			if (targetOverlappable != overlappable) {
+			if (targetOverlappable != movableOverlappable) {
 				Shape targetShape;
 				targetShape = IntersectTools.getIntersectShape(
 						(Movable) targetOverlappable,
@@ -106,7 +105,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 					targetArea = new Area(targetShape);
 					targetArea.intersect(overlappableArea);
 					if (!targetArea.isEmpty()) {
-						overlaps.add(new Overlap(overlappable,
+						overlaps.add(new Overlap(movableOverlappable,
 								targetOverlappable));
 					}
 				}
@@ -114,7 +113,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 		}
 	}
 
-	private Shape intersectionComputation(Overlappable overlappable) {
+	protected Shape intersectionComputation(Overlappable overlappable) {
 		if (overlappable instanceof Movable) {
 			Movable movable = (Movable) overlappable;
 			SpeedVector speedVector = movable.getSpeedVector();
