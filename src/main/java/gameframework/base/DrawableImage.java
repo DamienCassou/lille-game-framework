@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Toolkit;
-import java.io.IOException;
 import java.net.URL;
 
 public class DrawableImage implements Drawable {
@@ -17,6 +16,10 @@ public class DrawableImage implements Drawable {
 		if (imageUrl == null) {
 			throw new IllegalArgumentException("Null imageUrl parameter");
 		}
+		handleImage(imageUrl);
+	}
+
+	protected void handleImage(URL imageUrl) {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		image = toolkit.createImage(imageUrl);
 		MediaTracker tracker = new MediaTracker(canvas);
@@ -24,7 +27,8 @@ public class DrawableImage implements Drawable {
 		try {
 			tracker.waitForAll();
 			if (tracker.isErrorAny()) {
-				throw new RuntimeException("Problem while loading an image " + imageUrl);
+				throw new RuntimeException("Problem while loading an image "
+						+ imageUrl);
 			}
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);

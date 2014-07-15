@@ -18,20 +18,39 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 
 	@Override
 	public void keyPressed(KeyEvent event) {
-		int keycode = event.getKeyCode();
-		switch (keycode) {
+		keyPressed(event.getKeyCode());
+	}
+
+	public void keyPressed(int keyCode) {
+		switch (keyCode) {
 		case KeyEvent.VK_RIGHT:
-			speedVector.setDirection(new Point(1, 0));
+			goRight();
 			break;
 		case KeyEvent.VK_LEFT:
-			speedVector.setDirection(new Point(-1, 0));
+			goLeft();
 			break;
 		case KeyEvent.VK_UP:
-			speedVector.setDirection(new Point(0, -1));
+			goUp();
 			break;
 		case KeyEvent.VK_DOWN:
-			speedVector.setDirection(new Point(0, 1));
+			goDown();
 			break;
 		}
+	}
+
+	public void goRight() {
+		speedVector.setDirection(new Point(1, 0));
+	}
+
+	public void goLeft() {
+		speedVector.setDirection(new Point(-1, 0));
+	}
+
+	public void goUp() {
+		speedVector.setDirection(new Point(0, -1));
+	}
+
+	public void goDown() {
+		speedVector.setDirection(new Point(0, 1));
 	}
 }
