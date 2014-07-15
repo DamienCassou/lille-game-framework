@@ -90,14 +90,8 @@ public class GameDefaultImpl implements Game, Observer {
 		MenuBar menuBar = new MenuBar();
 		Menu file = new Menu("file");
 		MenuItem start = new MenuItem("new game");
-		MenuItem save = new MenuItem("save");
-		MenuItem restore = new MenuItem("load");
 		MenuItem quit = new MenuItem("quit");
-		Menu game = new Menu("game");
-		MenuItem pause = new MenuItem("pause");
-		MenuItem resume = new MenuItem("resume");
 		menuBar.add(file);
-		menuBar.add(game);
 		f.setMenuBar(menuBar);
 
 		start.addActionListener(new ActionListener() {
@@ -105,38 +99,14 @@ public class GameDefaultImpl implements Game, Observer {
 				start();
 			}
 		});
-		save.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				save();
-			}
-		});
-		restore.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				restore();
-			}
-		});
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		pause.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				pause();
-			}
-		});
-		resume.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				resume();
-			}
-		});
 
 		file.add(start);
-		file.add(save);
-		file.add(restore);
 		file.add(quit);
-		game.add(pause);
-		game.add(resume);
 	}
 
 	private Container createStatusBar() {
@@ -187,22 +157,6 @@ public class GameDefaultImpl implements Game, Observer {
 			}
 		}
 
-	}
-
-	public void restore() {
-		System.out.println("restore(): Unimplemented operation");
-	}
-
-	public void save() {
-		System.out.println("save(): Unimplemented operation");
-	}
-
-	public void pause() {
-		System.out.println("pause(): Unimplemented operation");
-	}
-
-	public void resume() {
-		System.out.println("resume(): Unimplemented operation");
 	}
 
 	public ObservableValue<Integer>[] score() {

@@ -11,14 +11,6 @@ public interface Game {
 
 	public void start();
 
-	public void restore();
-
-	public void save();
-
-	public void pause();
-
-	public void resume();
-
 	public ObservableValue<Integer>[] score();
 
 	public ObservableValue<Integer>[] life();
