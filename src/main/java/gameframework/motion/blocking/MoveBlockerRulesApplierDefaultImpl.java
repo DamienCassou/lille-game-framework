@@ -8,11 +8,11 @@ import java.util.Vector;
 public class MoveBlockerRulesApplierDefaultImpl implements
 		MoveBlockerRulesApplier {
 
-	public boolean moveValidationProcessing(Vector<MoveBlocker> moveBlockers,
-			Movable m) {
-		for (MoveBlocker moveBlocker : moveBlockers) {
+	public boolean moveValidationProcessing(Movable movable,
+			Vector<MoveBlocker> blockers) {
+		for (MoveBlocker moveBlocker : blockers) {
 			try {
-				moveBlockerRuleApply(m, moveBlocker);
+				moveBlockerRuleApply(movable, moveBlocker);
 			} catch (Exception e) {
 				/*
 				 * by default the moveBlocker implies the invalidation of the
@@ -25,11 +25,11 @@ public class MoveBlockerRulesApplierDefaultImpl implements
 		return true;
 	}
 
-	private void moveBlockerRuleApply(Movable e1, MoveBlocker e2)
+	private void moveBlockerRuleApply(Movable movable, MoveBlocker blocker)
 			throws Exception {
 		Method m = null;
-		m = (getClass()).getMethod("moveBlockerRule", e1.getClass(),
-				e2.getClass());
-		m.invoke(this, e1, e2);
+		m = (getClass()).getMethod("moveBlockerRule", movable.getClass(),
+				blocker.getClass());
+		m.invoke(this, movable, blocker);
 	}
 }
