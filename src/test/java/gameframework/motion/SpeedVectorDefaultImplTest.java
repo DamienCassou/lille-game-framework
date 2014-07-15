@@ -1,4 +1,4 @@
-package gameframework.base;
+package gameframework.motion;
 
 import gameframework.motion.SpeedVector;
 import gameframework.motion.SpeedVectorDefaultImpl;

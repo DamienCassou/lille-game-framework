@@ -1,4 +1,4 @@
-package gameframework.base;
+package gameframework.drawing;
 
 import gameframework.drawing.DrawableImage;
 

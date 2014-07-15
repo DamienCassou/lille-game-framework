@@ -1,4 +1,4 @@
-package gameframework.base;
+package gameframework.motion;
 
 import gameframework.motion.IntersectTools;
 import gameframework.motion.Movable;
