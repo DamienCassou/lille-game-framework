@@ -1,6 +1,4 @@
-package gameframework.game;
-
-import gameframework.base.DrawableImage;
+package gameframework.drawing;
 
 import java.awt.Canvas;
 import java.awt.Graphics;

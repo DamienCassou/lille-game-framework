@@ -1,5 +1,7 @@
 package gameframework.base;
 
+import gameframework.drawing.DrawableImage;
+
 import java.awt.Canvas;
 import java.awt.Image;
 import java.net.URL;

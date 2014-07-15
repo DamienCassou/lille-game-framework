@@ -1,7 +1,7 @@
 package gameframework.game;
 
-import gameframework.base.BackgroundImage;
-import gameframework.base.Drawable;
+import gameframework.drawing.BackgroundImage;
+import gameframework.drawing.Drawable;
 
 import java.awt.Canvas;
 import java.awt.Graphics;

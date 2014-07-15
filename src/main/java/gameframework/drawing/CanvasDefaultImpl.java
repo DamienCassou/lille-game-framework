@@ -1,4 +1,6 @@
-package gameframework.game;
+package gameframework.drawing;
+
+import gameframework.game.GameUniverseViewPort;
 
 import java.awt.Canvas;
 import java.awt.Graphics;

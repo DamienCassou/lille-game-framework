@@ -1,5 +1,8 @@
 package gameframework.base;
 
+import gameframework.drawing.Drawable;
+import gameframework.drawing.DrawableComposite;
+
 import java.awt.Graphics;
 
 import org.junit.Before;

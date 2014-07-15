@@ -1,4 +1,4 @@
-package gameframework.game;
+package gameframework.drawing;
 
 import java.awt.Graphics;
 import java.awt.Point;

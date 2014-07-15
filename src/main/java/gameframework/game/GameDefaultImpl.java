@@ -1,6 +1,7 @@
 package gameframework.game;
 
 import gameframework.base.ObservableValue;
+import gameframework.drawing.CanvasDefaultImpl;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;

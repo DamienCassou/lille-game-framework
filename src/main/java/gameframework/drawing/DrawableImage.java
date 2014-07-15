@@ -1,4 +1,4 @@
-package gameframework.base;
+package gameframework.drawing;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
