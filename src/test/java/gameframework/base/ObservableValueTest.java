@@ -26,6 +26,7 @@ public class ObservableValueTest implements Observer {
 		assertEquals(0, updateCount);
 		value.setValue(!initial);
 		assertEquals(1, updateCount);
+		assertEquals(!initial, value.getValue());
 	}
 
 	@Test
@@ -33,6 +34,7 @@ public class ObservableValueTest implements Observer {
 		assertEquals(0, updateCount);
 		value.setValue(initial);
 		assertEquals(0, updateCount);
+		assertEquals(initial, value.getValue());
 	}
 
 	@Override

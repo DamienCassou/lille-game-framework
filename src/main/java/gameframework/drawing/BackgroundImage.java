@@ -10,6 +10,10 @@ public class BackgroundImage extends DrawableImage {
 		super(url, canvas);
 	}
 
+	public BackgroundImage(String string, Canvas canvas) {
+		super(string, canvas);
+	}
+
 	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);

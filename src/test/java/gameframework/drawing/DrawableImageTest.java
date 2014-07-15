@@ -13,11 +13,12 @@ import static org.junit.Assert.assertNotNull;
 
 public class DrawableImageTest {
 
-	private Canvas canvas;
+	Canvas canvas;
 
 	@Before
 	public void createCanvas() {
 		canvas = new Canvas();
+		canvas.setBounds(0, 0, 200, 200);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
