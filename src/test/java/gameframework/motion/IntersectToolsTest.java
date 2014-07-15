@@ -1,10 +1,5 @@
 package gameframework.motion;
 
-import gameframework.motion.IntersectTools;
-import gameframework.motion.Movable;
-import gameframework.motion.SpeedVector;
-import gameframework.motion.SpeedVectorDefaultImpl;
-
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Polygon;
@@ -125,7 +120,7 @@ public class IntersectToolsTest implements Movable {
 
 	private Shape createIntersectionShape() {
 		return IntersectTools.getIntersectShape(this,
-				new SpeedVectorDefaultImpl(direction, speed));
+				new SpeedVector(direction, speed));
 	}
 
 	@Override
@@ -135,7 +130,7 @@ public class IntersectToolsTest implements Movable {
 
 	@Override
 	public SpeedVector getSpeedVector() {
-		return new SpeedVectorDefaultImpl(direction, speed);
+		return new SpeedVector(direction, speed);
 	}
 
 	@Override

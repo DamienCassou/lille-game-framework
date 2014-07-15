@@ -35,6 +35,6 @@ public class GameMovableDriverDefaultImpl implements GameMovableDriver {
 			return possibleSpeedVector;
 		}
 
-		return SpeedVectorDefaultImpl.createNullVector();
+		return SpeedVector.createNullVector();
 	}
 }

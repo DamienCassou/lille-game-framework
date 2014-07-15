@@ -8,7 +8,7 @@ import java.util.Random;
  * left, right)
  */
 public class MoveStrategyRandom implements MoveStrategy {
-	SpeedVector currentMove = new SpeedVectorDefaultImpl(new Point(0, 0));
+	SpeedVector currentMove = new SpeedVector(new Point(0, 0));
 	static Random random = new Random();
 
 	public SpeedVector getSpeedVector() {

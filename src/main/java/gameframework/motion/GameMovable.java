@@ -6,7 +6,7 @@ public abstract class GameMovable implements Movable {
 	GameMovableDriver moveDriver = new GameMovableDriverDefaultImpl();
 
 	Point position = new Point();
-	SpeedVector speedVector = SpeedVectorDefaultImpl.createNullVector();
+	SpeedVector speedVector = SpeedVector.createNullVector();
 
 	public void setPosition(Point p) {
 		position = (Point) p.clone();

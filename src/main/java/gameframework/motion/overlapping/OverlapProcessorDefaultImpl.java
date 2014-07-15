@@ -3,7 +3,7 @@ package gameframework.motion.overlapping;
 import gameframework.motion.IntersectTools;
 import gameframework.motion.Movable;
 import gameframework.motion.SpeedVector;
-import gameframework.motion.SpeedVectorDefaultImpl;
+import gameframework.motion.SpeedVector;
 
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -95,7 +95,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 				Shape targetShape;
 				targetShape = IntersectTools.getIntersectShape(
 						(Movable) targetOverlappable,
-						new SpeedVectorDefaultImpl(
+						new SpeedVector(
 								((Movable) targetOverlappable).getSpeedVector()
 										.getDirection(),
 								-((Movable) targetOverlappable)
@@ -118,7 +118,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 		if (overlappable instanceof Movable) {
 			Movable movable = (Movable) overlappable;
 			SpeedVector speedVector = movable.getSpeedVector();
-			SpeedVectorDefaultImpl oppositeSpeedVector = new SpeedVectorDefaultImpl(
+			SpeedVector oppositeSpeedVector = new SpeedVector(
 					speedVector.getDirection(), -1 * speedVector.getSpeed());
 			return IntersectTools.getIntersectShape(movable,
 					oppositeSpeedVector);
