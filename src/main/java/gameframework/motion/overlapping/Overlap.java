@@ -1,5 +1,9 @@
 package gameframework.motion.overlapping;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Overlap {
 
 	Overlappable overlappable1, overlappable2;
@@ -16,6 +20,11 @@ public class Overlap {
 
 	public Overlappable getOverlappable2() {
 		return overlappable2;
+	}
+
+	public Set<Overlappable> getOverlappables() {
+		return new HashSet<Overlappable>(Arrays.asList(overlappable1,
+				overlappable2));
 	}
 
 }
