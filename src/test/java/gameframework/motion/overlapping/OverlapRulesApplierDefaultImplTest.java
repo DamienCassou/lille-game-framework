@@ -1,7 +1,6 @@
 package gameframework.motion.overlapping;
 
 import gameframework.game.GameUniverse;
-import gameframework.motion.blocking.MoveBlockerRulesApplierDefaultImpl;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -11,7 +10,9 @@ import java.util.Vector;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class OverlapRulesApplierDefaultImplTest {
 
