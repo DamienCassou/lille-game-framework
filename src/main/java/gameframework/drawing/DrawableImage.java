@@ -27,7 +27,7 @@ public class DrawableImage implements Drawable {
 		try {
 			tracker.waitForAll();
 			if (tracker.isErrorAny()) {
-				throw new RuntimeException("Problem while loading an image "
+				throw new IllegalArgumentException("Problem while loading an image "
 						+ imageUrl);
 			}
 		} catch (InterruptedException e) {
