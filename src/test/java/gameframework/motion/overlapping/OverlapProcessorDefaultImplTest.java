@@ -41,10 +41,12 @@ public class OverlapProcessorDefaultImplTest {
 	public void twoOverlappingMovables() throws Exception {
 		int width1 = 10;
 		int height1 = 20;
-		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1, height1);
+		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1,
+				height1);
 		int width2 = 10;
 		int height2 = 20;
-		Overlappable overlappable2 = createOverlappableMovable(5, 0, width2, height2);
+		Overlappable overlappable2 = createOverlappableMovable(5, 0, width2,
+				height2);
 
 		overlapProcessor.addOverlappable(overlappable1);
 		overlapProcessor.addOverlappable(overlappable2);
@@ -54,38 +56,55 @@ public class OverlapProcessorDefaultImplTest {
 	}
 
 	@Test
-	public void removingAnOverlappable() throws Exception {
+	public void removingOverlappables() throws Exception {
 		int width1 = 10;
 		int height1 = 20;
-		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1, height1);
+		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1,
+				height1);
 		int width2 = 10;
 		int height2 = 20;
-		Overlappable overlappable2 = createOverlappableMovable(5, 0, width2, height2);
+
+		// first try with a movable
+		Overlappable overlappable2 = createOverlappableMovable(5, 0, width2,
+				height2);
 
 		overlapProcessor.addOverlappable(overlappable1);
 		overlapProcessor.addOverlappable(overlappable2);
 
 		overlapProcessor.processOverlapsAll();
 		assertOverlaps(new Overlap(overlappable1, overlappable2));
-		
+
+		overlapProcessor.removeOverlappable(overlappable2);
+		overlapProcessor.processOverlapsAll();
+		assertOverlaps();
+
+		// then try with a non movable
+		overlappable2 = createOverlappable(5, 0, width2, height2);
+		overlapProcessor.addOverlappable(overlappable2);
+		overlapProcessor.processOverlapsAll();
+		assertOverlaps(new Overlap(overlappable1, overlappable2));
+
 		overlapProcessor.removeOverlappable(overlappable2);
 		overlapProcessor.processOverlapsAll();
 		assertOverlaps();
 	}
-	
+
 	@Test
 	public void threeOverlappingMovables() throws Exception {
 		int width1 = 10;
 		int height1 = 20;
-		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1, height1);
+		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1,
+				height1);
 
 		int width2 = 10;
 		int height2 = 20;
-		Overlappable overlappable2 = createOverlappableMovable(5, 0, width2, height2);
+		Overlappable overlappable2 = createOverlappableMovable(5, 0, width2,
+				height2);
 
 		int width3 = 10;
 		int height3 = 20;
-		Overlappable overlappable3 = createOverlappableMovable(-6, 0, width3, height3);
+		Overlappable overlappable3 = createOverlappableMovable(-6, 0, width3,
+				height3);
 
 		overlapProcessor.addOverlappable(overlappable1);
 		overlapProcessor.addOverlappable(overlappable2);
@@ -97,20 +116,25 @@ public class OverlapProcessorDefaultImplTest {
 	}
 
 	@Test
-	public void threeOverlappingMovablesThatAreAllOverlapping() throws Exception {
+	public void threeOverlappingMovablesThatAreAllOverlapping()
+			throws Exception {
 		int width1 = 10;
 		int height1 = 20;
-		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1, height1);
+		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1,
+				height1);
 
 		int width2 = 10;
 		int height2 = 20;
-		Overlappable overlappable2 = createOverlappableMovable(5, 0, width2, height2);
+		Overlappable overlappable2 = createOverlappableMovable(5, 0, width2,
+				height2);
 
 		int width3 = 10;
 		int height3 = 20;
-		
-		// only difference with threeOverlappingMovables is the 'x' attribute there:
-		Overlappable overlappable3 = createOverlappableMovable(-4, 0, width3, height3);
+
+		// only difference with threeOverlappingMovables is the 'x' attribute
+		// there:
+		Overlappable overlappable3 = createOverlappableMovable(-4, 0, width3,
+				height3);
 
 		overlapProcessor.addOverlappable(overlappable1);
 		overlapProcessor.addOverlappable(overlappable2);
@@ -118,18 +142,37 @@ public class OverlapProcessorDefaultImplTest {
 
 		overlapProcessor.processOverlapsAll();
 		assertOverlaps(new Overlap(overlappable1, overlappable2), new Overlap(
-				overlappable1, overlappable3),new Overlap(
-						overlappable2, overlappable3));
+				overlappable1, overlappable3), new Overlap(overlappable2,
+				overlappable3));
 	}
-	
+
 	@Test
 	public void twoNonOverlappingMovables() throws Exception {
 		int width1 = 10;
 		int height1 = 20;
-		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1, height1);
+		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1,
+				height1);
 		int width2 = 10;
 		int height2 = 20;
-		Overlappable overlappable2 = createOverlappableMovable(1000, 1000, width2,
+		Overlappable overlappable2 = createOverlappableMovable(1000, 1000,
+				width2, height2);
+
+		overlapProcessor.addOverlappable(overlappable1);
+		overlapProcessor.addOverlappable(overlappable2);
+
+		overlapProcessor.processOverlapsAll();
+		assertOverlaps();
+	}
+
+	@Test
+	public void twoNonOverlappingWithOneNonMovable() throws Exception {
+		int width1 = 10;
+		int height1 = 20;
+		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1,
+				height1);
+		int width2 = 10;
+		int height2 = 20;
+		Overlappable overlappable2 = createOverlappable(1000, 1000, width2,
 				height2);
 
 		overlapProcessor.addOverlappable(overlappable1);
@@ -143,18 +186,33 @@ public class OverlapProcessorDefaultImplTest {
 	public void twoOverlappingWithOneNonMovable() throws Exception {
 		int width1 = 10;
 		int height1 = 20;
-		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1, height1);
+		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1,
+				height1);
 		int width2 = 10;
 		int height2 = 20;
-		Overlappable overlappable2 = createOverlappable(1000, 1000, width2,
-				height2);
+		Overlappable overlappable2 = createOverlappable(5, 0, width2, height2);
 
 		overlapProcessor.addOverlappable(overlappable1);
 		overlapProcessor.addOverlappable(overlappable2);
 
 		overlapProcessor.processOverlapsAll();
+		assertOverlaps(new Overlap(overlappable1, overlappable2));
+	}
+
+	@Test
+	public void twoIdenticalOverlappable() throws Exception {
+		int width1 = 10;
+		int height1 = 20;
+		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1,
+				height1);
+
+		overlapProcessor.addOverlappable(overlappable1);
+		overlapProcessor.addOverlappable(overlappable1);
+
+		overlapProcessor.processOverlapsAll();
 		assertOverlaps();
 	}
+
 	void assertOverlaps(Overlap... overlaps) {
 		// Because Overlap(a,b) should be seen as equivalent to Overlap(b,a),
 		// this method is a bit complex. A better solution would be to implement
@@ -175,8 +233,8 @@ public class OverlapProcessorDefaultImplTest {
 		return result;
 	}
 
-	public MovableOverlappable createOverlappableMovable(final int x, final int y,
-			final int width, final int height) {
+	public MovableOverlappable createOverlappableMovable(final int x,
+			final int y, final int width, final int height) {
 		return new MovableOverlappable() {
 
 			@Override
@@ -208,7 +266,7 @@ public class OverlapProcessorDefaultImplTest {
 
 		};
 	}
-	
+
 }
 
 abstract class MovableOverlappable extends GameMovable implements Overlappable {

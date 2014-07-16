@@ -81,6 +81,12 @@ public class IntersectToolsTest implements Movable {
 	}
 
 	@Test
+	public void dontMove() throws Exception {
+		direction = new Point(0, 0);
+		assertShape(0, 0, width, height);
+	}
+
+	@Test
 	public void gotoSomewhereElse() throws Exception {
 		// this is something like East-South-East
 		int directionX = 2;
@@ -119,8 +125,8 @@ public class IntersectToolsTest implements Movable {
 	}
 
 	private Shape createIntersectionShape() {
-		return IntersectTools.getIntersectShape(this,
-				new SpeedVector(direction, speed));
+		return IntersectTools.getIntersectShape(this, new SpeedVector(
+				direction, speed));
 	}
 
 	@Override
