@@ -66,7 +66,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 			Vector<Overlap> overlaps) {
 		Area overlappableArea, targetArea;
 		Rectangle boundingBoxTarget, boundingBoxOverlappable;
-
+		assert movableOverlappable instanceof Movable;
 		Shape intersectShape = intersectionComputation(movableOverlappable);
 
 		overlappableArea = new Area(intersectShape);
@@ -83,6 +83,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 					targetArea = new Area(targetShape);
 					targetArea.intersect(overlappableArea);
 					if (!targetArea.isEmpty()) {
+						// NOTE I don't see how this test could fail
 						overlaps.add(new Overlap(movableOverlappable,
 								targetNonMovableOverlappable));
 					}
@@ -94,8 +95,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 			if (targetOverlappable != movableOverlappable) {
 				Shape targetShape;
 				targetShape = IntersectTools.getIntersectShape(
-						(Movable) targetOverlappable,
-						new SpeedVector(
+						(Movable) targetOverlappable, new SpeedVector(
 								((Movable) targetOverlappable).getSpeedVector()
 										.getDirection(),
 								-((Movable) targetOverlappable)
@@ -106,6 +106,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 					targetArea = new Area(targetShape);
 					targetArea.intersect(overlappableArea);
 					if (!targetArea.isEmpty()) {
+						// NOTE I don't see how this test could fail
 						overlaps.add(new Overlap(movableOverlappable,
 								targetOverlappable));
 					}
@@ -114,16 +115,13 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 		}
 	}
 
-	protected Shape intersectionComputation(Overlappable overlappable) {
-		if (overlappable instanceof Movable) {
-			Movable movable = (Movable) overlappable;
-			SpeedVector speedVector = movable.getSpeedVector();
-			SpeedVector oppositeSpeedVector = new SpeedVector(
-					speedVector.getDirection(), -1 * speedVector.getSpeed());
-			return IntersectTools.getIntersectShape(movable,
-					oppositeSpeedVector);
-		} else {
-			return overlappable.getBoundingBox();
-		}
+	protected Shape intersectionComputation(Overlappable movableOverlappable) {
+		assert movableOverlappable instanceof Movable;
+		Movable movable = (Movable) movableOverlappable;
+		SpeedVector speedVector = movable.getSpeedVector();
+		SpeedVector oppositeSpeedVector = new SpeedVector(
+				speedVector.getDirection(), -1 * speedVector.getSpeed());
+		return IntersectTools.getIntersectShape(movable, oppositeSpeedVector);
+
 	}
 }
