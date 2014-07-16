@@ -85,12 +85,12 @@ public class IntersectTools {
 		// And now the axis
 		else if ((dX == 0) && (dY > 0)) {
 			intersectShape = new Rectangle(x1, y1, x2 - x1, y2 - y1 + dY * v);
-		} else if ((dX == 0) && (dY < 0)) {
+		} else if (dY < 0) { // we know that dX == 0
 			intersectShape = new Rectangle(x1, y1 + dY * v, x2 - x1, y2
 					- (y1 + dY * v));
-		} else if ((dX > 0) && (dY == 0)) {
+		} else if (dX > 0) { // we know that dY == 0
 			intersectShape = new Rectangle(x1, y1, x2 - x1 + dX * v, y2 - y1);
-		} else if ((dX < 0) && (dY == 0)) {
+		} else if (dX < 0) { // we know that dY == 0
 			intersectShape = new Rectangle(x1 + dX * v, y1, x2 - (x1 + dX * v),
 					y2 - y1);
 		} else {
