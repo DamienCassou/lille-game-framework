@@ -42,18 +42,18 @@ public class MoveBlockerCheckerDefaultImpl implements MoveBlockerChecker {
 			if (tmpIntersec.intersects(tmpB)) {
 				Area tmpArea = new Area(tmpB);
 				tmpArea.intersect(intersectArea);
-				if (!tmpArea.isEmpty()) { // I don't understand how this test
-											// can fail. To me, if
-											// tmpIntersec intersects with tmpB
-											// then tmpArea is not empty
+				if (!tmpArea.isEmpty()) {
+					// NOTE I don't understand how this test can fail. To me,
+					// if tmpIntersec intersects with tmpB then tmpArea is not
+					// empty
 					moveBlockersInIntersection.add(moveBlocker);
 				}
 			}
 		}
 
 		if (!moveBlockersInIntersection.isEmpty()) {
-			return moveBlockerRuleApplier.moveValidationProcessing(
-					m, moveBlockersInIntersection);
+			return moveBlockerRuleApplier.moveValidationProcessing(m,
+					moveBlockersInIntersection);
 		}
 
 		return true;

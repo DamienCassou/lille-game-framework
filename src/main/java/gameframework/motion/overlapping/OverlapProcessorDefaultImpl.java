@@ -73,7 +73,8 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 		boundingBoxOverlappable = intersectShape.getBounds();
 
 		for (Overlappable targetNonMovableOverlappable : nonMovableOverlappables) {
-			if (targetNonMovableOverlappable != movableOverlappable) { // I don't see how this test could fail
+			if (targetNonMovableOverlappable != movableOverlappable) {
+				// NOTE I don't see how this test could fail
 				Shape targetShape;
 				targetShape = targetNonMovableOverlappable.getBoundingBox();
 				boundingBoxTarget = targetShape.getBounds();

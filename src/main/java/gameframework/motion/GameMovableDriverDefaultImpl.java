@@ -20,18 +20,18 @@ public class GameMovableDriverDefaultImpl implements GameMovableDriver {
 		moveBlockerChecker = obst;
 	}
 
-	public SpeedVector getSpeedVector(Movable m) {
+	public SpeedVector getSpeedVector(Movable movable) {
 		SpeedVector possibleSpeedVector;
 
 		possibleSpeedVector = moveStrategy.getSpeedVector();
-		if (moveBlockerChecker.moveValidation(m, possibleSpeedVector)) {
+		if (moveBlockerChecker.moveValidation(movable, possibleSpeedVector)) {
 			return possibleSpeedVector;
 		}
 
 		// If the strategy did not provide a valid vector, try to keep the
 		// current vector.
-		possibleSpeedVector = m.getSpeedVector();
-		if (moveBlockerChecker.moveValidation(m, possibleSpeedVector)) {
+		possibleSpeedVector = movable.getSpeedVector();
+		if (moveBlockerChecker.moveValidation(movable, possibleSpeedVector)) {
 			return possibleSpeedVector;
 		}
 
