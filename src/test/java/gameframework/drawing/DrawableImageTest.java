@@ -1,7 +1,6 @@
 package gameframework.drawing;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
