@@ -1,6 +1,5 @@
 package gameframework.motion.overlapping;
 
-
 public interface OverlapProcessor {
 	public void addOverlappable(Overlappable p);
 

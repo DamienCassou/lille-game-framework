@@ -9,8 +9,7 @@ import java.awt.event.KeyEvent;
  * {@link SpeedVector speed vectors} based on what the user typed.
  */
 public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
-	protected SpeedVector speedVector = new SpeedVector(new Point(0,
-			0));
+	protected SpeedVector speedVector = new SpeedVector(new Point(0, 0));
 
 	public SpeedVector getSpeedVector() {
 		return speedVector;

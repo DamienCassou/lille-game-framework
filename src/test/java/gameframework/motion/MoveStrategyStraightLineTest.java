@@ -28,7 +28,7 @@ public class MoveStrategyStraightLineTest extends
 
 		assertEquals(new Point(1, 0), strategy.currentPosition);
 		assertDownRight();
-		
+
 		strategy.currentPosition = goal;
 
 		assertEquals(goal, strategy.currentPosition);

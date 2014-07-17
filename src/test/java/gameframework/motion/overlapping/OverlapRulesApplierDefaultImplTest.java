@@ -80,7 +80,8 @@ public class OverlapRulesApplierDefaultImplTest {
 			fail("Previous instruction should have crashed");
 		} catch (RuntimeException e) {
 			assertEquals(1, rulesApplied);
-			assertTrue(e.getCause().getCause().getMessage().matches(error_message));
+			assertTrue(e.getCause().getCause().getMessage()
+					.matches(error_message));
 		}
 	}
 

@@ -1,6 +1,5 @@
 package gameframework.motion;
 
-
 /**
  * Applies moveBlocker checker and moving strategies
  */

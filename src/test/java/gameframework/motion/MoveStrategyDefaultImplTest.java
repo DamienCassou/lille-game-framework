@@ -4,7 +4,8 @@ import gameframework.motion.MoveStrategyDefaultImpl;
 
 import org.junit.Test;
 
-public class MoveStrategyDefaultImplTest extends MoveStrategyTest<MoveStrategyDefaultImpl> {
+public class MoveStrategyDefaultImplTest extends
+		MoveStrategyTest<MoveStrategyDefaultImpl> {
 
 	@Override
 	protected MoveStrategyDefaultImpl createStrategy() {
@@ -15,5 +16,5 @@ public class MoveStrategyDefaultImplTest extends MoveStrategyTest<MoveStrategyDe
 	public void dontMove() throws Exception {
 		assertNoMovement();
 	}
-	
+
 }

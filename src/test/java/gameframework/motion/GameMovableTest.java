@@ -89,5 +89,5 @@ public class GameMovableTest {
 		gameMovable.oneStepMove();
 		assertEquals(1, oneStepMoveAddedBehavior);
 	}
-	
+
 }

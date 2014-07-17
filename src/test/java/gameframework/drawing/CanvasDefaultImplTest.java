@@ -32,22 +32,22 @@ public class CanvasDefaultImplTest {
 		CanvasDefaultImpl canvas = new CanvasDefaultImpl();
 		canvas.setDrawingGameBoard(viewPort);
 		canvas.paint(new MockGraphics());
-		assertEquals(1,paintCalled);
+		assertEquals(1, paintCalled);
 	}
-	
+
 	@Test
 	public void repaintDelegatesToViewPort() {
 		CanvasDefaultImpl canvas = new CanvasDefaultImpl();
 		canvas.setDrawingGameBoard(viewPort);
 		canvas.repaint();
-		assertEquals(1,paintCalled);
+		assertEquals(1, paintCalled);
 	}
 
 	@Test
 	public void painWithNoViewPort() throws Exception {
 		CanvasDefaultImpl canvas = new CanvasDefaultImpl();
 		canvas.paint(new MockGraphics());
-		assertEquals(0,paintCalled);
+		assertEquals(0, paintCalled);
 	}
-	
+
 }

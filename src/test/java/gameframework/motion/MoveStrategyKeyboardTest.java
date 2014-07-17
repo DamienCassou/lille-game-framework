@@ -6,13 +6,14 @@ import java.awt.event.KeyEvent;
 
 import org.junit.Test;
 
-public class MoveStrategyKeyboardTest extends MoveStrategyTest<MoveStrategyKeyboard> {
+public class MoveStrategyKeyboardTest extends
+		MoveStrategyTest<MoveStrategyKeyboard> {
 
 	@Override
 	protected MoveStrategyKeyboard createStrategy() {
 		return new MoveStrategyKeyboard();
 	}
-	
+
 	@Test
 	public void goingLeft() throws Exception {
 		strategy.keyPressed(KeyEvent.VK_LEFT);

@@ -47,8 +47,8 @@ public class MoveBlockerCheckerDefaultImplTest {
 		checker.setMoveBlockerRules(new MoveBlockerRulesApplier() {
 
 			@Override
-			public boolean moveValidationProcessing(
-					Movable m, Vector<MoveBlocker> blockers) {
+			public boolean moveValidationProcessing(Movable m,
+					Vector<MoveBlocker> blockers) {
 				foundBlockers = blockers;
 				// by default, a blocker invalidates the move
 				return false;
@@ -81,8 +81,7 @@ public class MoveBlockerCheckerDefaultImplTest {
 	}
 
 	public void assertCorrectFoundBlockers(MoveBlocker[] blockers) {
-		assertEquals(
-				new HashSet<MoveBlocker>(Arrays.asList(blockers)),
+		assertEquals(new HashSet<MoveBlocker>(Arrays.asList(blockers)),
 				new HashSet<MoveBlocker>(foundBlockers));
 	}
 

@@ -50,15 +50,15 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 			gameBoard.paint();
 			universe.allOneStepMoves();
 			universe.processAllOverlaps();
-				long sleepTime = MINIMUM_DELAY_BETWEEN_GAME_CYCLES
-						- (new Date().getTime() - start);
-				if (sleepTime > 0) {
-					try {
-						Thread.sleep(sleepTime);
-					} catch (InterruptedException e) {
-						// that's ok, we just didn't managed to finish sleeping
-					}
+			long sleepTime = MINIMUM_DELAY_BETWEEN_GAME_CYCLES
+					- (new Date().getTime() - start);
+			if (sleepTime > 0) {
+				try {
+					Thread.sleep(sleepTime);
+				} catch (InterruptedException e) {
+					// that's ok, we just didn't managed to finish sleeping
 				}
+			}
 		}
 	}
 

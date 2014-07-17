@@ -10,5 +10,6 @@ public interface MoveBlockerChecker {
 
 	public void setMoveBlockerRules(MoveBlockerRulesApplier moveBlockerRules);
 
-	public boolean moveValidation(Movable movable, SpeedVector requestedSpeedVector);
+	public boolean moveValidation(Movable movable,
+			SpeedVector requestedSpeedVector);
 }

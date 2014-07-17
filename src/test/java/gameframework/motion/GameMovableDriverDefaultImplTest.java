@@ -106,7 +106,7 @@ public class GameMovableDriverDefaultImplTest {
 		assertEquals(new Point(0, 0), actualSpeedVector.getDirection());
 		assertEquals(0, actualSpeedVector.getSpeed());
 	}
-	
+
 	@Test
 	public void preferVectorFromStrategy() throws Exception {
 		acceptAllSpeedVectors = true;

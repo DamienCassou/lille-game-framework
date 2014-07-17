@@ -19,7 +19,8 @@ public class CanvasDefaultImpl extends Canvas {
 	@Override
 	public void paint(Graphics g) {
 		if (drawingGameBoard == null) {
-			System.out.println("CanvasDefaultImpl.drawingGameBoard not yet set");
+			System.out
+					.println("CanvasDefaultImpl.drawingGameBoard not yet set");
 		} else {
 			drawingGameBoard.paint();
 		}
