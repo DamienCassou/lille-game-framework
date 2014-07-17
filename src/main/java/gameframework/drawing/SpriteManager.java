@@ -20,7 +20,7 @@ public interface SpriteManager {
 
 	/**
 	 * Set the current type the entity has. Throws an
-	 * {@link IllegalArgumentException} if the type is not in the types list as
+	 * {@link IllegalArgumentException} if the type is not in the type list as
 	 * set using {@link #setTypes(String...)}.
 	 * 
 	 * @param type
