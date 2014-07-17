@@ -1,9 +1,7 @@
 package gameframework.drawing;
 
-import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,17 +20,12 @@ public class SpriteManagerDefaultImpl implements SpriteManager {
 	private int currentRow;
 	private final int renderingSize;
 
-	public SpriteManagerDefaultImpl(URL filename, Canvas canvas,
-			int renderingSize, int maxSpriteNumber) {
+	public SpriteManagerDefaultImpl(DrawableImage image, int renderingSize,
+			int maxSpriteNumber) {
 		this.renderingSize = renderingSize;
-		image = new DrawableImage(filename, canvas);
+		this.image = image;
 		this.maxSpriteNumber = maxSpriteNumber;
-		this.spriteSize = image.getImage().getWidth(null) / maxSpriteNumber;
-	}
-
-	public SpriteManagerDefaultImpl(String filename, Canvas canvas,
-			int renderingSize, int maxSpriteNumber) {
-		this(SpriteManagerDefaultImpl.class.getResource(filename),canvas,renderingSize,maxSpriteNumber);
+		this.spriteSize = image.getWidth() / maxSpriteNumber;
 	}
 
 	@Override
