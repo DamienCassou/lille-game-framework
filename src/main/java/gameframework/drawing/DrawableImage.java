@@ -27,8 +27,8 @@ public class DrawableImage implements Drawable {
 		try {
 			tracker.waitForAll();
 			if (tracker.isErrorAny()) {
-				throw new IllegalArgumentException("Problem while loading an image "
-						+ imageUrl);
+				throw new IllegalArgumentException(
+						"Problem while loading an image " + imageUrl);
 			}
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
@@ -45,5 +45,9 @@ public class DrawableImage implements Drawable {
 
 	public void draw(Graphics g) {
 		g.drawImage(image, 0, 0, canvas);
+	}
+
+	public int getWidth() {
+		return getImage().getWidth(null);
 	}
 }

@@ -9,9 +9,7 @@ import java.net.URL;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 public class DrawableImageTest {
 
@@ -61,6 +59,12 @@ public class DrawableImageTest {
 	public void createFromBadFilename() throws Exception {
 		URL imageUrl = new URL("file://non existing file name.git");
 		new DrawableImage(imageUrl, canvas);
+	}
+
+	@Test
+	public void width() throws Exception {
+		DrawableImage drawableImage = new DrawableImage("/courbes.png", canvas);
+		assertEquals(300, drawableImage.getWidth());
 	}
 
 }
