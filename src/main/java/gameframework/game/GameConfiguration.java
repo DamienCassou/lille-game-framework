@@ -23,7 +23,7 @@ public class GameConfiguration {
 	}
 
 	public int getDefaultNbLives() {
-		return 1;
+		return 2;
 	}
 
 	public Canvas createCanvas() {
