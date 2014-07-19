@@ -1,4 +1,4 @@
-package gameframework.game;
+package gameframework.gui;
 
 import java.awt.Menu;
 import java.awt.MenuBar;

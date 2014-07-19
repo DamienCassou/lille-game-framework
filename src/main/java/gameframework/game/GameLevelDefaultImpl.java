@@ -1,7 +1,5 @@
 package gameframework.game;
 
-import gameframework.base.ObservableValue;
-
 import java.util.Date;
 
 /**
@@ -13,24 +11,16 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 	private static final int MINIMUM_DELAY_BETWEEN_GAME_CYCLES = 100;
 	protected GameUniverse universe;
 	protected GameUniverseViewPort gameBoard;
-	protected ObservableValue<Integer> score;
-	protected ObservableValue<Integer> life;
-	protected ObservableValue<Boolean> endOfGame;
 
 	boolean stopGameLoop;
-	protected final Game g;
 
 	protected abstract void init();
 
-	public GameLevelDefaultImpl(Game g) {
-		this.g = g;
-		this.score = g.score();
-		this.life = g.life();
+	public GameLevelDefaultImpl() {
 	}
 
 	@Override
 	public void start() {
-		endOfGame = g.endOfGame();
 		init();
 		super.start();
 		try {
