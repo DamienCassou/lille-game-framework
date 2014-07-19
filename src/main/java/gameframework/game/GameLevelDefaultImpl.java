@@ -13,8 +13,8 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 	private static final int MINIMUM_DELAY_BETWEEN_GAME_CYCLES = 100;
 	protected GameUniverse universe;
 	protected GameUniverseViewPort gameBoard;
-	protected ObservableValue<Integer> score[];
-	protected ObservableValue<Integer> life[];
+	protected ObservableValue<Integer> score;
+	protected ObservableValue<Integer> life;
 	protected ObservableValue<Boolean> endOfGame;
 
 	boolean stopGameLoop;

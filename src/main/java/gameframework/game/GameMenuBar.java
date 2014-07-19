@@ -6,7 +6,6 @@ import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 public class GameMenuBar {
 
 	public MenuBar getComponent() {
@@ -22,8 +21,8 @@ public class GameMenuBar {
 		});
 
 		file.add(quit);
-		
+
 		return menuBar;
 	}
-	
+
 }
