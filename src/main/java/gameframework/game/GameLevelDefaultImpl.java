@@ -6,7 +6,6 @@ import java.util.Date;
  * To be implemented with respect to a specific game. Expected to initialize the
  * universe and the gameBoard
  */
-
 public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 	private static final int MINIMUM_DELAY_BETWEEN_GAME_CYCLES = 100;
 	protected GameUniverse universe;
