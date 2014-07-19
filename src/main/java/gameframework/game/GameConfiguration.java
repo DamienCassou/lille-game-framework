@@ -1,6 +1,10 @@
 package gameframework.game;
 
 import gameframework.drawing.CanvasDefaultImpl;
+import gameframework.motion.blocking.MoveBlockerChecker;
+import gameframework.motion.blocking.MoveBlockerCheckerDefaultImpl;
+import gameframework.motion.blocking.MoveBlockerRulesApplier;
+import gameframework.motion.blocking.MoveBlockerRulesApplierDefaultImpl;
 
 import java.awt.Canvas;
 
@@ -26,8 +30,12 @@ public class GameConfiguration {
 		return new CanvasDefaultImpl();
 	}
 
-	public Object getLevels() {
-		// TODO Auto-generated method stub
-		return null;
+	public MoveBlockerRulesApplier createMoveBlockerRulesApplier() {
+		return new MoveBlockerRulesApplierDefaultImpl();
 	}
+
+	public MoveBlockerChecker createMoveBlockerChecker() {
+		return new MoveBlockerCheckerDefaultImpl();
+	}
+	
 }
