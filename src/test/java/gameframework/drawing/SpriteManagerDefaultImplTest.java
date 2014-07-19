@@ -1,6 +1,5 @@
 package gameframework.drawing;
 
-import java.awt.Canvas;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.image.ImageObserver;
@@ -8,7 +7,7 @@ import java.awt.image.ImageObserver;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class SpriteManagerDefaultImplTest {
 
@@ -21,7 +20,7 @@ public class SpriteManagerDefaultImplTest {
 	int actualSourceX, actualSourceY;
 
 	DrawableImage image;
-	Canvas canvas;
+	GameCanvas canvas;
 	MockGraphics graphics;
 
 	public void createGraphics() {
@@ -38,7 +37,7 @@ public class SpriteManagerDefaultImplTest {
 	}
 
 	public void createCanvas() {
-		canvas = new Canvas();
+		canvas = new GameCanvasDefaultImpl();
 		canvas.setBounds(0, 0, 200, 200);
 	}
 

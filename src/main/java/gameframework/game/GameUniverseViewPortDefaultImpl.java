@@ -2,8 +2,8 @@ package gameframework.game;
 
 import gameframework.drawing.BackgroundImage;
 import gameframework.drawing.Drawable;
+import gameframework.drawing.GameCanvas;
 
-import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.net.URL;
@@ -35,15 +35,14 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 		return data.getUniverse();
 	}
 
-	public Canvas getCanvas() {
+	public GameCanvas getCanvas() {
 		return data.getCanvas();
 	}
 
 	@Override
 	public void setGameData(GameData data) {
 		this.data = data;
-		buffer = getCanvas().createImage(getCanvas().getWidth(),
-				getCanvas().getHeight());
+		buffer = getCanvas().createBuffer();
 		background = new BackgroundImage(backgroundImage(), getCanvas());
 	}
 
@@ -53,7 +52,6 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 
 	@Override
 	public void refresh() {
-		getCanvas().getGraphics().drawImage(buffer, 0, 0,
-				getCanvas().getWidth(), getCanvas().getHeight(), getCanvas());
+		getCanvas().drawFullSizeImage(buffer);
 	}
 }

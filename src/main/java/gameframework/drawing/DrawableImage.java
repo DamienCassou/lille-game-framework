@@ -1,6 +1,5 @@
 package gameframework.drawing;
 
-import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MediaTracker;
@@ -9,10 +8,10 @@ import java.net.URL;
 
 public class DrawableImage implements Drawable {
 	protected Image image;
-	protected Canvas canvas;
+	protected GameCanvas canvas;
 
-	public DrawableImage(URL imageUrl, Canvas canvas) {
-		this.canvas = canvas;
+	public DrawableImage(URL imageUrl, GameCanvas gameCanvas) {
+		this.canvas = gameCanvas;
 		if (imageUrl == null) {
 			throw new IllegalArgumentException("Null imageUrl parameter");
 		}
@@ -22,7 +21,7 @@ public class DrawableImage implements Drawable {
 	protected void handleImage(URL imageUrl) {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		image = toolkit.createImage(imageUrl);
-		MediaTracker tracker = new MediaTracker(canvas);
+		MediaTracker tracker = canvas.createMediaTracker();
 		tracker.addImage(image, 0);
 		try {
 			tracker.waitForAll();
@@ -35,7 +34,7 @@ public class DrawableImage implements Drawable {
 		}
 	}
 
-	public DrawableImage(String filename, Canvas canvas) {
+	public DrawableImage(String filename, GameCanvas canvas) {
 		this(DrawableImage.class.getResource(filename), canvas);
 	}
 
@@ -44,8 +43,8 @@ public class DrawableImage implements Drawable {
 	}
 
 	@Override
-	public void draw(Graphics g) {
-		g.drawImage(image, 0, 0, canvas);
+	public void draw(Graphics graphics) {
+		canvas.drawImage(graphics, image, 0, 0);
 	}
 
 	public int getWidth() {

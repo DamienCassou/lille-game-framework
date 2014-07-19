@@ -1,10 +1,10 @@
 package gameframework.gui;
 
 import gameframework.base.ObservableValue;
+import gameframework.drawing.GameCanvas;
 import gameframework.game.GameConfiguration;
 
 import java.awt.BorderLayout;
-import java.awt.Canvas;
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -12,12 +12,12 @@ import java.awt.event.WindowEvent;
 public class GameWindow {
 
 	protected final Frame frame;
-	protected Canvas gameCanvas;
+	protected GameCanvas gameCanvas;
 
 	protected final ObservableValue<Integer> score;
 	protected final ObservableValue<Integer> life;
 
-	public GameWindow(Canvas gameCanvas, GameConfiguration configuration,
+	public GameWindow(GameCanvas gameCanvas, GameConfiguration configuration,
 			ObservableValue<Integer> score, ObservableValue<Integer> life) {
 		if (gameCanvas == null) {
 			throw new IllegalArgumentException("gameCanvas is null");
@@ -34,8 +34,7 @@ public class GameWindow {
 	public void createGUI() {
 		frame.dispose();
 		frame.setMenuBar(new GameMenuBar().getComponent());
-
-		frame.add(gameCanvas);
+		gameCanvas.addTo(frame);
 		frame.add(new GameStatusBar(score, life).getContainer(),
 				BorderLayout.NORTH);
 		frame.pack();

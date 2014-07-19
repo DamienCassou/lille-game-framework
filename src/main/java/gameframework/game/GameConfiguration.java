@@ -1,6 +1,7 @@
 package gameframework.game;
 
-import gameframework.drawing.CanvasDefaultImpl;
+import gameframework.drawing.GameCanvas;
+import gameframework.drawing.GameCanvasDefaultImpl;
 import gameframework.motion.blocking.MoveBlockerChecker;
 import gameframework.motion.blocking.MoveBlockerCheckerDefaultImpl;
 import gameframework.motion.blocking.MoveBlockerRulesApplier;
@@ -9,8 +10,6 @@ import gameframework.motion.overlapping.OverlapProcessor;
 import gameframework.motion.overlapping.OverlapProcessorDefaultImpl;
 import gameframework.motion.overlapping.OverlapRulesApplier;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
-
-import java.awt.Canvas;
 
 public class GameConfiguration {
 
@@ -30,8 +29,8 @@ public class GameConfiguration {
 		return 2;
 	}
 
-	public Canvas createCanvas() {
-		return new CanvasDefaultImpl();
+	public GameCanvas createCanvas() {
+		return new GameCanvasDefaultImpl();
 	}
 
 	public MoveBlockerRulesApplier createMoveBlockerRulesApplier() {

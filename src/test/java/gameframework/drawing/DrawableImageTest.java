@@ -1,6 +1,5 @@
 package gameframework.drawing;
 
-import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
@@ -9,11 +8,14 @@ import java.net.URL;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 
 public class DrawableImageTest {
 
-	Canvas canvas;
+	GameCanvas canvas;
 	Graphics graphics;
 	Image actualImg;
 
@@ -31,7 +33,7 @@ public class DrawableImageTest {
 
 	@Before
 	public void createCanvas() {
-		canvas = new Canvas();
+		canvas = new GameCanvasDefaultImpl();
 		canvas.setBounds(0, 0, 200, 200);
 	}
 

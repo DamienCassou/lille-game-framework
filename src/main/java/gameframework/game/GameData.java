@@ -1,18 +1,18 @@
 package gameframework.game;
 
 import gameframework.base.ObservableValue;
+import gameframework.drawing.GameCanvas;
 import gameframework.motion.blocking.MoveBlockerChecker;
 import gameframework.motion.blocking.MoveBlockerRulesApplier;
 import gameframework.motion.overlapping.OverlapProcessor;
 import gameframework.motion.overlapping.OverlapRulesApplier;
 
-import java.awt.Canvas;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameData {
 
-	protected final Canvas canvas;
+	protected final GameCanvas canvas;
 	protected final ObservableValue<Integer> score;
 	protected final ObservableValue<Integer> life;
 	protected final GameConfiguration configuration;
@@ -58,7 +58,7 @@ public class GameData {
 		return score;
 	}
 
-	public Canvas getCanvas() {
+	public GameCanvas getCanvas() {
 		return canvas;
 	}
 
