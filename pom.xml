@@ -9,7 +9,7 @@
   <name>Our game framework</name>
 
   <properties>
-    <project.build.jacoco.coveredRatio>0.6</project.build.jacoco.coveredRatio>
+    <project.build.jacoco.coveredRatio>0.5</project.build.jacoco.coveredRatio>
   </properties>
 
 </project>
