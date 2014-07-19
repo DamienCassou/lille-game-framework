@@ -36,7 +36,8 @@ public class GameWindow {
 		frame.setMenuBar(new GameMenuBar().getComponent());
 
 		frame.add(gameCanvas);
-		frame.add(new GameStatusBar(score, life).getContainer(), BorderLayout.NORTH);
+		frame.add(new GameStatusBar(score, life).getContainer(),
+				BorderLayout.NORTH);
 		frame.pack();
 		frame.setVisible(true);
 

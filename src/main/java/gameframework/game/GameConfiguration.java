@@ -13,19 +13,19 @@ public class GameConfiguration {
 	public int getNbRows() {
 		return 31;
 	}
-	
+
 	public int getNbColumns() {
 		return 28;
 	}
-	
+
 	public int getSpriteSize() {
 		return 16;
 	}
-	
+
 	public int getDefaultNbLives() {
 		return 1;
 	}
-	
+
 	public Canvas createCanvas() {
 		return new CanvasDefaultImpl();
 	}
@@ -37,5 +37,5 @@ public class GameConfiguration {
 	public MoveBlockerChecker createMoveBlockerChecker() {
 		return new MoveBlockerCheckerDefaultImpl();
 	}
-	
+
 }

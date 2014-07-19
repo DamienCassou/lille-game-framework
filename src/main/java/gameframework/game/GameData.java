@@ -18,7 +18,7 @@ public class GameData {
 	protected final List<GameLevel> levels;
 	protected final MoveBlockerRulesApplier moveBlockerRulesApplier;
 	protected final MoveBlockerChecker moveBlockerChecker;
-	
+
 	public GameData(GameConfiguration configuration) {
 		super();
 		this.configuration = configuration;
@@ -32,19 +32,19 @@ public class GameData {
 		moveBlockerChecker = configuration.createMoveBlockerChecker();
 		moveBlockerChecker.setMoveBlockerRules(moveBlockerRulesApplier);
 	}
-	
+
 	public GameConfiguration getConfiguration() {
 		return configuration;
 	}
-	
+
 	public ObservableValue<Integer> getScore() {
 		return score;
 	}
-	
+
 	public Canvas getCanvas() {
 		return canvas;
 	}
-	
+
 	public ObservableValue<Integer> getLife() {
 		return life;
 	}
@@ -60,13 +60,13 @@ public class GameData {
 	public void addLevel(GameLevel level) {
 		levels.add(level);
 	}
-	
+
 	public MoveBlockerRulesApplier getMoveBlockerRulesApplier() {
 		return moveBlockerRulesApplier;
 	}
-	
+
 	public MoveBlockerChecker getMoveBlockerChecker() {
 		return moveBlockerChecker;
 	}
-	
+
 }

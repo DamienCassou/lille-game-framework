@@ -8,7 +8,6 @@ import java.util.Observer;
  */
 public class GameDefaultImpl implements Game, Observer {
 
-	
 	private GameLevelDefaultImpl currentPlayedLevel = null;
 
 	protected final GameData data;
