@@ -33,7 +33,6 @@ public class GameDefaultImpl implements Game, Observer {
 	private Frame f;
 	private GameLevelDefaultImpl currentPlayedLevel = null;
 
-	protected int levelNumber;
 	protected ArrayList<GameLevel> gameLevels;
 
 	public GameDefaultImpl() {
@@ -68,7 +67,6 @@ public class GameDefaultImpl implements Game, Observer {
 		score.addObserver(this);
 		life.addObserver(this);
 		life.setValue(NUMBER_OF_LIVES);
-		levelNumber = 0;
 		for (GameLevel level : gameLevels) {
 			endOfGame = new ObservableValue<Boolean>(false);
 			endOfGame.addObserver(this);
@@ -77,7 +75,6 @@ public class GameDefaultImpl implements Game, Observer {
 				currentPlayedLevel = null;
 			}
 			currentPlayedLevel = (GameLevelDefaultImpl) level;
-			levelNumber++;
 			currentPlayedLevel.start();
 			try {
 				currentPlayedLevel.join();
