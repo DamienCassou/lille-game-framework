@@ -5,6 +5,10 @@ import gameframework.motion.blocking.MoveBlockerChecker;
 import gameframework.motion.blocking.MoveBlockerCheckerDefaultImpl;
 import gameframework.motion.blocking.MoveBlockerRulesApplier;
 import gameframework.motion.blocking.MoveBlockerRulesApplierDefaultImpl;
+import gameframework.motion.overlapping.OverlapProcessor;
+import gameframework.motion.overlapping.OverlapProcessorDefaultImpl;
+import gameframework.motion.overlapping.OverlapRulesApplier;
+import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 import java.awt.Canvas;
 
@@ -36,6 +40,14 @@ public class GameConfiguration {
 
 	public MoveBlockerChecker createMoveBlockerChecker() {
 		return new MoveBlockerCheckerDefaultImpl();
+	}
+	
+	public OverlapRulesApplier createOverlapRulesApplier() {
+		return new OverlapRulesApplierDefaultImpl();
+	}
+
+	public OverlapProcessor createOverlapProcessor() {
+		return new OverlapProcessorDefaultImpl();
 	}
 
 }

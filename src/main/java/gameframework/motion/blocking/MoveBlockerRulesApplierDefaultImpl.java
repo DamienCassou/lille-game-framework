@@ -1,5 +1,6 @@
 package gameframework.motion.blocking;
 
+import gameframework.game.GameData;
 import gameframework.motion.Movable;
 
 import java.lang.reflect.Method;
@@ -32,6 +33,8 @@ import java.util.Vector;
 public class MoveBlockerRulesApplierDefaultImpl implements
 		MoveBlockerRulesApplier {
 
+	protected GameData gameData;
+
 	@Override
 	public boolean moveValidationProcessing(Movable movable,
 			Vector<MoveBlocker> blockers) {
@@ -56,5 +59,10 @@ public class MoveBlockerRulesApplierDefaultImpl implements
 		m = (getClass()).getMethod("moveBlockerRule", movable.getClass(),
 				blocker.getClass());
 		m.invoke(this, movable, blocker);
+	}
+
+	@Override
+	public void setGameData(GameData gameData) {
+		this.gameData = gameData;
 	}
 }

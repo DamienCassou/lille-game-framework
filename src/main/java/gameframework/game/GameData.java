@@ -3,6 +3,8 @@ package gameframework.game;
 import gameframework.base.ObservableValue;
 import gameframework.motion.blocking.MoveBlockerChecker;
 import gameframework.motion.blocking.MoveBlockerRulesApplier;
+import gameframework.motion.overlapping.OverlapProcessor;
+import gameframework.motion.overlapping.OverlapRulesApplier;
 
 import java.awt.Canvas;
 import java.util.ArrayList;
@@ -18,7 +20,10 @@ public class GameData {
 	protected final List<GameLevel> levels;
 	protected final MoveBlockerRulesApplier moveBlockerRulesApplier;
 	protected final MoveBlockerChecker moveBlockerChecker;
-
+	protected final OverlapRulesApplier overlapRulesApplier;
+	protected final OverlapProcessor overlapProcessor;
+	
+	
 	public GameData(GameConfiguration configuration) {
 		super();
 		this.configuration = configuration;
@@ -28,9 +33,17 @@ public class GameData {
 		life = new ObservableValue<Integer>(configuration.getDefaultNbLives());
 		endOfGame = new ObservableValue<Boolean>(false);
 		levels = new ArrayList<GameLevel>();
+		
 		moveBlockerRulesApplier = configuration.createMoveBlockerRulesApplier();
+		moveBlockerRulesApplier.setGameData(this);
 		moveBlockerChecker = configuration.createMoveBlockerChecker();
 		moveBlockerChecker.setMoveBlockerRules(moveBlockerRulesApplier);
+		
+		overlapRulesApplier = configuration.createOverlapRulesApplier();
+		overlapRulesApplier.setGameData(this);
+		overlapProcessor = configuration.createOverlapProcessor();
+		overlapProcessor.setOverlapRules(overlapRulesApplier);
+		
 	}
 
 	public GameConfiguration getConfiguration() {
@@ -69,4 +82,11 @@ public class GameData {
 		return moveBlockerChecker;
 	}
 
+	public OverlapProcessor getOverlapProcessor() {
+		return overlapProcessor;
+	}
+
+	public OverlapRulesApplier getOverlapRulesApplier() {
+		return overlapRulesApplier;
+	}
 }

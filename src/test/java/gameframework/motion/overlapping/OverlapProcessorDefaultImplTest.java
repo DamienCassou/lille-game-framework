@@ -1,5 +1,6 @@
 package gameframework.motion.overlapping;
 
+import gameframework.game.GameData;
 import gameframework.game.GameUniverse;
 import gameframework.motion.GameMovable;
 
@@ -33,6 +34,10 @@ public class OverlapProcessorDefaultImplTest {
 			@Override
 			public void applyOverlapRules(Vector<Overlap> overlaps) {
 				actualOverlaps = overlaps;
+			}
+
+			@Override
+			public void setGameData(GameData data) {
 			}
 		});
 	}

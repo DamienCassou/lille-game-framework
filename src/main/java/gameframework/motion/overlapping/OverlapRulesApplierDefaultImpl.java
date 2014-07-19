@@ -1,11 +1,16 @@
 package gameframework.motion.overlapping;
 
+import gameframework.game.GameData;
+import gameframework.game.GameUniverse;
+
 import java.lang.reflect.Method;
 import java.util.Vector;
 
-public abstract class OverlapRulesApplierDefaultImpl implements
-		OverlapRulesApplier {
+public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 
+	protected GameUniverse universe;
+	protected GameData data;
+	
 	@Override
 	public void applyOverlapRules(Vector<Overlap> overlaps) {
 		for (Overlap col : overlaps) {
@@ -44,5 +49,15 @@ public abstract class OverlapRulesApplierDefaultImpl implements
 		} catch (Exception e) {
 			throw new RuntimeException("Reflective invocation exception", e);
 		}
+	}
+
+	@Override
+	public void setUniverse(GameUniverse universe) {
+		this.universe = universe;
+	}
+	
+	@Override
+	public void setGameData(GameData data) {
+		this.data = data;
 	}
 }
