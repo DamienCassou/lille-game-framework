@@ -10,12 +10,16 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 	private static final int MINIMUM_DELAY_BETWEEN_GAME_CYCLES = 100;
 	protected GameUniverse universe;
 	protected GameUniverseViewPort gameBoard;
+	protected final GameData data;
+	protected final int spriteSize;
 
 	boolean stopGameLoop;
 
 	protected abstract void init();
 
-	public GameLevelDefaultImpl() {
+	public GameLevelDefaultImpl(GameData data) {
+		this.data = data;
+		this.spriteSize = data.getConfiguration().getSpriteSize();
 	}
 
 	@Override
