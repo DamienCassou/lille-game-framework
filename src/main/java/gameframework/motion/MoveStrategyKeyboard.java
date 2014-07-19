@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 	protected SpeedVector speedVector = new SpeedVector(new Point(0, 0));
 
+	@Override
 	public SpeedVector getSpeedVector() {
 		return speedVector;
 	}

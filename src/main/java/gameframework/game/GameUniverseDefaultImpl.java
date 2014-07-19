@@ -14,6 +14,7 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 	private OverlapProcessor overlapProcessor;
 	private MoveBlockerChecker moveBlockerChecker;
 
+	@Override
 	public Iterator<GameEntity> gameEntities() {
 		return gameEntities.iterator();
 	}
@@ -23,6 +24,7 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 		moveBlockerChecker = obs;
 	}
 
+	@Override
 	public synchronized void addGameEntity(GameEntity gameEntity) {
 		gameEntities.add(gameEntity);
 		if (gameEntity instanceof Overlappable) {
@@ -33,6 +35,7 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 		}
 	}
 
+	@Override
 	public synchronized void removeGameEntity(GameEntity gameEntity) {
 		gameEntities.remove(gameEntity);
 		if (gameEntity instanceof Overlappable) {
@@ -43,6 +46,7 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 		}
 	}
 
+	@Override
 	public void allOneStepMoves() {
 		for (GameEntity entity : gameEntities) {
 			if (entity instanceof Movable) {
@@ -51,6 +55,7 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 		}
 	}
 
+	@Override
 	public void processAllOverlaps() {
 		overlapProcessor.processOverlapsAll();
 	}

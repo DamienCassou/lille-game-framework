@@ -15,6 +15,7 @@ public class GameMenuBar {
 		menuBar.add(file);
 
 		quit.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}

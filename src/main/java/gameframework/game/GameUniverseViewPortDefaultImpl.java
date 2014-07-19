@@ -28,6 +28,7 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 		return this.getClass().getResource("/images/background_image.gif");
 	}
 
+	@Override
 	public void paint() {
 		background.draw(bufferGraphics);
 		Iterator<GameEntity> gt = universe.gameEntities();
@@ -40,6 +41,7 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 		refresh();
 	}
 
+	@Override
 	public void refresh() {
 		canvas.getGraphics().drawImage(buffer, 0, 0, canvas.getWidth(),
 				canvas.getHeight(), canvas);

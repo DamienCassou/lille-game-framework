@@ -43,6 +43,7 @@ public class DrawableImage implements Drawable {
 		return image;
 	}
 
+	@Override
 	public void draw(Graphics g) {
 		g.drawImage(image, 0, 0, canvas);
 	}

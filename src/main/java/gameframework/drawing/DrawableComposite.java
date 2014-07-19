@@ -14,6 +14,7 @@ public class DrawableComposite implements Drawable {
 		drawables.removeElement(e);
 	}
 
+	@Override
 	public void draw(Graphics g) {
 		for (Drawable elem : drawables) {
 			elem.draw(g);

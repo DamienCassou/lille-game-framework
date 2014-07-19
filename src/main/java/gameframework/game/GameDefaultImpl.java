@@ -20,6 +20,7 @@ public class GameDefaultImpl implements Game, Observer {
 		data.getEndOfGame().addObserver(this);
 	}
 
+	@Override
 	public void start() {
 		for (GameLevel level : data.getLevels()) {
 			data.getEndOfGame().setValue(false);
@@ -37,6 +38,7 @@ public class GameDefaultImpl implements Game, Observer {
 		}
 	}
 
+	@Override
 	public void update(Observable o, Object arg) {
 		if (data.getEndOfGame().getValue() || data.getLife().getValue() <= 0) {
 			currentPlayedLevel.interrupt();

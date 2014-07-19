@@ -6,6 +6,7 @@ import java.util.Vector;
 public abstract class OverlapRulesApplierDefaultImpl implements
 		OverlapRulesApplier {
 
+	@Override
 	public void applyOverlapRules(Vector<Overlap> overlaps) {
 		for (Overlap col : overlaps) {
 			applySpecificOverlapRule(col.getOverlappable1(),

@@ -32,6 +32,7 @@ import java.util.Vector;
 public class MoveBlockerRulesApplierDefaultImpl implements
 		MoveBlockerRulesApplier {
 
+	@Override
 	public boolean moveValidationProcessing(Movable movable,
 			Vector<MoveBlocker> blockers) {
 		for (MoveBlocker moveBlocker : blockers) {
