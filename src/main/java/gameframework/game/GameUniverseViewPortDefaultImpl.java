@@ -11,18 +11,8 @@ import java.util.Iterator;
 
 public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 	private Image buffer;
-	private Graphics bufferGraphics;
-	protected Canvas canvas;
 	protected BackgroundImage background;
-	protected GameUniverse universe;
-
-	public GameUniverseViewPortDefaultImpl(Canvas canvas, GameUniverse universe) {
-		this.canvas = canvas;
-		buffer = canvas.createImage(canvas.getWidth(), canvas.getHeight());
-		bufferGraphics = buffer.getGraphics();
-		background = new BackgroundImage(backgroundImage(), canvas);
-		this.universe = universe;
-	}
+	protected GameData data;
 
 	protected URL backgroundImage() {
 		return this.getClass().getResource("/images/background_image.gif");
@@ -30,20 +20,40 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 
 	@Override
 	public void paint() {
-		background.draw(bufferGraphics);
-		Iterator<GameEntity> gt = universe.gameEntities();
+		background.draw(getBufferGraphics());
+		Iterator<GameEntity> gt = getUniverse().gameEntities();
 		for (; gt.hasNext();) {
 			GameEntity tmp = gt.next();
 			if (tmp instanceof Drawable) {
-				((Drawable) tmp).draw(bufferGraphics);
+				((Drawable) tmp).draw(getBufferGraphics());
 			}
 		}
 		refresh();
 	}
 
+	protected GameUniverse getUniverse() {
+		return data.getUniverse();
+	}
+
+	public Canvas getCanvas() {
+		return data.getCanvas();
+	}
+
+	@Override
+	public void setGameData(GameData data) {
+		this.data = data;
+		buffer = getCanvas().createImage(getCanvas().getWidth(),
+				getCanvas().getHeight());
+		background = new BackgroundImage(backgroundImage(), getCanvas());
+	}
+
+	protected Graphics getBufferGraphics() {
+		return buffer.getGraphics();
+	}
+
 	@Override
 	public void refresh() {
-		canvas.getGraphics().drawImage(buffer, 0, 0, canvas.getWidth(),
-				canvas.getHeight(), canvas);
+		getCanvas().getGraphics().drawImage(buffer, 0, 0,
+				getCanvas().getWidth(), getCanvas().getHeight(), getCanvas());
 	}
 }
