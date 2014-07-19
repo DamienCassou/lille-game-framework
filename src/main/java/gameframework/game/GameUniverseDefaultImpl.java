@@ -10,28 +10,22 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class GameUniverseDefaultImpl implements GameUniverse {
-	private ConcurrentLinkedQueue<GameEntity> gameEntities = new ConcurrentLinkedQueue<GameEntity>();
-	private OverlapProcessor overlapProcessor;
-	private MoveBlockerChecker moveBlockerChecker;
+	protected ConcurrentLinkedQueue<GameEntity> gameEntities = new ConcurrentLinkedQueue<GameEntity>();
+	protected GameData data;
 
 	@Override
 	public Iterator<GameEntity> gameEntities() {
 		return gameEntities.iterator();
 	}
 
-	public GameUniverseDefaultImpl(MoveBlockerChecker obs, OverlapProcessor col) {
-		overlapProcessor = col;
-		moveBlockerChecker = obs;
-	}
-
 	@Override
 	public synchronized void addGameEntity(GameEntity gameEntity) {
 		gameEntities.add(gameEntity);
 		if (gameEntity instanceof Overlappable) {
-			overlapProcessor.addOverlappable((Overlappable) gameEntity);
+			getOverlapProcessor().addOverlappable((Overlappable) gameEntity);
 		}
 		if (gameEntity instanceof MoveBlocker) {
-			moveBlockerChecker.addMoveBlocker((MoveBlocker) gameEntity);
+			getMoveBlockerChecker().addMoveBlocker((MoveBlocker) gameEntity);
 		}
 	}
 
@@ -39,10 +33,10 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 	public synchronized void removeGameEntity(GameEntity gameEntity) {
 		gameEntities.remove(gameEntity);
 		if (gameEntity instanceof Overlappable) {
-			overlapProcessor.removeOverlappable((Overlappable) gameEntity);
+			getOverlapProcessor().removeOverlappable((Overlappable) gameEntity);
 		}
 		if (gameEntity instanceof MoveBlocker) {
-			moveBlockerChecker.removeMoveBlocker((MoveBlocker) gameEntity);
+			getMoveBlockerChecker().removeMoveBlocker((MoveBlocker) gameEntity);
 		}
 	}
 
@@ -57,7 +51,20 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 
 	@Override
 	public void processAllOverlaps() {
-		overlapProcessor.processOverlapsAll();
+		getOverlapProcessor().processOverlapsAll();
+	}
+
+	protected MoveBlockerChecker getMoveBlockerChecker() {
+		return data.getMoveBlockerChecker();
+	}
+
+	protected OverlapProcessor getOverlapProcessor() {
+		return data.getOverlapProcessor();
+	}
+
+	@Override
+	public void setGameData(GameData data) {
+		this.data = data;
 	}
 
 }

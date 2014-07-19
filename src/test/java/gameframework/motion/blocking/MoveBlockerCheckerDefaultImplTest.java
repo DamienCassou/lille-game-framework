@@ -1,5 +1,6 @@
 package gameframework.motion.blocking;
 
+import gameframework.game.GameData;
 import gameframework.motion.GameMovable;
 import gameframework.motion.Movable;
 import gameframework.motion.SpeedVector;
@@ -52,6 +53,10 @@ public class MoveBlockerCheckerDefaultImplTest {
 				foundBlockers = blockers;
 				// by default, a blocker invalidates the move
 				return false;
+			}
+
+			@Override
+			public void setGameData(GameData gameData) {
 			}
 		});
 	}

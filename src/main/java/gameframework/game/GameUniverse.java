@@ -18,5 +18,7 @@ public interface GameUniverse {
 	public void allOneStepMoves();
 
 	public void processAllOverlaps();
+	
+	public void setGameData(GameData data);
 
 }

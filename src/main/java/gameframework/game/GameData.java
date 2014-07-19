@@ -22,8 +22,8 @@ public class GameData {
 	protected final MoveBlockerChecker moveBlockerChecker;
 	protected final OverlapRulesApplier overlapRulesApplier;
 	protected final OverlapProcessor overlapProcessor;
-	
-	
+	protected final GameUniverse universe;
+
 	public GameData(GameConfiguration configuration) {
 		super();
 		this.configuration = configuration;
@@ -33,16 +33,21 @@ public class GameData {
 		life = new ObservableValue<Integer>(configuration.getDefaultNbLives());
 		endOfGame = new ObservableValue<Boolean>(false);
 		levels = new ArrayList<GameLevel>();
-		
+
+		universe = configuration.createUniverse();
+		universe.setGameData(this);
+
 		moveBlockerRulesApplier = configuration.createMoveBlockerRulesApplier();
 		moveBlockerRulesApplier.setGameData(this);
 		moveBlockerChecker = configuration.createMoveBlockerChecker();
 		moveBlockerChecker.setMoveBlockerRules(moveBlockerRulesApplier);
-		
+
 		overlapRulesApplier = configuration.createOverlapRulesApplier();
 		overlapRulesApplier.setGameData(this);
+		overlapRulesApplier.setUniverse(universe);
 		overlapProcessor = configuration.createOverlapProcessor();
 		overlapProcessor.setOverlapRules(overlapRulesApplier);
+
 		
 	}
 
@@ -88,5 +93,9 @@ public class GameData {
 
 	public OverlapRulesApplier getOverlapRulesApplier() {
 		return overlapRulesApplier;
+	}
+
+	public GameUniverse getUniverse() {
+		return universe;
 	}
 }

@@ -50,4 +50,8 @@ public class GameConfiguration {
 		return new OverlapProcessorDefaultImpl();
 	}
 
+	public GameUniverse createUniverse() {
+		return new GameUniverseDefaultImpl();
+	}
+
 }
