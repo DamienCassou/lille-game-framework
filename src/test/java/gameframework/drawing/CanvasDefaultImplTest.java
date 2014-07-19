@@ -1,5 +1,6 @@
 package gameframework.drawing;
 
+import gameframework.game.GameData;
 import gameframework.game.GameUniverseViewPort;
 
 import org.junit.Before;
@@ -23,6 +24,10 @@ public class CanvasDefaultImplTest {
 			@Override
 			public void paint() {
 				paintCalled++;
+			}
+
+			@Override
+			public void setGameData(GameData data) {
 			}
 		};
 	}

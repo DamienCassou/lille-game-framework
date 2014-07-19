@@ -1,7 +1,5 @@
 package gameframework.motion.overlapping;
 
-import gameframework.game.GameUniverse;
-
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Arrays;
@@ -33,10 +31,6 @@ public class OverlapRulesApplierDefaultImplTest {
 				if (ruleShouldCrash) {
 					throw new RuntimeException(error_message);
 				}
-			}
-
-			@Override
-			public void setUniverse(GameUniverse universe) {
 			}
 
 		};

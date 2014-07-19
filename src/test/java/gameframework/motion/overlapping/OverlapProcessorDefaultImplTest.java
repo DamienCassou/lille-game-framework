@@ -1,7 +1,6 @@
 package gameframework.motion.overlapping;
 
 import gameframework.game.GameData;
-import gameframework.game.GameUniverse;
 import gameframework.motion.GameMovable;
 
 import java.awt.Point;
@@ -26,10 +25,6 @@ public class OverlapProcessorDefaultImplTest {
 	public void createOverlapProcessor() {
 		overlapProcessor = new OverlapProcessorDefaultImpl();
 		overlapProcessor.setOverlapRules(new OverlapRulesApplier() {
-
-			@Override
-			public void setUniverse(GameUniverse universe) {
-			}
 
 			@Override
 			public void applyOverlapRules(Vector<Overlap> overlaps) {

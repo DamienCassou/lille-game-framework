@@ -44,7 +44,6 @@ public class GameData {
 
 		overlapRulesApplier = configuration.createOverlapRulesApplier();
 		overlapRulesApplier.setGameData(this);
-		overlapRulesApplier.setUniverse(universe);
 		overlapProcessor = configuration.createOverlapProcessor();
 		overlapProcessor.setOverlapRules(overlapRulesApplier);
 

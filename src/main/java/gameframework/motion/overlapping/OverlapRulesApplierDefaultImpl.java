@@ -8,7 +8,6 @@ import java.util.Vector;
 
 public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 
-	protected GameUniverse universe;
 	protected GameData data;
 	
 	@Override
@@ -51,9 +50,8 @@ public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 		}
 	}
 
-	@Override
-	public void setUniverse(GameUniverse universe) {
-		this.universe = universe;
+	public GameUniverse getUniverse() {
+		return data.getUniverse();
 	}
 	
 	@Override
