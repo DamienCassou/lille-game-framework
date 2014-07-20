@@ -36,6 +36,13 @@ public class IntersectTools {
 		int x2 = x1 + (int) movable.getBoundingBox().getWidth();
 		int y2 = y1 + (int) movable.getBoundingBox().getHeight();
 
+		// We normalize the computation for negative speeds
+		if (v < 0) {
+			dX = -dX;
+			dY = -dY;
+			v = -v;
+		}
+
 		// We build the intersection polygon now
 		// As usual we need to consider the 8 direction to build different kind
 		// of shape

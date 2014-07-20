@@ -18,7 +18,7 @@ public class IntersectToolsTest implements Movable {
 	private final Point position = new Point(0, 0);
 	private final int height = 2;
 	private final int width = 3;
-	private final int speed = 4;
+	private int speed = 4;
 
 	@Test
 	public void gotoWest() throws Exception {
@@ -30,6 +30,13 @@ public class IntersectToolsTest implements Movable {
 	public void gotoEast() throws Exception {
 		direction = new Point(-1, 0);
 		assertShape(-speed, 0, width, height);
+	}
+
+	@Test
+	public void gotoEastWithNegativeSpeed() throws Exception {
+		direction = new Point(1, 0);
+		speed = -4;
+		assertShape(speed, 0, width, height);
 	}
 
 	@Test
