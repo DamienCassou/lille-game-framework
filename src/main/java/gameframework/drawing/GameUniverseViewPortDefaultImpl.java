@@ -1,8 +1,8 @@
-package gameframework.game;
+package gameframework.drawing;
 
-import gameframework.drawing.BackgroundImage;
-import gameframework.drawing.Drawable;
-import gameframework.drawing.GameCanvas;
+import gameframework.game.GameData;
+import gameframework.game.GameEntity;
+import gameframework.game.GameUniverse;
 
 import java.awt.Graphics;
 import java.awt.Image;

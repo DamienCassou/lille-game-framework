@@ -1,5 +1,7 @@
 package gameframework.game;
 
+import gameframework.drawing.GameUniverseViewPort;
+
 import java.util.Date;
 
 /**

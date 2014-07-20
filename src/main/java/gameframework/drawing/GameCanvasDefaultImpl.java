@@ -1,7 +1,5 @@
 package gameframework.drawing;
 
-import gameframework.game.GameUniverseViewPort;
-
 import java.awt.Canvas;
 import java.awt.Frame;
 import java.awt.Graphics;
@@ -65,11 +63,6 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 	@Override
 	public void addTo(Frame frame) {
 		frame.add(canvas);
-	}
-
-	@Override
-	public void setDrawingGameBoard(GameUniverseViewPort gameBoard) {
-		
 	}
 
 	@Override

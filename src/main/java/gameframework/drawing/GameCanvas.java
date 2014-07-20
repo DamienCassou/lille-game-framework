@@ -1,7 +1,5 @@
 package gameframework.drawing;
 
-import gameframework.game.GameUniverseViewPort;
-
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -29,8 +27,6 @@ public interface GameCanvas {
 	void setSize(int width, int height);
 
 	void addTo(Frame frame);
-
-	void setDrawingGameBoard(GameUniverseViewPort gameBoard);
 
 	void addKeyListener(KeyListener keyStr);
 
