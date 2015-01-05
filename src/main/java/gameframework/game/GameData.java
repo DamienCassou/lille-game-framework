@@ -25,7 +25,6 @@ public class GameData {
 	protected final GameUniverse universe;
 
 	public GameData(GameConfiguration configuration) {
-		super();
 		this.configuration = configuration;
 
 		canvas = configuration.createCanvas();
@@ -47,7 +46,7 @@ public class GameData {
 		overlapProcessor = configuration.createOverlapProcessor();
 		overlapProcessor.setOverlapRules(overlapRulesApplier);
 
-		
+
 	}
 
 	public GameConfiguration getConfiguration() {
