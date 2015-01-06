@@ -20,33 +20,35 @@ public class GameConfiguration {
 
 	// CONSTRUCTORS
 
+	/**
+	 * If a value is set to 0 then the default value is used.
+	 */
 	public GameConfiguration(int nbRows, int nbColumns, int spriteSize,
 			int nbLives) {
-		this.nbRows = nbRows;
-		this.nbColumns = nbColumns;
-		this.spriteSize = spriteSize;
-		this.nbLives = nbLives;
-	}
 
-	public GameConfiguration(int nbRows, int nbColumns, int nbLives) {
-		this.nbRows = nbRows;
-		this.nbColumns = nbColumns;
-		this.spriteSize = 16;
-		this.nbLives = nbLives;
-	}
+		if (nbRows == 0)
+			this.nbRows = 31;
+		else
+			this.nbRows = nbRows;
 
-	public GameConfiguration(int spriteSize, int nbLives) {
-		this.nbRows = 31;
-		this.nbColumns = 28;
-		this.spriteSize = spriteSize;
-		this.nbLives = nbLives;
+		if (nbColumns == 0)
+			this.nbColumns = 28;
+		else
+			this.nbColumns = nbColumns;
+
+		if (spriteSize == 0)
+			this.spriteSize = 16;
+		else
+			this.spriteSize = spriteSize;
+
+		if (nbLives == 0)
+			this.nbLives = 2;
+		else
+			this.nbLives = nbLives;
 	}
 
 	public GameConfiguration() {
-		this.nbRows = 31;
-		this.nbColumns = 28;
-		this.spriteSize = 16;
-		this.nbLives = 2;
+		this(31, 28, 16, 2);
 	}
 
 	// METHODS
