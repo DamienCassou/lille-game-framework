@@ -13,20 +13,44 @@ import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 public class GameConfiguration {
 
+	protected int nbRows;
+	protected int nbColumns;
+	protected int spriteSize;
+	protected int nbLives;
+
+	// CONSTRUCTORS
+
+	public GameConfiguration(int nbRows, int nbColumns, int spriteSize,
+			int nbLives) {
+		this.nbRows = nbRows;
+		this.nbColumns = nbColumns;
+		this.spriteSize = spriteSize;
+		this.nbLives = nbLives;
+	}
+
+	public GameConfiguration() {
+		this.nbRows = 31;
+		this.nbColumns = 28;
+		this.spriteSize = 16;
+		this.nbLives = 2;
+	}
+
+	// METHODS
+
 	public int getNbRows() {
-		return 31;
+		return nbRows;
 	}
 
 	public int getNbColumns() {
-		return 28;
+		return nbColumns;
 	}
 
 	public int getSpriteSize() {
-		return 16;
+		return spriteSize;
 	}
 
 	public int getDefaultNbLives() {
-		return 2;
+		return nbLives;
 	}
 
 	public GameCanvas createCanvas() {
@@ -40,7 +64,7 @@ public class GameConfiguration {
 	public MoveBlockerChecker createMoveBlockerChecker() {
 		return new MoveBlockerCheckerDefaultImpl();
 	}
-	
+
 	public OverlapRulesApplier createOverlapRulesApplier() {
 		return new OverlapRulesApplierDefaultImpl();
 	}
