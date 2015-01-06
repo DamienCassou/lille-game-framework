@@ -13,10 +13,10 @@ import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 public class GameConfiguration {
 
-	protected int nbRows;
-	protected int nbColumns;
-	protected int spriteSize;
-	protected int nbLives;
+	protected final int nbRows;
+	protected final int nbColumns;
+	protected final int spriteSize;
+	protected final int nbLives;
 
 	// CONSTRUCTORS
 
