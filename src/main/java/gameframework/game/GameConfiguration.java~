@@ -13,42 +13,26 @@ import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 public class GameConfiguration {
 
-	protected final int nbRows;
-	protected final int nbColumns;
-	protected final int spriteSize;
-	protected final int nbLives;
+	protected int nbRows;
+	protected int nbColumns;
+	protected int spriteSize;
+	protected int nbLives;
 
 	// CONSTRUCTORS
 
-	/**
-	 * If a value is set to 0 then the default value is used.
-	 */
 	public GameConfiguration(int nbRows, int nbColumns, int spriteSize,
 			int nbLives) {
-
-		if (nbRows == 0)
-			this.nbRows = 31;
-		else
-			this.nbRows = nbRows;
-
-		if (nbColumns == 0)
-			this.nbColumns = 28;
-		else
-			this.nbColumns = nbColumns;
-
-		if (spriteSize == 0)
-			this.spriteSize = 16;
-		else
-			this.spriteSize = spriteSize;
-
-		if (nbLives == 0)
-			this.nbLives = 2;
-		else
-			this.nbLives = nbLives;
+		this.nbRows = nbRows;
+		this.nbColumns = nbColumns;
+		this.spriteSize = spriteSize;
+		this.nbLives = nbLives;
 	}
 
 	public GameConfiguration() {
-		this(31, 28, 16, 2);
+		this.nbRows = 31;
+		this.nbColumns = 28;
+		this.spriteSize = 16;
+		this.nbLives = 2;
 	}
 
 	// METHODS
