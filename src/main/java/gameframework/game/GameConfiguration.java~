@@ -13,10 +13,10 @@ import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 public class GameConfiguration {
 
-	protected final int nbRows;
-	protected final int nbColumns;
-	protected final int spriteSize;
-	protected final int nbLives;
+	protected int nbRows;
+	protected int nbColumns;
+	protected int spriteSize;
+	protected int nbLives;
 
 	// CONSTRUCTORS
 
@@ -24,20 +24,6 @@ public class GameConfiguration {
 			int nbLives) {
 		this.nbRows = nbRows;
 		this.nbColumns = nbColumns;
-		this.spriteSize = spriteSize;
-		this.nbLives = nbLives;
-	}
-
-	public GameConfiguration(int nbRows, int nbColumns, int nbLives) {
-		this.nbRows = nbRows;
-		this.nbColumns = nbColumns;
-		this.spriteSize = 16;
-		this.nbLives = nbLives;
-	}
-
-	public GameConfiguration(int spriteSize, int nbLives) {
-		this.nbRows = 31;
-		this.nbColumns = 28;
 		this.spriteSize = spriteSize;
 		this.nbLives = nbLives;
 	}
