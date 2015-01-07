@@ -17,7 +17,14 @@ public class DrawableImage implements Drawable {
 		}
 		handleImage(imageUrl);
 	}
-
+	
+	/**
+	 * Use a MediaTracker to load the image in the canvas, and throw an
+	 * exception if there is a problem
+	 * 
+	 * @param imageUrl
+	 *            is the path to the image
+	 */
 	protected void handleImage(URL imageUrl) {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		image = toolkit.createImage(imageUrl);
