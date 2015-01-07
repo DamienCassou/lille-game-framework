@@ -14,7 +14,7 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 	protected GameData data;
 
 	@Override
-	public Iterator<GameEntity> gameEntities() {
+	public Iterator<GameEntity> getGameEntitiesIterator() {
 		return gameEntities.iterator();
 	}
 
