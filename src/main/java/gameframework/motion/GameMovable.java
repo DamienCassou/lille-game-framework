@@ -3,10 +3,9 @@ package gameframework.motion;
 import java.awt.Point;
 
 public abstract class GameMovable implements Movable {
-	GameMovableDriver moveDriver = new GameMovableDriverDefaultImpl();
-
-	Point position = new Point();
-	SpeedVector speedVector = SpeedVector.createNullVector();
+	protected GameMovableDriver moveDriver = new GameMovableDriverDefaultImpl();
+	protected Point position = new Point();
+	protected SpeedVector speedVector = SpeedVector.createNullVector();
 
 	public void setPosition(Point p) {
 		position = (Point) p.clone();
