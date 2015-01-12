@@ -32,5 +32,16 @@ public class GameConfigurationTest {
 		assertEquals(spriteSize, gameConfig.spriteSize);
 		assertEquals(nbLives, gameConfig.nbLives);
 	}
+	
+	@Test
+	public void testGameConfigurationWithZero() {
+		gameConfig = new GameConfiguration(0, 0, 0, 0);
+		
+		//Check with the Default value from GameConfiguration
+		assertEquals(31, gameConfig.nbRows);
+		assertEquals(28, gameConfig.nbColumns);
+		assertEquals(16, gameConfig.spriteSize);
+		assertEquals(2, gameConfig.nbLives);
+	}
 
 }
