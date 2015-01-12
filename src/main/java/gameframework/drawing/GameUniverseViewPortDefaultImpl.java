@@ -21,7 +21,7 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 	@Override
 	public void paint() {
 		background.draw(getBufferGraphics());
-		Iterator<GameEntity> gt = getUniverse().gameEntities();
+		Iterator<GameEntity> gt = getUniverse().getGameEntitiesIterator();
 		for (; gt.hasNext();) {
 			GameEntity tmp = gt.next();
 			if (tmp instanceof Drawable) {
