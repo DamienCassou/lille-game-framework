@@ -19,6 +19,12 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 		return this.getClass().getResource(path);
 	}
 
+	public GameUniverseViewPortDefaultImpl() {}
+
+	public GameUniverseViewPortDefaultImpl(GameData data) {
+		setGameData(data);
+	}
+
 	protected URL backgroundImage() {
 		return backgroundImage("/images/background_image.gif");
 	}
