@@ -30,4 +30,8 @@ public interface GameCanvas {
 
 	void addKeyListener(KeyListener keyStr);
 
+	Graphics getGraphics();
+
+	void drawFullSizeImage(Image image, int x, int y);
+	
 }
