@@ -12,11 +12,16 @@ import gameframework.motion.overlapping.OverlapRulesApplier;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 public class GameConfiguration {
-
+	
 	protected final int nbRows;
 	protected final int nbColumns;
 	protected final int spriteSize;
 	protected final int nbLives;
+
+	private static final int DEFAULT_NBROWS = 31;
+	private static final int DEFAULT_NBCOL = 28;
+	private static final int DEFAULT_SPRITESIZE = 16;
+	private static final int DEFAULT_NBLIVES = 2;
 
 	// CONSTRUCTORS
 	
@@ -24,37 +29,37 @@ public class GameConfiguration {
 	 * Constructor with parameterisable size. Create a new GameConfiguration with the specified
 	 * parameters. If 0 is specified as one of the parameter, the constructor uses the default
 	 * value for this parameter. 
-	 * @param nbRows The number of rows of the window (default value: 31).
-	 * @param nbColumns The number of columns of the window (default value: 28). 
-	 * @param spriteSize The size of the sprites displayed (default value: 16).
-	 * @param nbLives The number of lives of the player (default value: 2).
+	 * @param nbRows The number of rows of the window (default value: {@value #DEFAULT_NBROWS}).
+	 * @param nbColumns The number of columns of the window (default value: {@value #DEFAULT_NBCOL}). 
+	 * @param spriteSize The size of the sprites displayed (default value: {@value #DEFAULT_SPRITESIZE}).
+	 * @param nbLives The number of lives of the player (default value: {@value #DEFAULT_NBLIVES}).
 	 */
 	public GameConfiguration(int nbRows, int nbColumns, int spriteSize,
 			int nbLives) {
 
 		if (nbRows == 0)
-			this.nbRows = 31;
+			this.nbRows = DEFAULT_NBROWS;
 		else
 			this.nbRows = nbRows;
 
 		if (nbColumns == 0)
-			this.nbColumns = 28;
+			this.nbColumns = DEFAULT_NBCOL;
 		else
 			this.nbColumns = nbColumns;
 
 		if (spriteSize == 0)
-			this.spriteSize = 16;
+			this.spriteSize = DEFAULT_SPRITESIZE;
 		else
 			this.spriteSize = spriteSize;
 
 		if (nbLives == 0)
-			this.nbLives = 2;
+			this.nbLives = DEFAULT_NBLIVES;
 		else
 			this.nbLives = nbLives;
 	}
 
 	public GameConfiguration() {
-		this(31, 28, 16, 2);
+		this(DEFAULT_NBROWS, DEFAULT_NBCOL, DEFAULT_SPRITESIZE, DEFAULT_NBLIVES);
 	}
 
 	// METHODS
