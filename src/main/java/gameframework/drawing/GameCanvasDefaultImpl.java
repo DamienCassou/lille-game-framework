@@ -14,7 +14,7 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 	public GameCanvasDefaultImpl() {
 		canvas = new Canvas();
 	}
-	
+
 	@Override
 	public Image createBuffer() {
 		return canvas.createImage(canvas.getWidth(), canvas.getHeight());
@@ -27,7 +27,10 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 
 	@Override
 	public void drawImage(Graphics graphics, Image image, int x, int y) {
-		graphics.drawImage(image, 0, 0, canvas);		
+		if(x <= canvas.getHeight() && y <= canvas.getWidth() )
+			graphics.drawImage(image, x, y, canvas);
+		else
+			graphics.drawImage(image, 0, 0, canvas);
 	}
 
 	@Override
@@ -36,8 +39,11 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 	}
 
 	@Override
-	public void drawFullSizeImage(Image image) {
-		canvas.getGraphics().drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);		
+	public void drawFullSizeImage(Image image, int x, int y) {
+		if(x <= canvas.getHeight() && y <= canvas.getWidth() )
+			getGraphics().drawImage(image, x, y, canvas.getWidth(), canvas.getHeight(), canvas);
+		else
+			getGraphics().drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);			
 	}
 
 	@Override
@@ -68,6 +74,11 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 	@Override
 	public void addKeyListener(KeyListener keyStr) {
 		canvas.addKeyListener(keyStr);
+	}
+
+	@Override
+	public Graphics getGraphics() {
+		return canvas.getGraphics();
 	}
 
 }

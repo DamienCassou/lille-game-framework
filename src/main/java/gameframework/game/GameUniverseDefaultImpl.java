@@ -13,8 +13,14 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 	protected ConcurrentLinkedQueue<GameEntity> gameEntities = new ConcurrentLinkedQueue<GameEntity>();
 	protected GameData data;
 
+	public GameUniverseDefaultImpl(){}
+
+	public GameUniverseDefaultImpl(GameData data) {
+		setGameData(data);
+	}
+
 	@Override
-	public Iterator<GameEntity> gameEntities() {
+	public Iterator<GameEntity> getGameEntitiesIterator() {
 		return gameEntities.iterator();
 	}
 
