@@ -14,7 +14,7 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 	public GameCanvasDefaultImpl() {
 		canvas = new Canvas();
 	}
-	
+
 	@Override
 	public Image createBuffer() {
 		return canvas.createImage(canvas.getWidth(), canvas.getHeight());
@@ -37,18 +37,13 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 	public void drawFullSizeImage(Graphics graphics, Image image) {
 		graphics.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);		
 	}
-	
-	@Override
-	public void drawFullSizeImage(Image image) {
-		// TODO Auto-generated method stub
-		canvas.getGraphics().drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);	
-	}
+
 	@Override
 	public void drawFullSizeImage(Image image, int x, int y) {
 		if(x <= canvas.getHeight() && y <= canvas.getWidth() )
-			canvas.getGraphics().drawImage(image, x, y, canvas.getWidth(), canvas.getHeight(), canvas);
+			getGraphics().drawImage(image, x, y, canvas.getWidth(), canvas.getHeight(), canvas);
 		else
-			canvas.getGraphics().drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);			
+			getGraphics().drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);			
 	}
 
 	@Override
@@ -83,10 +78,7 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 
 	@Override
 	public Graphics getGraphics() {
-		// TODO Auto-generated method stub
 		return canvas.getGraphics();
 	}
-
-	
 
 }

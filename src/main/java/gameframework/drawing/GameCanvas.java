@@ -16,8 +16,6 @@ public interface GameCanvas {
 
 	void drawFullSizeImage(Graphics graphics, Image image);
 
-	void drawFullSizeImage(Image buffer);
-
 	void setBounds(int x, int y, int width, int height);
 
 	int getWidth();
@@ -30,8 +28,7 @@ public interface GameCanvas {
 
 	void addKeyListener(KeyListener keyStr);
 
-	Graphics getGraphics();
-
 	void drawFullSizeImage(Image image, int x, int y);
 	
+	Graphics getGraphics();
 }
