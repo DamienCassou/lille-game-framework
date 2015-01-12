@@ -28,7 +28,7 @@ public interface GameCanvas {
 
 	void addKeyListener(KeyListener keyStr);
 
-	void drawFullSizeImage(Image image, int x, int y);
-	
 	Graphics getGraphics();
+
+	void drawFullSizeImage(Image image);
 }

@@ -37,13 +37,11 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 	public void drawFullSizeImage(Graphics graphics, Image image) {
 		graphics.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);		
 	}
-
+	
 	@Override
-	public void drawFullSizeImage(Image image, int x, int y) {
-		if(x <= canvas.getHeight() && y <= canvas.getWidth() )
-			getGraphics().drawImage(image, x, y, canvas.getWidth(), canvas.getHeight(), canvas);
-		else
-			getGraphics().drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);			
+	public void drawFullSizeImage(Image image)
+	{
+		getGraphics().drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), canvas);
 	}
 
 	@Override

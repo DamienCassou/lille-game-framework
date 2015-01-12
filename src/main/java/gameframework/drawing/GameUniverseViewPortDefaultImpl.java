@@ -63,6 +63,6 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 
 	@Override
 	public void refresh() {
-		getCanvas().drawFullSizeImage(buffer, 0, 0);
+		getCanvas().drawFullSizeImage(buffer);
 	}
 }
