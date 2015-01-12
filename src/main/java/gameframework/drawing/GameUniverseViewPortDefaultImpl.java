@@ -10,18 +10,23 @@ import java.net.URL;
 import java.util.Iterator;
 
 public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
+
 	private Image buffer;
 	protected BackgroundImage background;
 	protected GameData data;
 
+	protected URL backgroundImage(String path) {
+		return this.getClass().getResource(path);
+	}
+
 	protected URL backgroundImage() {
-		return this.getClass().getResource("/images/background_image.gif");
+		return backgroundImage("/images/background_image.gif");
 	}
 
 	@Override
 	public void paint() {
 		background.draw(getBufferGraphics());
-		Iterator<GameEntity> gt = getUniverse().gameEntities();
+		Iterator<GameEntity> gt = getUniverse().getGameEntitiesIterator();
 		for (; gt.hasNext();) {
 			GameEntity tmp = gt.next();
 			if (tmp instanceof Drawable) {
