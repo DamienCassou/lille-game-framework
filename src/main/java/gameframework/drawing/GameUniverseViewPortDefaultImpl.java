@@ -14,6 +14,12 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 	protected BackgroundImage background;
 	protected GameData data;
 
+	public GameUniverseViewPortDefaultImpl() {}
+
+	public GameUniverseViewPortDefaultImpl(GameData data) {
+		setGameData(data);
+	}
+
 	protected URL backgroundImage() {
 		return this.getClass().getResource("/images/background_image.gif");
 	}
@@ -52,6 +58,6 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 
 	@Override
 	public void refresh() {
-		getCanvas().drawFullSizeImage(buffer);
+		getCanvas().drawFullSizeImage(buffer, 0, 0);
 	}
 }
