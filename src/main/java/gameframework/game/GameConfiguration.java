@@ -19,10 +19,15 @@ public class GameConfiguration {
 	protected final int nbLives;
 
 	// CONSTRUCTORS
-
+	
 	/**
-	 * If a value is set to 0 then the default value is used.
-	 * Default values : rows : 31, columns : 28, sprite's size : 16, lives : 2.
+	 * Constructor with parameterisable size. Create a new GameConfiguration with the specified
+	 * parameters. If 0 is specified as one of the parameter, the constructor uses the default
+	 * value for this parameter. 
+	 * @param nbRows The number of rows of the window (default value: 31).
+	 * @param nbColumns The number of columns of the window (default value: 28). 
+	 * @param spriteSize The size of the sprites displayed (default value: 16).
+	 * @param nbLives The number of lives of the player (default value: 2).
 	 */
 	public GameConfiguration(int nbRows, int nbColumns, int spriteSize,
 			int nbLives) {
