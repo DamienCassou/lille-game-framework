@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.Iterator;
 
 public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
+
 	private Image buffer;
 	protected BackgroundImage background;
 	protected GameData data;
@@ -19,9 +20,13 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 	public GameUniverseViewPortDefaultImpl(GameData data) {
 		setGameData(data);
 	}
+	
+	protected URL backgroundImage(String path) {
+		return backgroundImage("/images/background_image.gif");
+	}
 
 	protected URL backgroundImage() {
-		return this.getClass().getResource("/images/background_image.gif");
+		return backgroundImage("/images/background_image.gif");
 	}
 
 	@Override
