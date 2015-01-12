@@ -35,6 +35,8 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 		case KeyEvent.VK_DOWN:
 			goDown();
 			break;
+		default:
+			return;
 		}
 	}
 

@@ -13,7 +13,7 @@ public class MoveStrategyRandom implements MoveStrategy {
 
 	@Override
 	public SpeedVector getSpeedVector() {
-		int i = random.nextInt(5);
+		int i = random.nextInt(4);
 
 		switch (i) {
 		case 0:
@@ -25,9 +25,8 @@ public class MoveStrategyRandom implements MoveStrategy {
 		case 2:
 			currentMove.setDirection(new Point(0, -1));
 			break;
-		case 3:
+		default:
 			currentMove.setDirection(new Point(0, 1));
-			break;
 		}
 		return currentMove;
 	}
