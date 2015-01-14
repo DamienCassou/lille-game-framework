@@ -27,7 +27,10 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 
 	@Override
 	public void drawImage(Graphics graphics, Image image, int x, int y) {
-		graphics.drawImage(image, 0, 0, canvas);		
+		if(x <= canvas.getWidth() && y <= canvas.getHeight())
+			graphics.drawImage(image, x, y, canvas);
+		else
+			graphics.drawImage(image, 0, 0, canvas);
 	}
 
 	@Override
