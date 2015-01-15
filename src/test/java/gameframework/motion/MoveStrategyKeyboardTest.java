@@ -1,7 +1,5 @@
 package gameframework.motion;
 
-import gameframework.motion.MoveStrategyKeyboard;
-
 import java.awt.event.KeyEvent;
 
 import org.junit.Test;
@@ -11,7 +9,7 @@ public class MoveStrategyKeyboardTest extends
 
 	@Override
 	protected MoveStrategyKeyboard createStrategy() {
-		return new MoveStrategyKeyboard();
+		return new MoveStrategyKeyboard(true);
 	}
 
 	@Test
@@ -35,6 +33,22 @@ public class MoveStrategyKeyboardTest extends
 	@Test
 	public void goingDown() throws Exception {
 		strategy.keyPressed(KeyEvent.VK_DOWN);
+		assertDown();
+	}
+
+	@Test
+	public void stopWhenAlwaysMoveisOff() throws Exception {
+		strategy = new MoveStrategyKeyboard(false);
+		strategy.keyPressed(KeyEvent.VK_DOWN);
+		strategy.keyReleased(KeyEvent.VK_DOWN);
+		assertNoMovement();
+	}
+
+	@Test
+	public void DontStopWhenAlwaysMoveisOn() throws Exception {
+		strategy = new MoveStrategyKeyboard(true);
+		strategy.keyPressed(KeyEvent.VK_DOWN);
+		strategy.keyReleased(KeyEvent.VK_DOWN);
 		assertDown();
 	}
 

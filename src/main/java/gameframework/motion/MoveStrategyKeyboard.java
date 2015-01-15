@@ -10,6 +10,11 @@ import java.awt.event.KeyEvent;
  */
 public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 	protected SpeedVector speedVector = new SpeedVector(new Point(0, 0));
+	final protected Boolean alwaysMove;
+
+	public MoveStrategyKeyboard(Boolean alwaysMove) {
+		this.alwaysMove = alwaysMove;
+	}
 
 	@Override
 	public SpeedVector getSpeedVector() {
@@ -53,4 +58,16 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 	public void goDown() {
 		speedVector.setDirection(new Point(0, 1));
 	}
+
+	@Override
+	public void keyReleased(KeyEvent event) {
+		keyReleased(event.getKeyCode());
+	}
+
+	public void keyReleased(int keyCode) {
+		if (!alwaysMove) {
+			speedVector.setDirection(new Point(0, 0));
+		}
+	}
+
 }
