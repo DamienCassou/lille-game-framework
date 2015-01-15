@@ -22,6 +22,7 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 	public GameLevelDefaultImpl(GameData data) {
 		this.data = data;
 		this.spriteSize = data.getConfiguration().getSpriteSize();
+		this.universe = data.getUniverse();
 	}
 
 	@Override
