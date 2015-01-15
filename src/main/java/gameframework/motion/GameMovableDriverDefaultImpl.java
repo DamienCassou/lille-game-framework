@@ -1,23 +1,12 @@
 package gameframework.motion;
 
-import gameframework.motion.blocking.MoveBlockerChecker;
 import gameframework.motion.blocking.MoveBlockerCheckerDefaultImpl;
 
-public class GameMovableDriverDefaultImpl implements GameMovableDriver {
-	protected MoveBlockerChecker moveBlockerChecker;
-	protected MoveStrategy moveStrategy;
-
+public class GameMovableDriverDefaultImpl extends GameMovableDriver {
+	
 	public GameMovableDriverDefaultImpl() {
 		moveBlockerChecker = new MoveBlockerCheckerDefaultImpl();
 		moveStrategy = new MoveStrategyDefaultImpl();
-	}
-
-	public void setStrategy(MoveStrategy strat) {
-		moveStrategy = strat;
-	}
-
-	public void setmoveBlockerChecker(MoveBlockerChecker obst) {
-		moveBlockerChecker = obst;
 	}
 
 	@Override
