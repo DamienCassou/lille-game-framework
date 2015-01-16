@@ -37,19 +37,19 @@ public class GameConfiguration {
 	public GameConfiguration(int nbRows, int nbColumns, int spriteSize,
 			int nbLives) {
 
-		this.nbRows = nbRows == 0
+		this.nbRows = nbRows <= 0
 					? DEFAULT_NBROWS
 					: nbRows;
 
-		this.nbColumns = nbColumns == 0
+		this.nbColumns = nbColumns <= 0
 					 ? DEFAULT_NBCOL
 					 : nbColumns;
 
-		this.spriteSize = spriteSize == 0
+		this.spriteSize = spriteSize <= 0
 						? DEFAULT_SPRITESIZE
 						: spriteSize;
 		
-		this.nbLives = nbLives == 0
+		this.nbLives = nbLives <= 0
 					 ? DEFAULT_NBLIVES
 					 : nbLives;
 	}
