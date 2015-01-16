@@ -1,6 +1,5 @@
 package gameframework.gui;
 
-import gameframework.base.ObservableValue;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameConfiguration;
 
@@ -8,26 +7,25 @@ import java.awt.BorderLayout;
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 public class GameWindow {
 
 	protected final Frame frame;
 	protected GameCanvas gameCanvas;
-
-	protected final ObservableValue<Integer> score;
-	protected final ObservableValue<Integer> life;
+	protected final GameStatusBar statusBar = new GameStatusBar();
 
 	public GameWindow(GameCanvas gameCanvas, GameConfiguration configuration,
-			ObservableValue<Integer> score, ObservableValue<Integer> life) {
+			ArrayList<GameStatusBarElement> elementsStatusBar) {
 		if (gameCanvas == null) {
 			throw new IllegalArgumentException("gameCanvas is null");
 		}
-		this.score = score;
-		this.life = life;
+
+		this.statusBar.addAll(elementsStatusBar);
 		this.frame = new Frame("Default Game");
 		this.gameCanvas = gameCanvas;
-		this.gameCanvas.setSize(//
-				configuration.getSpriteSize() * configuration.getNbColumns(), //
+		this.gameCanvas.setSize(
+				configuration.getSpriteSize() * configuration.getNbColumns(),
 				configuration.getSpriteSize() * configuration.getNbRows());
 	}
 
@@ -35,8 +33,8 @@ public class GameWindow {
 		frame.dispose();
 		frame.setMenuBar(new GameMenuBar().getComponent());
 		gameCanvas.addTo(frame);
-		frame.add(new GameStatusBar(score, life).getContainer(),
-				BorderLayout.NORTH);
+
+		frame.add(this.statusBar.getContainer(), BorderLayout.NORTH);
 		frame.pack();
 		frame.setVisible(true);
 
@@ -47,4 +45,5 @@ public class GameWindow {
 			}
 		});
 	}
+
 }
