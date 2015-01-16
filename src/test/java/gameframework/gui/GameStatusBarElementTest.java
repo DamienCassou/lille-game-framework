@@ -26,8 +26,8 @@ public class GameStatusBarElementTest {
 
 	@Test
 	public void getStringFromInteger() {
-		GameStatusBarElement element = new GameStatusBarElement(
-				this.elementText, this.integerValue);
+		MockGameStatusBarElement element = new MockGameStatusBarElement(
+				null, this.integerValue);
 		assertEquals("2", element.getString());
 	}
 
