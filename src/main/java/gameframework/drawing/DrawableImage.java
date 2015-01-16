@@ -57,4 +57,8 @@ public class DrawableImage implements Drawable {
 	public int getWidth() {
 		return getImage().getWidth(null);
 	}
+
+	public int getHeight() {
+		return getImage().getHeight(null);
+	}
 }
