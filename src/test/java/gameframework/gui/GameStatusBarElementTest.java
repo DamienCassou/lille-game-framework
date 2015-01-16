@@ -1,6 +1,6 @@
 package gameframework.gui;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import gameframework.base.ObservableValue;
 
 import org.junit.Before;
