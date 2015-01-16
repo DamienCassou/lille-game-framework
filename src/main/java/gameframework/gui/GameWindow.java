@@ -13,21 +13,19 @@ public class GameWindow {
 
 	protected final Frame frame;
 	protected GameCanvas gameCanvas;
-	
-	protected ArrayList<GameStatusBarElement> elementsStatusBar = new ArrayList<GameStatusBarElement>();
-	
-	
+	protected final GameStatusBar statusBar = new GameStatusBar();
+
 	public GameWindow(GameCanvas gameCanvas, GameConfiguration configuration,
 			ArrayList<GameStatusBarElement> elementsStatusBar) {
 		if (gameCanvas == null) {
 			throw new IllegalArgumentException("gameCanvas is null");
 		}
-		
-		this.elementsStatusBar.addAll(elementsStatusBar);
+
+		this.statusBar.addAll(elementsStatusBar);
 		this.frame = new Frame("Default Game");
 		this.gameCanvas = gameCanvas;
-		this.gameCanvas.setSize(//
-				configuration.getSpriteSize() * configuration.getNbColumns(), //
+		this.gameCanvas.setSize(
+				configuration.getSpriteSize() * configuration.getNbColumns(),
 				configuration.getSpriteSize() * configuration.getNbRows());
 	}
 
@@ -35,10 +33,8 @@ public class GameWindow {
 		frame.dispose();
 		frame.setMenuBar(new GameMenuBar().getComponent());
 		gameCanvas.addTo(frame);
-		
-		GameStatusBar statusBar = new GameStatusBar();
-		statusBar.addAllElement(this.elementsStatusBar);
-		frame.add(statusBar.getContainer(), BorderLayout.NORTH);
+
+		frame.add(this.statusBar.getContainer(), BorderLayout.NORTH);
 		frame.pack();
 		frame.setVisible(true);
 
@@ -49,4 +45,5 @@ public class GameWindow {
 			}
 		});
 	}
+
 }
