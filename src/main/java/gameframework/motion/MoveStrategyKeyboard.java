@@ -35,6 +35,8 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 		case KeyEvent.VK_DOWN:
 			goDown();
 			break;
+		default:
+			stay();
 		}
 	}
 
@@ -52,5 +54,9 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 
 	public void goDown() {
 		speedVector.setDirection(new Point(0, 1));
+	}
+
+	public void stay() {
+	    speedVector.setDirection(new Point(0, 0));
 	}
 }
