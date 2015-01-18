@@ -9,7 +9,8 @@ import java.util.Date;
  * universe and the gameBoard
  */
 public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
-	private static final int MINIMUM_DELAY_BETWEEN_GAME_CYCLES = 100;
+	private static final int DEFAULT_MINIMUM_DELAY_BETWEEN_GAME_CYCLES = 100;
+	protected final int minimumDelayBetweenCycles;
 	protected GameUniverse universe;
 	protected GameUniverseViewPort gameBoard;
 	protected final GameData data;
@@ -20,9 +21,14 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 	protected abstract void init();
 
 	public GameLevelDefaultImpl(GameData data) {
+		this(data, DEFAULT_MINIMUM_DELAY_BETWEEN_GAME_CYCLES);
+	}
+
+	public GameLevelDefaultImpl(GameData data, int minimumDelayBetweenCycles) {
 		this.data = data;
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		this.universe = data.getUniverse();
+		this.minimumDelayBetweenCycles = minimumDelayBetweenCycles;
 	}
 
 	@Override
@@ -46,7 +52,7 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 			gameBoard.paint();
 			universe.allOneStepMoves();
 			universe.processAllOverlaps();
-			long sleepTime = MINIMUM_DELAY_BETWEEN_GAME_CYCLES
+			long sleepTime = minimumDelayBetweenCycles
 					- (new Date().getTime() - start);
 			if (sleepTime > 0) {
 				try {
