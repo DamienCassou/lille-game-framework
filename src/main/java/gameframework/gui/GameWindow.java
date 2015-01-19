@@ -9,6 +9,8 @@ import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import java.awt.Component;
+
 public class GameWindow {
 
 	protected final Frame frame;
@@ -53,4 +55,9 @@ public class GameWindow {
 			}
 		});
 	}
+	
+	public void add(Component comp, String layout){
+		this.frame.add(comp, layout);
+	}
+	
 }
