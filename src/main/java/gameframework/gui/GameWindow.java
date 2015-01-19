@@ -18,18 +18,17 @@ public class GameWindow {
 	protected final ObservableValue<Integer> life;
 
 	public GameWindow(GameCanvas gameCanvas, GameConfiguration configuration,
-			ObservableValue<Integer> score, ObservableValue<Integer> life) {
-		this("Default Game", gameCanvas, configuration, score, life);
+			ObservableValue<Integer> score) {
+		this("Default Game", gameCanvas, configuration, score);
 	}
 
 	public GameWindow(String gameName, GameCanvas gameCanvas,
-			GameConfiguration configuration, ObservableValue<Integer> score,
-			ObservableValue<Integer> life) {
+			GameConfiguration configuration, ObservableValue<Integer> score) {
 		if (gameCanvas == null) {
 			throw new IllegalArgumentException("gameCanvas is null");
 		}
 		this.score = score;
-		this.life = life;
+		this.life = new ObservableValue<Integer>(configuration.getDefaultNbLives());
 		this.frame = new Frame(gameName);
 		this.gameCanvas = gameCanvas;
 		this.gameCanvas.setSize(//
