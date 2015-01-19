@@ -64,6 +64,17 @@ public class GameData {
 	public ObservableValue<Integer> getLife() {
 		return life;
 	}
+	
+	public void increaseLife(int lifeToAdd) {
+		life += lifeToAdd;
+	}
+	
+	public void decreaseLife(int lifeToRemove) {
+		if(lifeToRemove >= life)
+			life = 0;
+		else
+			life -= lifeToRemove;
+	}
 
 	public ObservableValue<Boolean> getEndOfGame() {
 		return endOfGame;
