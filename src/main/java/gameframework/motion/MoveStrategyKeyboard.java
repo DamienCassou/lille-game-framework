@@ -25,8 +25,11 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 	}
 
 	/**
-	 * @param alwaysMove is a boolean value that decide if a player moves continually or not. (True by default)
-	 * @param speedVector is a given custom speedVector for the strategy.
+	 * @param alwaysMove
+	 *            is a boolean value that decide if a player moves continually
+	 *            or not. (True by default)
+	 * @param speedVector
+	 *            is a given custom speedVector for the strategy.
 	 */
 	public MoveStrategyKeyboard(Boolean alwaysMove, SpeedVector speedVector) {
 		this.alwaysMove = alwaysMove;
@@ -74,22 +77,23 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 	}
 
 	public void goRight() {
-		speedVector.setDirection(new Point(1, 0));
+		speedVector = new SpeedVector(new Point(1, 0));
 	}
 
 	public void goLeft() {
-		speedVector.setDirection(new Point(-1, 0));
+		speedVector = new SpeedVector(new Point(-1, 0));
 	}
 
 	public void goUp() {
-		speedVector.setDirection(new Point(0, -1));
+		speedVector = new SpeedVector(new Point(0, -1));
 	}
 
 	public void goDown() {
-		speedVector.setDirection(new Point(0, 1));
+		speedVector = new SpeedVector(new Point(0, 1));
 	}
 
 	public void stay() {
 		speedVector.setDirection(new Point(0, 0));
+		speedVector.setSpeed(0);
 	}
 }
