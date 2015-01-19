@@ -2,7 +2,7 @@ package gameframework.gui;
 
 import gameframework.base.ObservableValue;
 import gameframework.drawing.GameCanvas;
-import gameframework.game.GameConfiguration;
+import gameframework.game.GameData;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;
@@ -17,23 +17,22 @@ public class GameWindow {
 	protected final ObservableValue<Integer> score;
 	protected final ObservableValue<Integer> life;
 
-	public GameWindow(GameCanvas gameCanvas, GameConfiguration configuration,
-			ObservableValue<Integer> score) {
-		this("Default Game", gameCanvas, configuration, score);
+	public GameWindow(GameCanvas gameCanvas, GameData data) {
+		this("Default Game", gameCanvas, data);
 	}
 
 	public GameWindow(String gameName, GameCanvas gameCanvas,
-			GameConfiguration configuration, ObservableValue<Integer> score) {
+			GameData data) {
 		if (gameCanvas == null) {
 			throw new IllegalArgumentException("gameCanvas is null");
 		}
-		this.score = score;
-		this.life = new ObservableValue<Integer>(configuration.getDefaultNbLives());
+		this.score = data.getScore();
+		this.life = data.getLife();
 		this.frame = new Frame(gameName);
 		this.gameCanvas = gameCanvas;
 		this.gameCanvas.setSize(//
-				configuration.getSpriteSize() * configuration.getNbColumns(), //
-				configuration.getSpriteSize() * configuration.getNbRows());
+				data.getConfiguration().getSpriteSize() * data.getConfiguration().getNbColumns(), //
+				data.getConfiguration().getSpriteSize() * data.getConfiguration().getNbRows());
 	}
 
 	public void createGUI() {
