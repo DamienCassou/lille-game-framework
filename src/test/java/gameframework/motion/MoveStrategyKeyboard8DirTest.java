@@ -1,7 +1,7 @@
 package gameframework.motion;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -39,6 +39,13 @@ public class MoveStrategyKeyboard8DirTest extends
 		strategy.keyPressed(KeyEvent.VK_DOWN);
 		assertDown();
 	}
+	
+	@Test
+	public void goingDiag() throws Exception {
+		strategy.keyPressed(KeyEvent.VK_DOWN);
+		strategy.keyPressed(KeyEvent.VK_RIGHT);
+		assertDownRight();
+	}
 
 	@Test
 	public void stopWhenAlwaysMoveisOff() throws Exception {
@@ -49,17 +56,9 @@ public class MoveStrategyKeyboard8DirTest extends
 	}
 
 	@Test
-	public void dontStopWhenAlwaysMoveisOn() throws Exception {
-		strategy = new MoveStrategyKeyboard8Dir();
-		strategy.keyPressed(KeyEvent.VK_DOWN);
-		strategy.keyReleased(KeyEvent.VK_DOWN);
-		assertDown();
-	}
-
-	@Test
 	public void defaultValues() throws Exception {
 		strategy = new MoveStrategyKeyboard8Dir();
-		assertTrue(strategy.alwaysMove);
+		assertFalse(strategy.alwaysMove);
 		assertNoMovement();
 	}
 
