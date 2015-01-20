@@ -13,9 +13,6 @@ import java.awt.event.KeyEvent;
  */
 public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 
-	// Fields
-	protected SpeedVector speedVector;
-
 	// Methods
 
 	/**
