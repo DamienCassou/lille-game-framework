@@ -1,7 +1,6 @@
 package gameframework.motion;
 
 import java.awt.Point;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
@@ -12,8 +11,7 @@ import java.awt.event.KeyEvent;
  * 
  * @author Arnaud Cojez
  */
-public class MoveStrategyKeyboard8Dir extends KeyAdapter implements
-		MoveStrategy {
+public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 
 	// Fields
 	protected SpeedVector speedVector;
@@ -34,25 +32,7 @@ public class MoveStrategyKeyboard8Dir extends KeyAdapter implements
 	 *            the speedVector we want to set to the Strategy
 	 */
 	public MoveStrategyKeyboard8Dir(SpeedVector speedVector) {
-		this.speedVector = speedVector;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see gameframework.motion.MoveStrategy#getSpeedVector()
-	 */
-	@Override
-	public SpeedVector getSpeedVector() {
-		return speedVector;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEvent)
-	 */
-	@Override
-	public void keyPressed(KeyEvent event) {
-		keyPressed(event.getKeyCode());
+		super(false, speedVector);
 	}
 
 	/**
@@ -86,15 +66,6 @@ public class MoveStrategyKeyboard8Dir extends KeyAdapter implements
 	 */
 	private void move(Point point) {
 		speedVector.setDirection(point);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
-	 */
-	@Override
-	public void keyReleased(KeyEvent event) {
-		keyReleased(event.getKeyCode());
 	}
 
 	/**
