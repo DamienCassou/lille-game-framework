@@ -30,4 +30,6 @@ public interface GameCanvas {
 
 	void addKeyListener(KeyListener keyStr);
 
+	void removeKeyListener(KeyListener keyStr);
+
 }
