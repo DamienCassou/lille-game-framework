@@ -15,23 +15,24 @@ public class GameWindow {
 
 	protected final Frame frame;
 	protected GameCanvas gameCanvas;
+	protected final GameStatusBar statusBar = new GameStatusBar();
 
-	protected final ObservableValue<Integer> score;
-	protected final ObservableValue<Integer> life;
-
+	@Deprecated
 	public GameWindow(GameCanvas gameCanvas, GameConfiguration configuration,
-			ObservableValue<Integer> score, ObservableValue<Integer> life) {
-		this("Default Game", gameCanvas, configuration, score, life);
+			final ObservableValue<Integer> score,
+			final ObservableValue<Integer> life) {
+		this("Default Game", gameCanvas, configuration,
+				new GameStatusBarElement<>("Score:", score),
+				new GameStatusBarElement<>("Life:", life));
 	}
 
 	public GameWindow(String gameName, GameCanvas gameCanvas,
-			GameConfiguration configuration, ObservableValue<Integer> score,
-			ObservableValue<Integer> life) {
+			GameConfiguration configuration,
+			GameStatusBarElement<?>... elementsStatusBar) {
 		if (gameCanvas == null) {
 			throw new IllegalArgumentException("gameCanvas is null");
 		}
-		this.score = score;
-		this.life = life;
+		this.statusBar.addAll(elementsStatusBar);
 		this.frame = new Frame(gameName);
 		this.gameCanvas = gameCanvas;
 		this.gameCanvas.setSize(//
@@ -43,8 +44,7 @@ public class GameWindow {
 		frame.dispose();
 		frame.setMenuBar(new GameMenuBar().getComponent());
 		gameCanvas.addTo(frame);
-		frame.add(new GameStatusBar(score, life).getContainer(),
-				BorderLayout.NORTH);
+		frame.add(this.statusBar.getContainer(), BorderLayout.NORTH);
 		frame.pack();
 		frame.setVisible(true);
 
@@ -55,9 +55,9 @@ public class GameWindow {
 			}
 		});
 	}
-	
-	public void add(Component comp, String layout){
+
+	public void add(Component comp, String layout) {
 		this.frame.add(comp, layout);
 	}
-	
+
 }
