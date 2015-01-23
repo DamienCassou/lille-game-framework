@@ -16,7 +16,7 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 	protected final GameData data;
 	protected final int spriteSize;
 
-	boolean stopGameLoop;
+	protected boolean stopGameLoop;
 
 	protected abstract void init();
 
