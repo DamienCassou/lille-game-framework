@@ -58,6 +58,7 @@ public class GameWindow {
 
 	public void add(Component comp, String layout) {
 		this.frame.add(comp, layout);
+		this.frame.pack();
 	}
 
 }
