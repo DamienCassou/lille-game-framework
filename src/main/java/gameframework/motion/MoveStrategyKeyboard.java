@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
  * {@link SpeedVector speed vectors} based on what the user typed.
  */
 public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
-	protected SpeedVector speedVector = new SpeedVector(new Point(0, 0));
+	protected SpeedVector speedVector;
 	protected final Boolean alwaysMove;
 
 	public MoveStrategyKeyboard() {
@@ -17,7 +17,20 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 	}
 
 	public MoveStrategyKeyboard(Boolean alwaysMove) {
+		this(alwaysMove, new SpeedVector(new Point(0, 0)));
+	}
+
+	public MoveStrategyKeyboard(SpeedVector speedVector) {
+		this(true, speedVector);
+	}
+
+	/**
+	 * @param alwaysMove is a boolean value that decide if a player moves continually or not. (True by default)
+	 * @param speedVector is a given custom speedVector for the strategy.
+	 */
+	public MoveStrategyKeyboard(Boolean alwaysMove, SpeedVector speedVector) {
 		this.alwaysMove = alwaysMove;
+		this.speedVector = speedVector;
 	}
 
 	@Override
