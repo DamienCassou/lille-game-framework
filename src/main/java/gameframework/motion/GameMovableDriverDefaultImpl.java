@@ -12,10 +12,12 @@ public class GameMovableDriverDefaultImpl implements GameMovableDriver {
 		moveStrategy = new MoveStrategyDefaultImpl();
 	}
 
+	@Override
 	public void setStrategy(MoveStrategy strat) {
 		moveStrategy = strat;
 	}
 
+	@Override
 	public void setmoveBlockerChecker(MoveBlockerChecker obst) {
 		moveBlockerChecker = obst;
 	}
