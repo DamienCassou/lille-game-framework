@@ -1,7 +1,9 @@
 package gameframework.motion;
 
+import static org.junit.Assert.assertEquals;
 import gameframework.motion.MoveStrategyRandom;
 
+import java.awt.Point;
 import java.util.Random;
 
 import org.junit.Test;
@@ -48,6 +50,19 @@ public class MoveStrategyRandomTest extends
 	public void goDown() throws Exception {
 		setRandom(3);
 		assertDown();
+	}
+	
+	@Test
+	public void goodSpeed() throws Exception {
+
+		MoveStrategyRandom strat = new MoveStrategyRandom(4);
+		
+		assertEquals(4, strat.getSpeed());
+		assertEquals(4, strat.getSpeedVector().getSpeed());
+		
+		strat.setSpeed(12);
+		
+		assertEquals(12, strat.getSpeedVector().getSpeed());
 	}
 
 }
