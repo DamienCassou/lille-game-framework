@@ -34,8 +34,11 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 
 	/**
 	 * Processes the direction according to the key pressed
+	 * 
 	 * @param keyCode
+	 *            the code of the key pressed
 	 */
+	@Override
 	public void keyPressed(int keyCode) {
 		int x = speedVector.getDirection().x;
 		int y = speedVector.getDirection().y;
@@ -52,6 +55,8 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 		case KeyEvent.VK_DOWN:
 			y++;
 			break;
+		default:
+			return;
 		}
 		move(new Point(x, y));
 
@@ -59,7 +64,9 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 
 	/**
 	 * Move according to the point parameter
-	 * @param point 
+	 * 
+	 * @param point
+	 *            the new direction of the movement
 	 */
 	private void move(Point point) {
 		speedVector.setDirection(point);
@@ -67,8 +74,11 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 
 	/**
 	 * Processes the direction according to the key released
+	 * 
 	 * @param keyCode
+	 *            the code of the key released
 	 */
+	@Override
 	public void keyReleased(int keyCode) {
 		int x = speedVector.getDirection().x;
 		int y = speedVector.getDirection().y;
@@ -85,6 +95,8 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 		case KeyEvent.VK_DOWN:
 			y--;
 			break;
+		default:
+			return;
 		}
 		move(new Point(x, y));
 	}
