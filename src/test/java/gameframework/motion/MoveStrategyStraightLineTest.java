@@ -35,4 +35,17 @@ public class MoveStrategyStraightLineTest extends
 		assertNoMovement();
 
 	}
+	
+	public void goodSpeed() throws Exception {
+		Point origin = new Point(0, 0);
+		Point goal = new Point(2, 1);
+		MoveStrategyStraightLine strat = new MoveStrategyStraightLine(origin, goal, 4);
+		
+		assertEquals(strat.getSpeed(), 4);
+		assertEquals(strat.getSpeedVector().getSpeed(), 4);
+		
+		strat.setSpeed(12);
+		
+		assertEquals(strat.getSpeedVector().getSpeed(), 12);
+	}
 }
