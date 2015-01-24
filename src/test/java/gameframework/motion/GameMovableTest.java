@@ -1,12 +1,13 @@
 package gameframework.motion;
 
+import static org.junit.Assert.assertEquals;
+import gameframework.motion.blocking.MoveBlockerChecker;
+
 import java.awt.Point;
 import java.awt.Rectangle;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class GameMovableTest {
 
@@ -36,6 +37,16 @@ public class GameMovableTest {
 			@Override
 			public SpeedVector getSpeedVector(Movable m) {
 				return driverSpeedVector;
+			}
+
+			@Override
+			public void setStrategy(MoveStrategy strat) {
+
+			}
+
+			@Override
+			public void setmoveBlockerChecker(MoveBlockerChecker obst) {
+
 			}
 		};
 	}
