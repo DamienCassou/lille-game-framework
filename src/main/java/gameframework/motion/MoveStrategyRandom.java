@@ -11,6 +11,23 @@ public class MoveStrategyRandom implements MoveStrategy {
 	SpeedVector currentMove = new SpeedVector(new Point(0, 0));
 	static Random random = new Random();
 
+	public MoveStrategyRandom() {
+		super();
+	}
+	
+	public MoveStrategyRandom(int speed) {
+		super();
+		this.currentMove = new SpeedVector(new Point(0, 0), speed);
+	}
+	
+	public int getSpeed() {
+		return this.currentMove.getSpeed();
+	}
+	
+	public void setSpeed(int speed) {
+		this.currentMove.setSpeed(speed);
+	}
+	
 	@Override
 	public SpeedVector getSpeedVector() {
 		int i = random.nextInt(4);
