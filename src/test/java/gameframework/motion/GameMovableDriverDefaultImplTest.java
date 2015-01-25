@@ -55,6 +55,16 @@ public class GameMovableDriverDefaultImplTest {
 			public SpeedVector getSpeedVector() {
 				return strategySpeedVector;
 			}
+
+			@Override
+			public int getSpeed() {
+				return strategySpeedVector.getSpeed();
+			}
+
+			@Override
+			public void setSpeed(int speed) {
+				strategySpeedVector.setSpeed(speed);
+			}
 		};
 	}
 

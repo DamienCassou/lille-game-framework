@@ -1,6 +1,6 @@
 package gameframework.motion;
 
-import gameframework.motion.MoveStrategyDefaultImpl;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -15,6 +15,13 @@ public class MoveStrategyDefaultImplTest extends
 	@Test
 	public void dontMove() throws Exception {
 		assertNoMovement();
+	}
+	
+	@Test
+	public void speedZero() throws Exception {
+		assertEquals(0, strategy.getSpeed());
+		strategy.setSpeed(2);
+		assertEquals(0, strategy.getSpeed());
 	}
 
 }

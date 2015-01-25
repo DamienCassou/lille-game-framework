@@ -62,6 +62,14 @@ public class MoveStrategyKeyboardTest extends
 		assertTrue(strategy.alwaysMove);
 		assertNoMovement();
 	}
+	
+	@Test
+	public void settableSpeed() throws Exception {
+		strategy.setSpeed(3);
+		assertEquals(3, strategy.getSpeed());
+		strategy.setSpeed(1);
+		assertEquals(1, strategy.getSpeed());
+	}
 
 	@Test
 	public void initializedValues() throws Exception {

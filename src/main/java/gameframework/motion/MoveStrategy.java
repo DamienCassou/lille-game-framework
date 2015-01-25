@@ -1,5 +1,9 @@
 package gameframework.motion;
 
 public interface MoveStrategy {
-	SpeedVector getSpeedVector();
+	public SpeedVector getSpeedVector();
+	
+	public int getSpeed();
+	
+	public void setSpeed(int speed);
 }
