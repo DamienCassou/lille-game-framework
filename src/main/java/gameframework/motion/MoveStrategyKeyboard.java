@@ -92,4 +92,14 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 	public void stay() {
 		speedVector.setDirection(new Point(0, 0));
 	}
+
+	@Override
+	public int getSpeed() {
+		return this.speedVector.getSpeed();
+	}
+
+	@Override
+	public void setSpeed(int speed) {
+		this.speedVector.setSpeed(speed);
+	}
 }
