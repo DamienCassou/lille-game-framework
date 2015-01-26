@@ -3,7 +3,6 @@ package gameframework.motion;
 import static org.junit.Assert.assertEquals;
 import gameframework.motion.MoveStrategyRandom;
 
-import java.awt.Point;
 import java.util.Random;
 
 import org.junit.Test;
