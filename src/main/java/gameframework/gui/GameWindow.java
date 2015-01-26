@@ -3,6 +3,7 @@ package gameframework.gui;
 import gameframework.base.ObservableValue;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameConfiguration;
+import gameframework.game.GameData;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;
@@ -24,6 +25,12 @@ public class GameWindow {
 		this("Default Game", gameCanvas, configuration,
 				new GameStatusBarElement<>("Score:", score),
 				new GameStatusBarElement<>("Life:", life));
+	}
+	
+	public GameWindow(String gameName, GameCanvas gameCanvas, GameData data) {
+		this(gameName, gameCanvas, data.getConfiguration(),
+				new GameStatusBarElement<>("Score:", data.getScore()),
+				new GameStatusBarElement<>("Life:", data.getLife()));
 	}
 
 	public GameWindow(String gameName, GameCanvas gameCanvas,
