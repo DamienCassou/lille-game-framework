@@ -35,9 +35,7 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 		Iterator<GameEntity> gt = getUniverse().getGameEntitiesIterator();
 		for (; gt.hasNext();) {
 			GameEntity tmp = gt.next();
-			if (tmp instanceof Drawable) {
-				((Drawable) tmp).draw(getBufferGraphics());
-			}
+			tmp.draw(getBufferGraphics());
 		}
 		refresh();
 	}
