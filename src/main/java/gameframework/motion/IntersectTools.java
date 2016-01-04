@@ -48,58 +48,40 @@ public class IntersectTools {
 		// of shape
 		Shape intersectShape;
 
-		// The first quarter of the plane
-		if ((dX > 0) && (dY > 0)) {
+		// If X or Y is not on axis
+		if ((dX != 0) && (dY != 0)) {
 			intersectShape = new Polygon();
-			((Polygon) intersectShape).addPoint(x1, y1);
-			((Polygon) intersectShape).addPoint(x1, y2);
-			((Polygon) intersectShape).addPoint(x2, y2);
-			((Polygon) intersectShape).addPoint(x2 + dX * v, y2 + dY * v);
-			((Polygon) intersectShape).addPoint(x2 + dX * v, y1 + dY * v);
-			((Polygon) intersectShape).addPoint(x1 + dX * v, y1 + dY * v);
-		}
-		// The second quarter of the plane
-		else if ((dX < 0) && (dY > 0)) {
-			intersectShape = new Polygon();
-			((Polygon) intersectShape).addPoint(x1, y2);
-			((Polygon) intersectShape).addPoint(x2, y2);
-			((Polygon) intersectShape).addPoint(x2, y1);
-			((Polygon) intersectShape).addPoint(x2 + dX * v, y1 + dY * v);
-			((Polygon) intersectShape).addPoint(x1 + dX * v, y1 + dY * v);
-			((Polygon) intersectShape).addPoint(x1 + dX * v, y2 + dY * v);
-		}
-		// The third quarter of the plane
-		else if ((dX < 0) && (dY < 0)) {
-			intersectShape = new Polygon();
-			((Polygon) intersectShape).addPoint(x2, y2);
-			((Polygon) intersectShape).addPoint(x2, y1);
-			((Polygon) intersectShape).addPoint(x1, y1);
-			((Polygon) intersectShape).addPoint(x1 + dX * v, y1 + dY * v);
-			((Polygon) intersectShape).addPoint(x1 + dX * v, y2 + dY * v);
-			((Polygon) intersectShape).addPoint(x2 + dX * v, y2 + dY * v);
-		}
-		// The fourth quarter of the plane
-		else if ((dX > 0) && (dY < 0)) {
 
-			intersectShape = new Polygon();
-			((Polygon) intersectShape).addPoint(x2, y1);
-			((Polygon) intersectShape).addPoint(x1, y1);
-			((Polygon) intersectShape).addPoint(x1, y2);
-			((Polygon) intersectShape).addPoint(x1 + dX * v, y2 + dY * v);
-			((Polygon) intersectShape).addPoint(x2 + dX * v, y2 + dY * v);
-			((Polygon) intersectShape).addPoint(x2 + dX * v, y1 + dY * v);
+			// If it is not in the first quarter of the plane
+			if (!((dX < 0) && (dY > 0))) {
+				((Polygon) intersectShape).addPoint(x1, y1);
+				((Polygon) intersectShape).addPoint(x2 + dX * v, y2 + dY * v);
+			}
+			// If it is not in the fourth quarter of the plane
+			if (!((dX > 0) && (dY < 0))) {
+				((Polygon) intersectShape).addPoint(x2, y2);
+				((Polygon) intersectShape).addPoint(x1 + dX * v, y1 + dY * v);
+			}
+			// If it is not in the third quarter of the plane
+			if (!((dX < 0) && (dY < 0))) {
+				((Polygon) intersectShape).addPoint(x1, y2);
+				((Polygon) intersectShape).addPoint(x2 + dX * v, y1 + dY * v);
+			}
+			// If it is not in the second quarter of the plane
+			if (!((dX > 0) && (dY > 0))) {
+				((Polygon) intersectShape).addPoint(x2, y1);
+				((Polygon) intersectShape).addPoint(x1 + dX * v, y2 + dY * v);
+			}
 		}
 		// And now the axis
 		else if ((dX == 0) && (dY > 0)) {
 			intersectShape = new Rectangle(x1, y1, x2 - x1, y2 - y1 + dY * v);
 		} else if (dY < 0) { // we know that dX == 0
-			intersectShape = new Rectangle(x1, y1 + dY * v, x2 - x1, y2
-					- (y1 + dY * v));
+			intersectShape = new Rectangle(x1, y1 + dY * v, x2 - x1, y2 - (y1 + dY * v));
 		} else if (dX > 0) { // we know that dY == 0
 			intersectShape = new Rectangle(x1, y1, x2 - x1 + dX * v, y2 - y1);
 		} else if (dX < 0) { // we know that dY == 0
-			intersectShape = new Rectangle(x1 + dX * v, y1, x2 - (x1 + dX * v),
-					y2 - y1);
+			intersectShape = new Rectangle(x1 + dX * v, y1, x2 - (x1 + dX * v), y2 - y1);
 		} else {
 			intersectShape = new Rectangle(x1, y1, x2 - x1, y2 - y1);
 		}
