@@ -6,4 +6,6 @@ import java.awt.Point;
 
 public interface Overlappable extends ObjectWithBoundedBox {
 	public Point getPosition();
+	
+	public boolean isMovable();
 }

@@ -1,9 +1,14 @@
-package gameframework.motion.overlapping;
+package test.gameframework.motion.overlapping;
 
+import static org.junit.Assert.assertEquals;
 import gameframework.game.GameData;
-import gameframework.motion.GameMovable;
+import gameframework.motion.overlapping.MovableOverlappable;
+import gameframework.motion.overlapping.Overlap;
+import gameframework.motion.overlapping.OverlapProcessorDefaultImpl;
+import gameframework.motion.overlapping.OverlapRulesApplier;
+import gameframework.motion.overlapping.Overlappable;
+import gameframework.motion.overlapping.UnmovableOverlappable;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,8 +18,6 @@ import java.util.Vector;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 public class OverlapProcessorDefaultImplTest {
 
@@ -233,44 +236,12 @@ public class OverlapProcessorDefaultImplTest {
 		return result;
 	}
 
-	public MovableOverlappable createOverlappableMovable(final int x,
-			final int y, final int width, final int height) {
-		return new MovableOverlappable() {
-
-			@Override
-			public Rectangle getBoundingBox() {
-				return new Rectangle(x, y, width, height);
-			}
-
-			@Override
-			public Point getPosition() {
-				return new Point(x, y);
-			}
-
-		};
+	public MovableOverlappable createOverlappableMovable(final int x, final int y, final int width, final int height) {
+		return new MovableOverlappable(new Rectangle(x, y, width, height));
 	}
 
-	public Overlappable createOverlappable(final int x, final int y,
-			final int width, final int height) {
-		return new Overlappable() {
-
-			@Override
-			public Rectangle getBoundingBox() {
-				return new Rectangle(x, y, width, height);
-			}
-
-			@Override
-			public Point getPosition() {
-				return new Point(x, y);
-			}
-
-		};
+	public Overlappable createOverlappable(final int x, final int y, final int width, final int height) {
+		return new UnmovableOverlappable(new Rectangle(x, y, width, height));
 	}
 
-}
-
-abstract class MovableOverlappable extends GameMovable implements Overlappable {
-	@Override
-	public void oneStepMoveAddedBehavior() {
-	}
 }
