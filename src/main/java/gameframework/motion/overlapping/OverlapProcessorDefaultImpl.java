@@ -30,20 +30,18 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 
 	@Override
 	public void addOverlappable(Overlappable p) {
-		if (p instanceof Movable) {
+		if (p.isMovable())
 			movableOverlappables.add(p);
-		} else {
+		else
 			nonMovableOverlappables.add(p);
-		}
 	}
 
 	@Override
 	public void removeOverlappable(Overlappable p) {
-		if (p instanceof Movable) {
+		if (p.isMovable())
 			movableOverlappables.remove(p);
-		} else {
+		else
 			nonMovableOverlappables.remove(p);
-		}
 	}
 
 	@Override
