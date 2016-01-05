@@ -68,5 +68,11 @@ public class DrawableImageTest {
 		DrawableImage drawableImage = new DrawableImage("/courbes.png", canvas);
 		assertEquals(300, drawableImage.getWidth());
 	}
+	
+	@Test
+	public void height() throws Exception {
+		DrawableImage drawableImage = new DrawableImage("/courbes.png", canvas);
+		assertEquals(60, drawableImage.getHeight());
+	}
 
 }
