@@ -21,34 +21,57 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 	@Override
 	public synchronized void addGameEntity(GameEntity gameEntity) {
 		gameEntities.add(gameEntity);
-		if (gameEntity instanceof Overlappable) {
-			getOverlapProcessor().addOverlappable((Overlappable) gameEntity);
-		}
-		if (gameEntity instanceof MoveBlocker) {
-			getMoveBlockerChecker().addMoveBlocker((MoveBlocker) gameEntity);
-		}
+		addMotionEntity(gameEntity);
 	}
 
+	protected void addMotionEntity(GameEntity gameEntity) {
+		
+	}
+	
+	protected void addMotionEntity(Overlappable motionEntity) {
+		getOverlapProcessor().addOverlappable(motionEntity);
+	}
+	
+	protected void addMotionEntity(MoveBlocker motionEntity) {
+		getMoveBlockerChecker().addMoveBlocker(motionEntity);
+	}
+	
+	
 	@Override
 	public synchronized void removeGameEntity(GameEntity gameEntity) {
 		gameEntities.remove(gameEntity);
-		if (gameEntity instanceof Overlappable) {
-			getOverlapProcessor().removeOverlappable((Overlappable) gameEntity);
-		}
-		if (gameEntity instanceof MoveBlocker) {
-			getMoveBlockerChecker().removeMoveBlocker((MoveBlocker) gameEntity);
-		}
+		removeMotionEntity(gameEntity);
 	}
+
+	protected void removeMotionEntity(GameEntity gameEntity) {
+
+	}
+	
+	protected void removeMotionEntity(Overlappable motionEntity) {
+		getOverlapProcessor().removeOverlappable(motionEntity);
+	}
+
+	protected void removeMotionEntity(MoveBlocker motionEntity) {
+		getMoveBlockerChecker().removeMoveBlocker(motionEntity);
+	}
+	
 
 	@Override
 	public void allOneStepMoves() {
 		for (GameEntity entity : gameEntities) {
-			if (entity instanceof Movable) {
-				((Movable) entity).oneStepMove();
-			}
+			onStepMove(entity);
 		}
 	}
+	
+	protected void onStepMove(GameEntity entity) {
+		
+	}
+	
+	protected void onStepMove(Movable entity) {
+		entity.oneStepMove();
+	}
 
+	
 	@Override
 	public void processAllOverlaps() {
 		getOverlapProcessor().processOverlapsAll();
