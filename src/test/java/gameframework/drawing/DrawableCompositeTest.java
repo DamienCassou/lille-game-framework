@@ -49,6 +49,13 @@ public class DrawableCompositeTest {
 		composite.draw(null);
 		assertEquals(drawable1IsDrawn, 1);
 		assertEquals(drawable2IsDrawn, 1);
+
+		composite.remove(drawable1);
+		composite.remove(drawable2);
+		
+		composite.draw(null);
+		assertEquals(drawable1IsDrawn, 1);
+		assertEquals(drawable2IsDrawn, 1);		
 	}
 
 }
