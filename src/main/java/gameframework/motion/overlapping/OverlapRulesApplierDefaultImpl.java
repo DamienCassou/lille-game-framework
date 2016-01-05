@@ -1,10 +1,10 @@
 package gameframework.motion.overlapping;
 
-import gameframework.game.GameData;
-import gameframework.game.GameUniverse;
-
 import java.lang.reflect.Method;
 import java.util.Vector;
+
+import gameframework.game.GameData;
+import gameframework.game.GameUniverse;
 
 public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 
@@ -18,6 +18,8 @@ public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 		}
 	}
 
+	private static boolean isInReverseParameters = false;
+
 	protected void applySpecificOverlapRule(Overlappable e1, Overlappable e2) {
 		Method m;
 		try {
@@ -25,21 +27,18 @@ public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 					e2.getClass());
 		} catch (NoSuchMethodException e) {
 			// automatic commutativity handling
-			reverseParameters(e1, e2);
+			if (!isInReverseParameters)
+				reverseParameters(e1, e2);
 			return;
 		}
 		invoke(m, e1, e2);
 	}
 
 	protected void reverseParameters(Overlappable e1, Overlappable e2) {
-		Method m;
-		try {
-			m = getClass().getMethod("overlapRule", e2.getClass(),
-					e1.getClass());
-		} catch (NoSuchMethodException e) {
-			return;
-		}
-		invoke(m, e2, e1);
+		isInReverseParameters = true;
+		applySpecificOverlapRule(e2, e1);
+		// for the next call at "applySpecificOverlapRule"
+		isInReverseParameters = false;
 	}
 
 	protected void invoke(Method m, Overlappable e1, Overlappable e2) {
