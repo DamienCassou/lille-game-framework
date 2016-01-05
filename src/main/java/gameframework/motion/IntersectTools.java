@@ -23,7 +23,7 @@ public class IntersectTools {
 	 * @return Either a {@link java.awt.Rectangle rectangle} or an
 	 *         {@link java.awt.Polygon hexagon}.
 	 */
-	public static Shape getIntersectShape(Movable movable,
+	public static Shape getIntersectShape(GameMovable movable,
 			SpeedVector speedVector) {
 		// Compute the intersection shape using the movable properties
 		int dX = (int) speedVector.getDirection().getX();

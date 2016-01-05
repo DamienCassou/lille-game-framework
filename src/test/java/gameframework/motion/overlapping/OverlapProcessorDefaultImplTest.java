@@ -264,6 +264,11 @@ public class OverlapProcessorDefaultImplTest {
 				return new Point(x, y);
 			}
 
+			@Override
+			public boolean isMovable() {
+				return false;
+			}
+
 		};
 	}
 

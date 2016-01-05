@@ -4,4 +4,6 @@ import java.awt.Rectangle;
 
 public interface ObjectWithBoundedBox {
 	Rectangle getBoundingBox();
+	
+	public boolean isMovable();
 }

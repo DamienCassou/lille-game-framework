@@ -1,8 +1,10 @@
 package gameframework.motion;
 
+import gameframework.base.ObjectWithBoundedBox;
+
 import java.awt.Point;
 
-public abstract class GameMovable implements Movable {
+public abstract class GameMovable implements ObjectWithBoundedBox {
 	protected GameMovableDriver moveDriver ;
 	protected Point position = new Point();
 	protected SpeedVector speedVector = SpeedVector.createNullVector();
@@ -19,17 +21,14 @@ public abstract class GameMovable implements Movable {
 		position = (Point) p.clone();
 	}
 
-	@Override
 	public Point getPosition() {
 		return position;
 	}
 
-	@Override
 	public void setSpeedVector(SpeedVector speedVector) {
 		this.speedVector = (SpeedVector) speedVector.clone();
 	}
 
-	@Override
 	public SpeedVector getSpeedVector() {
 		return (SpeedVector) speedVector.clone();
 	}
@@ -42,7 +41,6 @@ public abstract class GameMovable implements Movable {
 		return moveDriver;
 	}
 
-	@Override
 	public void oneStepMove() {
 		SpeedVector m = moveDriver.getSpeedVector(this);
 		speedVector.setDirection(m.getDirection());
@@ -54,4 +52,8 @@ public abstract class GameMovable implements Movable {
 	}
 
 	public abstract void oneStepMoveAddedBehavior();
+	
+	public boolean isMovable(){
+		return true;
+	}
 }

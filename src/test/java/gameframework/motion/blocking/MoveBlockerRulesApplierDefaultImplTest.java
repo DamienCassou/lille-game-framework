@@ -76,4 +76,9 @@ class MyMoveBlocker implements MoveBlocker {
 		return null;
 	}
 
+	@Override
+	public boolean isMovable() {
+		return false;
+	}
+
 }

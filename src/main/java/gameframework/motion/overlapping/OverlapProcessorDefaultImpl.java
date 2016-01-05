@@ -1,8 +1,8 @@
 package gameframework.motion.overlapping;
 
 import gameframework.motion.IntersectTools;
-import gameframework.motion.Movable;
 import gameframework.motion.SpeedVector;
+import gameframework.motion.GameMovable;
 
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -30,7 +30,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 
 	@Override
 	public void addOverlappable(Overlappable p) {
-		if (p instanceof Movable) {
+		if (p.isMovable()) {
 			movableOverlappables.add(p);
 		} else {
 			nonMovableOverlappables.add(p);
@@ -39,7 +39,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 
 	@Override
 	public void removeOverlappable(Overlappable p) {
-		if (p instanceof Movable) {
+		if (p.isMovable()) {
 			movableOverlappables.remove(p);
 		} else {
 			nonMovableOverlappables.remove(p);
@@ -70,7 +70,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 			Vector<Overlap> overlaps) {
 		Area overlappableArea, targetArea;
 		Rectangle boundingBoxTarget, boundingBoxOverlappable;
-		assert movableOverlappable instanceof Movable;
+		assert movableOverlappable.isMovable();
 		Shape intersectShape = intersectionComputation(movableOverlappable);
 
 		overlappableArea = new Area(intersectShape);
@@ -99,10 +99,10 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 			if (targetOverlappable != movableOverlappable) {
 				Shape targetShape;
 				targetShape = IntersectTools.getIntersectShape(
-						(Movable) targetOverlappable, new SpeedVector(
-								((Movable) targetOverlappable).getSpeedVector()
+						(GameMovable) targetOverlappable, new SpeedVector(
+								((GameMovable) targetOverlappable).getSpeedVector()
 										.getDirection(),
-								-((Movable) targetOverlappable)
+								-((GameMovable) targetOverlappable)
 										.getSpeedVector().getSpeed()));
 				boundingBoxTarget = targetShape.getBounds();
 
@@ -120,8 +120,8 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 	}
 
 	protected Shape intersectionComputation(Overlappable movableOverlappable) {
-		assert movableOverlappable instanceof Movable;
-		Movable movable = (Movable) movableOverlappable;
+		assert movableOverlappable.isMovable();
+		GameMovable movable = (GameMovable) movableOverlappable;
 		SpeedVector speedVector = movable.getSpeedVector();
 		SpeedVector oppositeSpeedVector = new SpeedVector(
 				speedVector.getDirection(), -1 * speedVector.getSpeed());

@@ -10,5 +10,5 @@ public interface GameMovableDriver {
 
 	public void setmoveBlockerChecker(MoveBlockerChecker obst);
 
-	public SpeedVector getSpeedVector(Movable m);
+	public SpeedVector getSpeedVector(GameMovable m);
 }

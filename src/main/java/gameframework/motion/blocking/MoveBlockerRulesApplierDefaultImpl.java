@@ -1,7 +1,7 @@
 package gameframework.motion.blocking;
 
 import gameframework.game.GameData;
-import gameframework.motion.Movable;
+import gameframework.motion.GameMovable;
 
 import java.lang.reflect.Method;
 import java.util.Vector;
@@ -36,7 +36,7 @@ public class MoveBlockerRulesApplierDefaultImpl implements
 	protected GameData gameData;
 
 	@Override
-	public boolean moveValidationProcessing(Movable movable,
+	public boolean moveValidationProcessing(GameMovable movable,
 			Vector<MoveBlocker> blockers) {
 		for (MoveBlocker moveBlocker : blockers) {
 			try {
@@ -53,7 +53,7 @@ public class MoveBlockerRulesApplierDefaultImpl implements
 		return true;
 	}
 
-	private void moveBlockerRuleApply(Movable movable, MoveBlocker blocker)
+	private void moveBlockerRuleApply(GameMovable movable, MoveBlocker blocker)
 			throws Exception {
 		Method m = null;
 		m = (getClass()).getMethod("moveBlockerRule", movable.getClass(),
