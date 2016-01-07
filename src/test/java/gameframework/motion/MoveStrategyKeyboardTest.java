@@ -16,6 +16,13 @@ public class MoveStrategyKeyboardTest extends
 		return new MoveStrategyKeyboard();
 	}
 
+	/**
+	 * Use the constructor with 1 parameter (Boolean).
+	 */
+	protected MoveStrategyKeyboard createStrategyKeyboard(Boolean alwaysMove) {
+		return new MoveStrategyKeyboard(alwaysMove);
+	}
+
 	@Test
 	public void goingLeft() throws Exception {
 		strategy.keyPressed(KeyEvent.VK_LEFT);
@@ -50,7 +57,7 @@ public class MoveStrategyKeyboardTest extends
 
 	@Test
 	public void dontStopWhenAlwaysMoveisOn() throws Exception {
-		strategy = new MoveStrategyKeyboard(true);
+		strategy = createStrategyKeyboard(true);
 		strategy.keyPressed(KeyEvent.VK_DOWN);
 		strategy.keyReleased(KeyEvent.VK_DOWN);
 		assertDown();
