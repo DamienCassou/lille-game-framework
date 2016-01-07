@@ -100,5 +100,18 @@ public class GameMovableTest {
 		gameMovable.oneStepMove();
 		assertEquals(1, oneStepMoveAddedBehavior);
 	}
+	
+	@Test
+	public void testGameMovableGetDriver(){
+		assertEquals(driver,gameMovable.getDriver());
+	}
+	
+	@Test
+	public void testSetSpeedVector(){
+		assertEquals(0,gameMovable.getSpeedVector().getSpeed());
+		SpeedVector mySpeedVector = new SpeedVector(new Point(8, 8), 33);
+		gameMovable.setSpeedVector(mySpeedVector);
+		assertEquals(33,gameMovable.getSpeedVector().getSpeed());
+	}
 
 }
