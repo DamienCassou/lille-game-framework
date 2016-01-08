@@ -13,33 +13,33 @@ public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 	@Override
 	public void applyOverlapRules(Vector<Overlap> overlaps) {
 		for (Overlap col : overlaps) {
-			applySpecificOverlapRule(col.getOverlappable1(),
-					col.getOverlappable2());
+			applySpecificOverlapRule(col.getOverlappable1(), col.getOverlappable2(),
+					true);
 		}
 	}
 
-	protected void applySpecificOverlapRule(Overlappable e1, Overlappable e2) {
+	/**
+	 * The method is commutative between <code>e1</code> and <code>e2</code>. To
+	 * use the commutativity, see the parameter
+	 * <code>tryToReverseParameters</code>
+	 * 
+	 * @param tryToReverseParameters
+	 *            if true and the order of the parameters is not correct, the
+	 *            method will try to reverse the e1 and e2 parameters, else it
+	 *            will not affect anything
+	 */
+	protected void applySpecificOverlapRule(Overlappable e1, Overlappable e2,
+			boolean tryToReverseParameters) {
 		Method m;
 		try {
 			m = getClass().getMethod("overlapRule", e1.getClass(),
 					e2.getClass());
 		} catch (NoSuchMethodException e) {
-			// automatic commutativity handling
-			reverseParameters(e1, e2);
+			if (tryToReverseParameters)
+				applySpecificOverlapRule(e2, e1, false);
 			return;
 		}
 		invoke(m, e1, e2);
-	}
-
-	protected void reverseParameters(Overlappable e1, Overlappable e2) {
-		Method m;
-		try {
-			m = getClass().getMethod("overlapRule", e2.getClass(),
-					e1.getClass());
-		} catch (NoSuchMethodException e) {
-			return;
-		}
-		invoke(m, e2, e1);
 	}
 
 	protected void invoke(Method m, Overlappable e1, Overlappable e2) {
