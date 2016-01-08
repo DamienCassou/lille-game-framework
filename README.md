@@ -11,3 +11,4 @@ Pour lancer les tests, tapez :
 ```bash
 $ mvn test
 ```
+test exercice école doctorale
