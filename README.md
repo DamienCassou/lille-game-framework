@@ -1,10 +1,11 @@
 # Game Framework
 
-[![Build Status](https://travis-ci.org/DamienCassou/lille-game-framework.png?branch=master)](https://travis-ci.org/DamienCassou/lille-game-framework)
+[![Build Status](https://travis-ci.org/christian/lille-game-framework.png?branch=master)](https://travis-ci.org/christian/lille-game-framework)
 
-As far as I know, this game framework has mostly been written by David
-Auber and contains a lot of contributions from Philippe Narbel and
-Damien Cassou.
+Pour autant que je sache, ce jeu  a surtout été écrit par David
+Auber et contient beaucoup de contributions de Philippe Narbel et
+Damien cassou.
+
 
 Pour lancer les tests, tapez :
 
