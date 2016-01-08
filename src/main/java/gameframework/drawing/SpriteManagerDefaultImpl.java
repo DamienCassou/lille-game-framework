@@ -6,8 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This implementation of {@link SpriteManager} assumes that sprite types are in
- * rows whereas increments of a type are in columns
+ * This implementation of {@link SpriteManager} assumes that sprite types are in rows whereas increments of a type are in columns
  * 
  */
 public class SpriteManagerDefaultImpl implements SpriteManager {

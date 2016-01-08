@@ -1,5 +1,7 @@
 package gameframework.gui;
-
+/**
+ * The main program is over here
+ */
 import gameframework.base.ObservableValue;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameConfiguration;
