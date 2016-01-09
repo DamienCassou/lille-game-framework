@@ -18,6 +18,10 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 		return gameEntities.iterator();
 	}
 
+	public ConcurrentLinkedQueue<GameEntity> getGameEntities() {
+		return gameEntities;
+	}
+
 	@Override
 	public synchronized void addGameEntity(GameEntity gameEntity) {
 		gameEntities.add(gameEntity);
