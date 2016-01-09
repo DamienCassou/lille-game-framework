@@ -45,6 +45,11 @@ public class GameMovableDriverDefaultImplTest {
 			@Override
 			public void addMoveBlocker(MoveBlocker blocker) {
 			}
+
+			@Override
+			public Object getMoveBlockers() {
+				return null;
+			}
 		};
 	}
 
