@@ -1,6 +1,8 @@
 package gameframework.game.mocks;
 
 import gameframework.game.GameConfiguration;
+import gameframework.motion.overlapping.OverlapProcessor;
+import gameframework.motion.overlapping.mocks.OverlapProcessorDefaultImplMock;
 
 public class GameConfigurationMock extends GameConfiguration {
 	
@@ -11,5 +13,10 @@ public class GameConfigurationMock extends GameConfiguration {
 	
 	public GameConfigurationMock() {
 		super(TEST_NBROWS, TEST_NBCOL, TEST_SPRITESIZE, TEST_NBLIVES);
+	}
+
+	@Override
+	public OverlapProcessor createOverlapProcessor() {
+		return new OverlapProcessorDefaultImplMock();
 	}
 }
