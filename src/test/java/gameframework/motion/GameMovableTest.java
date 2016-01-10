@@ -35,7 +35,7 @@ public class GameMovableTest {
 		driver = new GameMovableDriver() {
 
 			@Override
-			public SpeedVector getSpeedVector(Movable m) {
+			public SpeedVector getSpeedVector(GameMovable m) {
 				return driverSpeedVector;
 			}
 

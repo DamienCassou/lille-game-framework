@@ -23,7 +23,7 @@ public class GameMovableDriverDefaultImpl implements GameMovableDriver {
 	}
 
 	@Override
-	public SpeedVector getSpeedVector(Movable movable) {
+	public SpeedVector getSpeedVector(GameMovable movable) {
 		SpeedVector possibleSpeedVector;
 
 		possibleSpeedVector = moveStrategy.getSpeedVector();
@@ -40,4 +40,5 @@ public class GameMovableDriverDefaultImpl implements GameMovableDriver {
 
 		return SpeedVector.createNullVector();
 	}
+
 }

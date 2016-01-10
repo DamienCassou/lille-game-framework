@@ -1,7 +1,7 @@
 package gameframework.motion.blocking;
 
 import gameframework.motion.IntersectTools;
-import gameframework.motion.Movable;
+import gameframework.motion.GameMovable;
 import gameframework.motion.SpeedVector;
 
 import java.awt.Rectangle;
@@ -35,7 +35,7 @@ public class MoveBlockerCheckerDefaultImpl implements MoveBlockerChecker {
 	}
 
 	@Override
-	public boolean moveValidation(Movable m, SpeedVector mov) {
+	public boolean moveValidation(GameMovable m, SpeedVector mov) {
 		Shape intersectShape = IntersectTools.getIntersectShape(m, mov);
 		Vector<MoveBlocker> moveBlockersInIntersection = new Vector<MoveBlocker>();
 		Area intersectArea = new Area(intersectShape);

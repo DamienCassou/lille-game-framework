@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public class IntersectToolsTest implements Movable {
+public class IntersectToolsTest extends GameMovable {
 
 	private Point direction;
 	private final Point position = new Point(0, 0);
@@ -161,4 +161,8 @@ public class IntersectToolsTest implements Movable {
 		fail("No need to set the speed vector");
 	}
 
+	@Override
+	public void oneStepMoveAddedBehavior() {
+		fail("No need to add a behavior");
+	}
 }

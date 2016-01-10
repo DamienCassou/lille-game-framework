@@ -2,7 +2,6 @@ package gameframework.motion.blocking;
 
 import gameframework.game.GameData;
 import gameframework.motion.GameMovable;
-import gameframework.motion.Movable;
 import gameframework.motion.SpeedVector;
 
 import java.awt.Point;
@@ -22,7 +21,7 @@ public class MoveBlockerCheckerDefaultImplTest {
 
 	MoveBlockerCheckerDefaultImpl checker;
 	SpeedVector speedVector;
-	Movable movable;
+	GameMovable movable;
 	int width = 100;
 	int height = 200;
 	Vector<MoveBlocker> foundBlockers = new Vector<MoveBlocker>();
@@ -48,7 +47,7 @@ public class MoveBlockerCheckerDefaultImplTest {
 		checker.setMoveBlockerRules(new MoveBlockerRulesApplier() {
 
 			@Override
-			public boolean moveValidationProcessing(Movable m,
+			public boolean moveValidationProcessing(GameMovable m,
 					Vector<MoveBlocker> blockers) {
 				foundBlockers = blockers;
 				// by default, a blocker invalidates the move
@@ -72,6 +71,11 @@ public class MoveBlockerCheckerDefaultImplTest {
 			@Override
 			public Rectangle getBoundingBox() {
 				return new Rectangle(x, y, width, height);
+			}
+
+			@Override
+			public boolean isMovable() {
+				return false;
 			}
 		};
 	}
