@@ -10,11 +10,13 @@ public class DrawableImage implements Drawable {
 	protected Image image;
 	protected GameCanvas canvas;
 
-	public DrawableImage(URL imageUrl, GameCanvas gameCanvas) {
-		this.canvas = gameCanvas;
+	public DrawableImage(URL imageUrl, GameCanvas gameCanvas) throws IllegalArgumentException {
+		
 		if (imageUrl == null) {
 			throw new IllegalArgumentException("Null imageUrl parameter");
 		}
+		
+		this.canvas = gameCanvas;
 		handleImage(imageUrl);
 	}
 	
@@ -25,19 +27,19 @@ public class DrawableImage implements Drawable {
 	 * @param imageUrl
 	 *            is the path to the image
 	 */
-	protected void handleImage(URL imageUrl) {
+	protected void handleImage(URL imageUrl) throws IllegalArgumentException {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		image = toolkit.createImage(imageUrl);
 		MediaTracker tracker = canvas.createMediaTracker();
 		tracker.addImage(image, 0);
+		
 		try {
 			tracker.waitForAll();
 			if (tracker.isErrorAny()) {
-				throw new IllegalArgumentException(
-						"Problem while loading an image " + imageUrl);
+				throw new IllegalArgumentException("Problem while loading an image " + imageUrl);
 			}
 		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
+			tracker.removeImage(image);
 		}
 	}
 

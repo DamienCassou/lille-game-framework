@@ -56,7 +56,7 @@ public class SpriteManagerDefaultImpl implements SpriteManager {
 	}
 
 	@Override
-	public void setType(String type) {
+	public void setType(String type) throws IllegalArgumentException {
 		if (!types.containsKey(type)) {
 			throw new IllegalArgumentException(type
 					+ " is not a valid type for this sprite manager.");
