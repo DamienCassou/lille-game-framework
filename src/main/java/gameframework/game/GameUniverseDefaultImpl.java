@@ -40,6 +40,10 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 		}
 	}
 
+	public ConcurrentLinkedQueue<GameEntity> getGameEntities() {
+		return gameEntities;
+	}
+
 	@Override
 	public void allOneStepMoves() {
 		for (GameEntity entity : gameEntities) {

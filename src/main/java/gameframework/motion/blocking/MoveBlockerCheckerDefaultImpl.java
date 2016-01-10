@@ -28,6 +28,10 @@ public class MoveBlockerCheckerDefaultImpl implements MoveBlockerChecker {
 	public void removeMoveBlocker(MoveBlocker p) {
 		moveBlockers.remove(p);
 	}
+	
+	public ConcurrentLinkedQueue<MoveBlocker> getMoveBlockers() {
+		return moveBlockers;
+	}
 
 	@Override
 	public void setMoveBlockerRules(MoveBlockerRulesApplier moveBlockerRules) {

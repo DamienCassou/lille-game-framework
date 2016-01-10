@@ -6,6 +6,7 @@ import gameframework.motion.blocking.MoveBlockerRulesApplier;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,6 +45,11 @@ public class GameMovableDriverDefaultImplTest {
 
 			@Override
 			public void addMoveBlocker(MoveBlocker blocker) {
+			}
+			
+			@Override
+			public ConcurrentLinkedQueue<MoveBlocker> getMoveBlockers() {
+				return null;
 			}
 		};
 	}
