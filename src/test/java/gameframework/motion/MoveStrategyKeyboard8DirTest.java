@@ -13,8 +13,18 @@ public class MoveStrategyKeyboard8DirTest extends
 	}
 	
 	@Override
+	protected MoveStrategyKeyboard8Dir createStrategyKeyboard() {
+		return new MoveStrategyKeyboard8Dir();
+	}
+
+	@Override
 	protected MoveStrategyKeyboard8Dir createStrategyKeyboard(Boolean alwaysMove) {
 		return new MoveStrategyKeyboard8Dir(alwaysMove);
+	}
+
+	@Override
+	protected MoveStrategyKeyboard8Dir createStrategyKeyboard(Boolean alwaysMove, SpeedVector speedVector) {
+		return new MoveStrategyKeyboard8Dir(alwaysMove, speedVector);
 	}
 
 	@Test

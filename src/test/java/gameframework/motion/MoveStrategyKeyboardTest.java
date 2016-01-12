@@ -17,10 +17,24 @@ public class MoveStrategyKeyboardTest extends
 	}
 
 	/**
+	 * Use the constructor without parameters.
+	 */
+	protected MoveStrategyKeyboard createStrategyKeyboard() {
+		return new MoveStrategyKeyboard();
+	}
+
+	/**
 	 * Use the constructor with 1 parameter (Boolean).
 	 */
 	protected MoveStrategyKeyboard createStrategyKeyboard(Boolean alwaysMove) {
 		return new MoveStrategyKeyboard(alwaysMove);
+	}
+
+	/**
+	 * Use the constructor with 2 parameters (Boolean, SpeedVector).
+	 */
+	protected MoveStrategyKeyboard createStrategyKeyboard(Boolean alwaysMove, SpeedVector speedVector) {
+		return new MoveStrategyKeyboard(alwaysMove, speedVector);
 	}
 
 	@Test
@@ -49,7 +63,7 @@ public class MoveStrategyKeyboardTest extends
 
 	@Test
 	public void stopWhenAlwaysMoveisOff() throws Exception {
-		strategy = new MoveStrategyKeyboard(false);
+		strategy = createStrategyKeyboard(false);
 		strategy.keyPressed(KeyEvent.VK_DOWN);
 		strategy.keyReleased(KeyEvent.VK_DOWN);
 		assertNoMovement();
@@ -65,7 +79,7 @@ public class MoveStrategyKeyboardTest extends
 
 	@Test
 	public void defaultValues() throws Exception {
-		strategy = new MoveStrategyKeyboard();
+		strategy = createStrategyKeyboard();
 		assertTrue(strategy.alwaysMove);
 		assertNoMovement();
 	}
@@ -81,7 +95,7 @@ public class MoveStrategyKeyboardTest extends
 	@Test
 	public void initializedValues() throws Exception {
 		SpeedVector speedVector = new SpeedVector(new Point(5,5), 50);
-		strategy = new MoveStrategyKeyboard(false, speedVector);
+		strategy = createStrategyKeyboard(false, speedVector);
 
 		assertEquals(speedVector, strategy.speedVector);
 		assertEquals(false, strategy.alwaysMove);
