@@ -101,4 +101,16 @@ public class MoveStrategyKeyboardTest extends
 		assertEquals(false, strategy.alwaysMove);
 	}
 
+	@Test
+	public void shouldMoveRightWhenAlwaysMoveisOn() {
+		strategy = createStrategyKeyboard(true);
+		strategy.keyPressed(KeyEvent.VK_LEFT);
+		strategy.keyReleased(KeyEvent.VK_LEFT);
+		strategy.keyPressed(KeyEvent.VK_LEFT);
+		strategy.keyReleased(KeyEvent.VK_LEFT);
+		strategy.keyPressed(KeyEvent.VK_RIGHT);
+		strategy.keyReleased(KeyEvent.VK_RIGHT);
+		assertRight();
+	}
+
 }
