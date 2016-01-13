@@ -45,16 +45,16 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 		int y = speedVector.getDirection().y;
 		switch (keyCode) {
 		case KeyEvent.VK_RIGHT:
-			x++;
+			x = 1;
 			break;
 		case KeyEvent.VK_LEFT:
-			x--;
+			x = -1;
 			break;
 		case KeyEvent.VK_UP:
-			y--;
+			y = -1;
 			break;
 		case KeyEvent.VK_DOWN:
-			y++;
+			y = 1;
 			break;
 		default:
 			return;
@@ -86,16 +86,12 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 			int y = speedVector.getDirection().y;
 			switch (keyCode) {
 			case KeyEvent.VK_RIGHT:
-				x--;
-				break;
 			case KeyEvent.VK_LEFT:
-				x++;
+				x = 0;
 				break;
 			case KeyEvent.VK_UP:
-				y++;
-				break;
 			case KeyEvent.VK_DOWN:
-				y--;
+				y = 0;
 				break;
 			default:
 				return;
