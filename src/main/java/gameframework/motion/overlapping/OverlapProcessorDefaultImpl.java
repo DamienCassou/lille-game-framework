@@ -1,3 +1,4 @@
+
 package gameframework.motion.overlapping;
 
 import gameframework.motion.IntersectTools;
@@ -68,18 +69,20 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 
 	protected void computeOneOverlap(Overlappable movableOverlappable,
 			Vector<Overlap> overlaps) {
-		Area overlappableArea, targetArea;
-		Rectangle boundingBoxTarget, boundingBoxOverlappable;
+		Area overlappableArea;
+		Rectangle boundingBoxOverlappable;
+		
 		assert movableOverlappable.isMovable();
-
 		Shape intersectShape = intersectionComputation(movableOverlappable);
+
+		overlappableArea = new Area(intersectShape);
+		boundingBoxOverlappable = intersectShape.getBounds();
 
 		overlappableArea = new Area(intersectShape);
 		boundingBoxOverlappable = intersectShape.getBounds();
 
 		computeOneOverlapMovables(movableOverlappable, overlaps, boundingBoxOverlappable, overlappableArea);
 		computeOneOverlapNonMovableOverlappables(movableOverlappable, overlaps, boundingBoxOverlappable, overlappableArea);
-		
 	}
 	
 	protected void computeOneOverlapMovables(Overlappable movableOverlappable,
@@ -91,10 +94,10 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 			if (targetOverlappable != movableOverlappable) {
 				Shape targetShape;
 				targetShape = IntersectTools.getIntersectShape(
-						(Movable) targetOverlappable, new SpeedVector(
-								((Movable) targetOverlappable).getSpeedVector()
+						(GameMovable) targetOverlappable, new SpeedVector(
+								((GameMovable) targetOverlappable).getSpeedVector()
 										.getDirection(),
-								-((Movable) targetOverlappable)
+								-((GameMovable) targetOverlappable)
 										.getSpeedVector().getSpeed()));
 				boundingBoxTarget = targetShape.getBounds();
 
@@ -110,27 +113,18 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 			}
 		}
 	}
-	
+
 	protected void computeOneOverlapNonMovableOverlappables(Overlappable movableOverlappable,
 			Vector<Overlap> overlaps, Rectangle boundingBoxOverlappable,
 			Area overlappableArea){
-		
+
 		Rectangle boundingBoxTarget;
 		Area targetArea;
 		for (Overlappable targetNonMovableOverlappable : nonMovableOverlappables) {
 			if (targetNonMovableOverlappable != movableOverlappable) {
 				// NOTE I don't see how this test could fail
 				Shape targetShape;
-<<<<<<< HEAD
-				targetShape = IntersectTools.getIntersectShape(
-						(GameMovable) targetOverlappable, new SpeedVector(
-								((GameMovable) targetOverlappable).getSpeedVector()
-										.getDirection(),
-								-((GameMovable) targetOverlappable)
-										.getSpeedVector().getSpeed()));
-=======
 				targetShape = targetNonMovableOverlappable.getBoundingBox();
->>>>>>> 835d22fa72c46643477e5b6613aa7ef661a5c30a
 				boundingBoxTarget = targetShape.getBounds();
 
 				if (boundingBoxOverlappable.intersects(boundingBoxTarget)) {
@@ -144,7 +138,6 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 				}
 			}
 		}
-		
 	}
 
 	protected Shape intersectionComputation(Overlappable movableOverlappable) {
