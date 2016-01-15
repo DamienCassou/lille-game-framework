@@ -82,6 +82,10 @@ public class MoveBlockerCheckerDefaultImplTest {
 		};
 	}
 	
+	private MoveBlockerMovable createMoveBlockerMovable() {
+		return new MoveBlockerMovable();
+	}
+
 	public void assertMoveValidated() {
 		assertTrue(checker.moveValidation(movable, speedVector));
 	}
@@ -126,6 +130,27 @@ public class MoveBlockerCheckerDefaultImplTest {
 		checker.removeMoveBlocker(blocker);
 		assertMoveValidated();
 	}
+	
+	@Test
+	public void assertPlayerIsNotBlockingItself(){
+		setSpeedVector(1, 1, 1);
+		MoveBlockerMovable m = createMoveBlockerMovable();
+		checker.addMoveBlocker(m);
+		assertTrue(checker.moveValidation(m, speedVector));
+	}
 
+}
 
+class MoveBlockerMovable extends GameMovable implements MoveBlocker{
+
+	@Override
+	public Rectangle getBoundingBox() {
+		return new Rectangle(0, 0, 10, 10);
+	}
+
+	@Override
+	public void oneStepMoveAddedBehavior() {
+		//Nothing 
+	}
+	
 }
