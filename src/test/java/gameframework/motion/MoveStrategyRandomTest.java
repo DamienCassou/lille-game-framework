@@ -5,6 +5,7 @@ import gameframework.motion.MoveStrategyRandom;
 
 import java.util.Random;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class MoveStrategyRandomTest extends
@@ -48,6 +49,12 @@ public class MoveStrategyRandomTest extends
 	@Test
 	public void goDown() throws Exception {
 		setRandom(3);
+		assertDown();
+	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void montest() throws IllegalStateException{
+		setRandom(5);
 		assertDown();
 	}
 	
