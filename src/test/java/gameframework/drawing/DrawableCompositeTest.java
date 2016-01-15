@@ -17,20 +17,15 @@ public class DrawableCompositeTest {
 	int drawable2IsDrawn = 0;
 
 	@Before
-	public void createDrawable1() {
+	public void createDrawable() {
 		drawable1 = new Drawable() {
-
 			@Override
 			public void draw(Graphics g) {
 				drawable1IsDrawn++;
 			}
 		};
-	}
 
-	@Before
-	public void createDrawable2() {
 		drawable2 = new Drawable() {
-
 			@Override
 			public void draw(Graphics g) {
 				drawable2IsDrawn++;
