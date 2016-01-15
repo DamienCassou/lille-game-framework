@@ -11,8 +11,13 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class GameUniverseDefaultImpl implements GameUniverse {
 	protected ConcurrentLinkedQueue<GameEntity> gameEntities = new ConcurrentLinkedQueue<GameEntity>();
-	protected GameData data;
+	protected final GameData data;
 
+	
+	public GameUniverseDefaultImpl(GameData gameData) {
+		data = gameData;
+	}
+		
 	@Override
 	public Iterator<GameEntity> getGameEntitiesIterator() {
 		return gameEntities.iterator();
@@ -60,11 +65,6 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 
 	protected OverlapProcessor getOverlapProcessor() {
 		return data.getOverlapProcessor();
-	}
-
-	@Override
-	public void setGameData(GameData data) {
-		this.data = data;
 	}
 
 }
