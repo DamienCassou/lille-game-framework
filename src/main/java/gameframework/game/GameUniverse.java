@@ -14,8 +14,6 @@ public interface GameUniverse {
 
 	public void removeGameEntity(GameEntity gameEntity);
 
-	public ConcurrentLinkedQueue<GameEntity> getGameEntities();
-
 	public Iterator<GameEntity> getGameEntitiesIterator();
 
 	public void allOneStepMoves();
