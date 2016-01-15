@@ -23,9 +23,9 @@ public class GameDataTest {
 	public void decreaseLife(){
 		int livesDeleted = 1 ;
 		int livesExpected = aGameConfiguration.getDefaultNbLives() - livesDeleted;
-		assertTrue(aGameData.getLife().getValue() == aGameConfiguration.getDefaultNbLives());
+		assertEquals((int)aGameData.getLife().getValue(), aGameConfiguration.getDefaultNbLives());
 		aGameData.decreaseLife(livesDeleted);
-		assertTrue(livesExpected == aGameData.getLife().getValue());
+		assertEquals(livesExpected, (int)aGameData.getLife().getValue());
 		assertTrue(aGameData.getLife().getValue() >= 0);
 	}
 	
@@ -33,9 +33,9 @@ public class GameDataTest {
 	public void increaseLife(){
 		int livesAdded = 1 ;
 		int livesExpected = aGameConfiguration.getDefaultNbLives() + livesAdded;
-		assertTrue(aGameData.getLife().getValue() == aGameConfiguration.getDefaultNbLives());
+		assertEquals((int)aGameData.getLife().getValue(), aGameConfiguration.getDefaultNbLives());
 		aGameData.increaseLife(livesAdded);
-		assertTrue(livesExpected == aGameData.getLife().getValue());
+		assertEquals(livesExpected, (int)aGameData.getLife().getValue());
 	}
 
 }

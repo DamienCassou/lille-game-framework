@@ -54,19 +54,13 @@ public class IntersectToolsTest extends GameMovable {
 	@Test
 	public void gotoNorthWest() throws Exception {
 		direction = new Point(-1, -1);
-		assertShape(//
-				new Point(-speed, -speed), //
-				new Point(-speed, -speed + height), //
-				new Point(width, height));
+		assertShape(new Point(-speed, -speed), new Point(-speed, -speed + height), new Point(width, height));
 	}
 
 	@Test
 	public void gotoNorthEast() throws Exception {
 		direction = new Point(1, -1);
-		assertShape(//
-				new Point(speed + width, -speed), //
-				new Point(speed + width, -speed + height), //
-				new Point(0, height));
+		assertShape(new Point(speed + width, -speed), new Point(speed + width, -speed + height), new Point(0, height));
 	}
 
 	@Test
@@ -81,10 +75,7 @@ public class IntersectToolsTest extends GameMovable {
 	@Test
 	public void gotoSouthEast() throws Exception {
 		direction = new Point(1, 1);
-		assertShape(//
-				new Point(speed + width, speed + height), //
-				new Point(speed + width, speed), //
-				new Point(0, 0));
+		assertShape(new Point(speed + width, speed + height), new Point(speed + width, speed), new Point(0, 0));
 	}
 
 	@Test
@@ -101,9 +92,7 @@ public class IntersectToolsTest extends GameMovable {
 		direction = new Point(directionX, directionY);
 		assertShape(//
 				new Point(directionX * speed + width, directionY * speed
-						+ height), //
-				new Point(directionX * speed + width, directionY * speed), //
-				new Point(0, 0));
+						+ height), new Point(directionX * speed + width, directionY * speed),	new Point(0, 0));
 	}
 
 	private void assertShape(Point... points) {
