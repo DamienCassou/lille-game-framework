@@ -1,7 +1,7 @@
 package gameframework.motion.blocking;
 
 import java.util.Iterator;
-import gameframework.motion.Movable;
+import gameframework.motion.GameMovable;
 import gameframework.motion.SpeedVector;
 
 public interface MoveBlockerChecker {
@@ -14,6 +14,6 @@ public interface MoveBlockerChecker {
 
 	public void setMoveBlockerRules(MoveBlockerRulesApplier moveBlockerRules);
 
-	public boolean moveValidation(Movable movable,
+	public boolean moveValidation(GameMovable movable,
 			SpeedVector requestedSpeedVector);
 }

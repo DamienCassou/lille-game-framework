@@ -92,6 +92,11 @@ class Overlappable1 implements Overlappable {
 	public Point getPosition() {
 		return null;
 	}
+
+	@Override
+	public boolean isMovable() {
+		return false;
+	}
 }
 
 class Overlappable2 implements Overlappable {
@@ -104,5 +109,10 @@ class Overlappable2 implements Overlappable {
 	@Override
 	public Point getPosition() {
 		return null;
+	}
+
+	@Override
+	public boolean isMovable() {
+		return false;
 	}
 }

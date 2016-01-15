@@ -19,17 +19,18 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 	 * Constructor for the MoveStrategyKeyboard8Dir class
 	 */
 	public MoveStrategyKeyboard8Dir() {
-		super(new SpeedVector(new Point(0, 0)));
+		super(true);
+	}
+
+	public MoveStrategyKeyboard8Dir(Boolean alwaysMove) {
+		this(alwaysMove, new SpeedVector(new Point(0, 0)));
 	}
 
 	/**
-	 * Constructor for the MoveStrategyKeyboard8Dir class
-	 * 
-	 * @param speedVector
-	 *            the speedVector we want to set to the Strategy
+	 * {@link MoveStrategyKeyboard#MoveStrategyKeyboard(Boolean, SpeedVector)}
 	 */
-	public MoveStrategyKeyboard8Dir(SpeedVector speedVector) {
-		super(speedVector);
+	public MoveStrategyKeyboard8Dir(Boolean alwaysMove, SpeedVector speedVector) {
+		super(alwaysMove, speedVector);
 	}
 
 	/**
@@ -44,16 +45,16 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 		int y = speedVector.getDirection().y;
 		switch (keyCode) {
 		case KeyEvent.VK_RIGHT:
-			x++;
+			x = 1;
 			break;
 		case KeyEvent.VK_LEFT:
-			x--;
+			x = -1;
 			break;
 		case KeyEvent.VK_UP:
-			y--;
+			y = -1;
 			break;
 		case KeyEvent.VK_DOWN:
-			y++;
+			y = 1;
 			break;
 		default:
 			return;
@@ -80,25 +81,23 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 	 */
 	@Override
 	public void keyReleased(int keyCode) {
-		int x = speedVector.getDirection().x;
-		int y = speedVector.getDirection().y;
-		switch (keyCode) {
-		case KeyEvent.VK_RIGHT:
-			x--;
-			break;
-		case KeyEvent.VK_LEFT:
-			x++;
-			break;
-		case KeyEvent.VK_UP:
-			y++;
-			break;
-		case KeyEvent.VK_DOWN:
-			y--;
-			break;
-		default:
-			return;
+		if (!alwaysMove) {
+			int x = speedVector.getDirection().x;
+			int y = speedVector.getDirection().y;
+			switch (keyCode) {
+			case KeyEvent.VK_RIGHT:
+			case KeyEvent.VK_LEFT:
+				x = 0;
+				break;
+			case KeyEvent.VK_UP:
+			case KeyEvent.VK_DOWN:
+				y = 0;
+				break;
+			default:
+				return;
+			}
+			move(new Point(x, y));
 		}
-		move(new Point(x, y));
 	}
 
 }

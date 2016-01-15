@@ -19,7 +19,7 @@ public class GameMovableDriverDefaultImplTest {
 	MoveBlockerChecker moveBlockerChecker;
 	MoveStrategy moveStrategy;
 	SpeedVector strategySpeedVector = new SpeedVector(new Point(101, 213), 55);
-	Movable movable;
+	GameMovable movable;
 	SpeedVector movableSpeedVector = new SpeedVector(new Point(1, 99), 896);
 	SpeedVector acceptableSpeedVector;
 	GameMovableDriverDefaultImpl driver;
@@ -29,7 +29,7 @@ public class GameMovableDriverDefaultImplTest {
 		moveBlockerChecker = new MoveBlockerChecker() {
 
 			@Override
-			public boolean moveValidation(Movable movable,
+			public boolean moveValidation(GameMovable movable,
 					SpeedVector requestedSpeedVector) {
 				return acceptAllSpeedVectors
 						|| requestedSpeedVector.equals(acceptableSpeedVector);

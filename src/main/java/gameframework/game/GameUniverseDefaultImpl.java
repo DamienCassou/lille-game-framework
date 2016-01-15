@@ -1,10 +1,10 @@
 package gameframework.game;
 
-import gameframework.motion.Movable;
 import gameframework.motion.blocking.MoveBlocker;
 import gameframework.motion.blocking.MoveBlockerChecker;
 import gameframework.motion.overlapping.OverlapProcessor;
 import gameframework.motion.overlapping.Overlappable;
+import gameframework.motion.GameMovable;
 
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -47,8 +47,8 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 	@Override
 	public void allOneStepMoves() {
 		for (GameEntity entity : gameEntities) {
-			if (entity instanceof Movable) {
-				((Movable) entity).oneStepMove();
+			if (entity.isMovable()) {
+				((GameMovable) entity).oneStepMove();
 			}
 		}
 	}

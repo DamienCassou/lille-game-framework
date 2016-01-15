@@ -1,6 +1,5 @@
 package gameframework.gui;
 
-import gameframework.base.ObservableValue;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
@@ -17,15 +16,6 @@ public class GameWindow {
 	protected final Frame frame;
 	protected GameCanvas gameCanvas;
 	protected final GameStatusBar statusBar = new GameStatusBar();
-
-	@Deprecated
-	public GameWindow(GameCanvas gameCanvas, GameConfiguration configuration,
-			final ObservableValue<Integer> score,
-			final ObservableValue<Integer> life) {
-		this("Default Game", gameCanvas, configuration,
-				new GameStatusBarElement<>("Score:", score),
-				new GameStatusBarElement<>("Life:", life));
-	}
 	
 	public GameWindow(String gameName, GameCanvas gameCanvas, GameData data) {
 		this(gameName, gameCanvas, data.getConfiguration(),
