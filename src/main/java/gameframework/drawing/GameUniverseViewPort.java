@@ -11,4 +11,6 @@ public interface GameUniverseViewPort {
 	public void refresh();
 
 	public void setGameData(GameData data);
+	
+	public void setBackgroundImage(String path);
 }
