@@ -12,7 +12,6 @@ import gameframework.game.mocks.GameEntityMock;
 import gameframework.game.mocks.GameMovableEntityMock;
 import gameframework.game.mocks.GameMoveBlockerEntityMock;
 import gameframework.game.mocks.GameOverlappableEntityMock;
-import gameframework.motion.blocking.MoveBlocker;
 import gameframework.motion.blocking.MoveBlockerChecker;
 import gameframework.motion.overlapping.mocks.OverlapProcessorDefaultImplMock;
 

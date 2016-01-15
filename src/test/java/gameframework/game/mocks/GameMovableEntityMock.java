@@ -1,13 +1,14 @@
 package gameframework.game.mocks;
 
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import gameframework.motion.Movable;
+import gameframework.game.GameEntity;
+import gameframework.motion.GameMovable;
 import gameframework.motion.SpeedVector;
-import gameframework.motion.blocking.MoveBlocker;
 
-public class GameMovableEntityMock extends GameEntityMock implements Movable {
+public class GameMovableEntityMock extends GameMovable implements GameEntity {
 
 	protected SpeedVector speedVector;
 	protected Boolean stateStepMove = false;
@@ -44,5 +45,15 @@ public class GameMovableEntityMock extends GameEntityMock implements Movable {
 	
 	public void setStateStepMove(Boolean state) {
 		stateStepMove = state;
+	}
+
+	@Override
+	public void oneStepMoveAddedBehavior() {
+		
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		
 	}
 }

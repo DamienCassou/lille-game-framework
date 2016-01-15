@@ -17,4 +17,9 @@ public class GameMoveBlockerEntityMock implements GameEntity, MoveBlocker {
 	public void draw(Graphics g) {
 
 	}
+
+	@Override
+	public boolean isMovable() {
+		return false;
+	}
 }
