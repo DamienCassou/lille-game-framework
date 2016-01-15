@@ -10,9 +10,12 @@ import java.awt.event.KeyListener;
 public class GameCanvasDefaultImpl implements GameCanvas {
 
 	protected final Canvas canvas;
+	
+	protected final InputManager inputManager;
 
 	public GameCanvasDefaultImpl() {
 		canvas = new Canvas();
+		inputManager = new InputManager(canvas);
 	}
 
 	@Override
@@ -71,15 +74,23 @@ public class GameCanvasDefaultImpl implements GameCanvas {
 	}
 
 	@Override
+	public InputManager getInputManager() {
+		return inputManager;
+	}
+	
+	@Deprecated
+	@Override
 	public void addKeyListener(KeyListener keyStr) {
 		canvas.addKeyListener(keyStr);
 	}
 
+	@Deprecated
 	@Override
 	public void removeKeyListener(KeyListener keyStr) {
 		canvas.removeKeyListener(keyStr);
 	}
 
+	@Deprecated
 	@Override
 	public KeyListener[] getKeyListeners() {
 		return canvas.getKeyListeners();

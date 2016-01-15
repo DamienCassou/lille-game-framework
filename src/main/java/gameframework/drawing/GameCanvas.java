@@ -27,11 +27,18 @@ public interface GameCanvas {
 	void setSize(int width, int height);
 
 	void addTo(Frame frame);
+	
+	public InputManager getInputManager();
 
+	/* There is now an InputManager class that handles the listeners for the canvas. You must use it instead of the following 
+	 * KeyListener methods. */
+	@Deprecated
 	void addKeyListener(KeyListener keyStr);
 
+	@Deprecated
 	void removeKeyListener(KeyListener keyStr);
 
+	@Deprecated
 	KeyListener[] getKeyListeners();
 
 }
