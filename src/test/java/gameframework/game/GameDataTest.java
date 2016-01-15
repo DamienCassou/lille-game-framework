@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class GameDataTest {
 	
-	
 	GameConfiguration aGameConfiguration;
 	GameData aGameData;
 	Game aGame;
@@ -21,21 +20,21 @@ public class GameDataTest {
 	
 	@Test
 	public void decreaseLife(){
-		int livesDeleted = 1 ;
-		int livesExpected = aGameConfiguration.getDefaultNbLives() - livesDeleted;
+		int deletedLives = 1 ;
+		int expectedLives = aGameConfiguration.getDefaultNbLives() - deletedLives;
 		assertEquals((int)aGameData.getLife().getValue(), aGameConfiguration.getDefaultNbLives());
-		aGameData.decreaseLife(livesDeleted);
-		assertEquals(livesExpected, (int)aGameData.getLife().getValue());
+		aGameData.decreaseLife(deletedLives);
+		assertEquals(expectedLives, (int)aGameData.getLife().getValue());
 		assertTrue(aGameData.getLife().getValue() >= 0);
 	}
 	
 	@Test
 	public void increaseLife(){
-		int livesAdded = 1 ;
-		int livesExpected = aGameConfiguration.getDefaultNbLives() + livesAdded;
+		int addedLives = 1;
+		int expectedLives = aGameConfiguration.getDefaultNbLives() + addedLives;
 		assertEquals((int)aGameData.getLife().getValue(), aGameConfiguration.getDefaultNbLives());
-		aGameData.increaseLife(livesAdded);
-		assertEquals(livesExpected, (int)aGameData.getLife().getValue());
+		aGameData.increaseLife(addedLives);
+		assertEquals(expectedLives, (int)aGameData.getLife().getValue());
 	}
-
+	
 }
