@@ -68,33 +68,24 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 
 	protected void computeOneOverlap(Overlappable movableOverlappable,
 			Vector<Overlap> overlaps) {
-		Area overlappableArea, targetArea;
-		Rectangle boundingBoxTarget, boundingBoxOverlappable;
+		Area overlappableArea;
+		Rectangle boundingBoxOverlappable;
 		assert movableOverlappable instanceof Movable;
 		Shape intersectShape = intersectionComputation(movableOverlappable);
 
 		overlappableArea = new Area(intersectShape);
 		boundingBoxOverlappable = intersectShape.getBounds();
 
-		for (Overlappable targetNonMovableOverlappable : nonMovableOverlappables) {
-			if (targetNonMovableOverlappable != movableOverlappable) {
-				// NOTE I don't see how this test could fail
-				Shape targetShape;
-				targetShape = targetNonMovableOverlappable.getBoundingBox();
-				boundingBoxTarget = targetShape.getBounds();
-
-				if (boundingBoxOverlappable.intersects(boundingBoxTarget)) {
-					targetArea = new Area(targetShape);
-					targetArea.intersect(overlappableArea);
-					if (!targetArea.isEmpty()) {
-						// NOTE I don't see how this test could fail
-						overlaps.add(new Overlap(movableOverlappable,
-								targetNonMovableOverlappable));
-					}
-				}
-			}
-		}
-
+		computeOneOverlapMovables(movableOverlappable, overlaps, boundingBoxOverlappable, overlappableArea);
+		computeOneOverlapNonMovableOverlappables(movableOverlappable, overlaps, boundingBoxOverlappable, overlappableArea);
+		
+	}
+	
+	protected void computeOneOverlapMovables(Overlappable movableOverlappable,
+			Vector<Overlap> overlaps, Rectangle boundingBoxOverlappable,
+			Area overlappableArea){
+		Rectangle boundingBoxTarget;
+		Area targetArea;
 		for (Overlappable targetOverlappable : movablesTmp) {
 			if (targetOverlappable != movableOverlappable) {
 				Shape targetShape;
@@ -117,6 +108,33 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 				}
 			}
 		}
+	}
+	
+	protected void computeOneOverlapNonMovableOverlappables(Overlappable movableOverlappable,
+			Vector<Overlap> overlaps, Rectangle boundingBoxOverlappable,
+			Area overlappableArea){
+		
+		Rectangle boundingBoxTarget;
+		Area targetArea;
+		for (Overlappable targetNonMovableOverlappable : nonMovableOverlappables) {
+			if (targetNonMovableOverlappable != movableOverlappable) {
+				// NOTE I don't see how this test could fail
+				Shape targetShape;
+				targetShape = targetNonMovableOverlappable.getBoundingBox();
+				boundingBoxTarget = targetShape.getBounds();
+
+				if (boundingBoxOverlappable.intersects(boundingBoxTarget)) {
+					targetArea = new Area(targetShape);
+					targetArea.intersect(overlappableArea);
+					if (!targetArea.isEmpty()) {
+						// NOTE I don't see how this test could fail
+						overlaps.add(new Overlap(movableOverlappable,
+								targetNonMovableOverlappable));
+					}
+				}
+			}
+		}
+		
 	}
 
 	protected Shape intersectionComputation(Overlappable movableOverlappable) {
