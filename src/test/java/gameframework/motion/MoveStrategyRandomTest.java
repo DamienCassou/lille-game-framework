@@ -53,7 +53,7 @@ public class MoveStrategyRandomTest extends
 	}
 	
 	@Test(expected=IllegalStateException.class)
-	public void montest() throws IllegalStateException{
+	public void randomExceptionTest() throws IllegalStateException{
 		setRandom(5);
 		assertDown();
 	}
