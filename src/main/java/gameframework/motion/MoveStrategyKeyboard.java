@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 	protected SpeedVector speedVector;
 	protected final Boolean alwaysMove;
+	protected int keys[];
 
 	public MoveStrategyKeyboard() {
 		this(true);
@@ -31,6 +32,11 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 	public MoveStrategyKeyboard(Boolean alwaysMove, SpeedVector speedVector) {
 		this.alwaysMove = alwaysMove;
 		this.speedVector = speedVector;
+		this.keys = new int[4];
+		this.keys[0] = KeyEvent.VK_UP;
+		this.keys[1] = KeyEvent.VK_RIGHT;
+		this.keys[2] = KeyEvent.VK_DOWN;
+		this.keys[3] = KeyEvent.VK_LEFT;
 	}
 
 	@Override
@@ -43,22 +49,47 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 		keyPressed(event.getKeyCode());
 	}
 
+	public int getUpKey() {
+		return this.keys[0];
+	}
+
+	public int getRightKey() {
+		return this.keys[1];
+	}
+
+	public int getDownKey() {
+		return this.keys[2];
+	}
+
+	public int getLeftKey() {
+		return this.keys[3];
+	}
+
+	public void setUpKey(int keyCode) {
+		this.keys[0] = keyCode;
+	}
+
+	public void setRightKey(int keyCode) {
+		this.keys[1] = keyCode;
+	}
+
+	public void setDownKey(int keyCode) {
+		this.keys[2] = keyCode;
+	}
+
+	public void setLeftKey(int keyCode) {
+		this.keys[3] = keyCode;
+	}
+
 	public void keyPressed(int keyCode) {
-		switch (keyCode) {
-		case KeyEvent.VK_RIGHT:
-			goRight();
-			break;
-		case KeyEvent.VK_LEFT:
-			goLeft();
-			break;
-		case KeyEvent.VK_UP:
+		if (keyCode == this.getUpKey()) {
 			goUp();
-			break;
-		case KeyEvent.VK_DOWN:
+		} else if (keyCode == this.getRightKey()) {
+			goRight();
+		} else if (keyCode == this.getDownKey()) {
 			goDown();
-			break;
-		default:
-			stay();
+		} else if (keyCode == this.getLeftKey()) {
+			goLeft();
 		}
 	}
 
@@ -69,7 +100,13 @@ public class MoveStrategyKeyboard extends KeyAdapter implements MoveStrategy {
 
 	public void keyReleased(int keyCode) {
 		if (!alwaysMove) {
-			stay();
+			int n = this.keys.length;
+			for (int i = 0; i < n; i++) {
+				if (keyCode == this.keys[i]) {
+					stay();
+					return;
+				}
+			}
 		}
 	}
 
