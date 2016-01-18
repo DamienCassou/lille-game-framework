@@ -1,9 +1,11 @@
 package gameframework.motion.blocking;
 
 import gameframework.game.GameData;
+import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.SpeedVector;
 
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Arrays;
@@ -28,7 +30,7 @@ public class MoveBlockerCheckerDefaultImplTest {
 
 	@Before
 	public void createMovable() {
-		movable = new GameMovable() {
+		movable = new GameMovable()  {
 
 			@Override
 			public Rectangle getBoundingBox() {
@@ -79,7 +81,7 @@ public class MoveBlockerCheckerDefaultImplTest {
 			}
 		};
 	}
-
+	
 	public void assertMoveValidated() {
 		assertTrue(checker.moveValidation(movable, speedVector));
 	}
@@ -124,5 +126,6 @@ public class MoveBlockerCheckerDefaultImplTest {
 		checker.removeMoveBlocker(blocker);
 		assertMoveValidated();
 	}
+
 
 }
