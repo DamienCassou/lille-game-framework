@@ -8,8 +8,7 @@ import java.awt.event.KeyEvent;
 
 import org.junit.Test;
 
-public class MoveStrategyKeyboardTest extends
-		MoveStrategyTest<MoveStrategyKeyboard> {
+public class MoveStrategyKeyboardTest extends MoveStrategyConfigurableKeyboardTest {
 
 	@Override
 	protected MoveStrategyKeyboard createStrategy() {
