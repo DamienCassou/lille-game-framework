@@ -33,34 +33,33 @@ public class MoveStrategyKeyboard8Dir extends MoveStrategyKeyboard {
 		super(alwaysMove, speedVector);
 	}
 
-	/**
-	 * Processes the direction according to the key pressed
-	 * 
-	 * @param keyCode
-	 *            the code of the key pressed
-	 */
 	@Override
-	public void keyPressed(int keyCode) {
-		int x = speedVector.getDirection().x;
+	public void goRight() {
 		int y = speedVector.getDirection().y;
-		switch (keyCode) {
-		case KeyEvent.VK_RIGHT:
-			x = 1;
-			break;
-		case KeyEvent.VK_LEFT:
-			x = -1;
-			break;
-		case KeyEvent.VK_UP:
-			y = -1;
-			break;
-		case KeyEvent.VK_DOWN:
-			y = 1;
-			break;
-		default:
-			return;
-		}
-		move(new Point(x, y));
+		speedVector.setDirection(new Point(1, y));
+	}
 
+	@Override
+	public void goLeft() {
+		int y = speedVector.getDirection().y;
+		speedVector.setDirection(new Point(-1, y));
+	}
+
+	@Override
+	public void goUp() {
+		int x = speedVector.getDirection().x;
+		speedVector.setDirection(new Point(x, -1));
+	}
+
+	@Override
+	public void goDown() {
+		int x = speedVector.getDirection().x;
+		speedVector.setDirection(new Point(x, 1));
+	}
+
+	@Override
+	public void stay() {
+		return;
 	}
 
 	/**
