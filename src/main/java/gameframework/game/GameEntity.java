@@ -1,8 +1,7 @@
 package gameframework.game;
 
-import java.awt.Graphics;
+import gameframework.drawing.Drawable;
 
-public interface GameEntity {
-	public void draw(Graphics g);
+public interface GameEntity extends Drawable {
 	public boolean isMovable();
 }

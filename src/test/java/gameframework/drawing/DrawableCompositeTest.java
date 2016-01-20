@@ -24,6 +24,11 @@ public class DrawableCompositeTest {
 			public void draw(Graphics g) {
 				drawable1IsDrawn++;
 			}
+
+			@Override
+			public void draw(Graphics g, int x, int y) {
+				drawable1IsDrawn++;
+			}
 		};
 	}
 
@@ -33,6 +38,11 @@ public class DrawableCompositeTest {
 
 			@Override
 			public void draw(Graphics g) {
+				drawable2IsDrawn++;
+			}
+
+			@Override
+			public void draw(Graphics g, int x, int y) {
 				drawable2IsDrawn++;
 			}
 		};

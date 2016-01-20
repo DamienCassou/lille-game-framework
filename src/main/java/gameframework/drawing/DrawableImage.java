@@ -53,6 +53,11 @@ public class DrawableImage implements Drawable {
 	public void draw(Graphics graphics) {
 		canvas.drawImage(graphics, image, 0, 0);
 	}
+	
+	@Override
+	public void draw(Graphics graphics, int x, int y) {
+		canvas.drawImage(graphics, image, x, y);
+	}
 
 	public int getWidth() {
 		return getImage().getWidth(null);
