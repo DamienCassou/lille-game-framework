@@ -18,15 +18,6 @@ public class GameWindow {
 	protected final GameCanvas gameCanvas;
 	protected final GameStatusBar statusBar = new GameStatusBar();
 	protected boolean showStatusBar = true;
-
-	@Deprecated
-	public GameWindow(GameCanvas gameCanvas, GameConfiguration configuration,
-			final ObservableValue<Integer> score,
-			final ObservableValue<Integer> life) {
-		this("Default Game", gameCanvas, configuration,
-				new GameStatusBarElement<>("Score:", score),
-				new GameStatusBarElement<>("Life:", life));
-	}
 	
 	/**
 	 * add a new status bar element to the status bar
