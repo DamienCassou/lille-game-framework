@@ -77,10 +77,24 @@ public class GameWindow {
 	}
 	
 	/**
+	 * hide the status bar
+	 */
+	public void hideStatusBar() {
+		showStatusBar(false);
+	}
+	
+	/**
+	 * show the status bar
+	 */
+	public void showStatusBar() {
+		showStatusBar(true);
+	}
+	
+	/**
 	 * Shows or hide the status bar depending of the value of parameter showStatusBar.
 	 * @param showStatusBar if true - shows the status bar; otherwise, hides the status bar.
 	 */
-	public void showStatusBar(boolean showStatusBar) {
+	private void showStatusBar(boolean showStatusBar) {
 		// "showStatusBar" attribute must be set in case of this function is called before "createGUI".
 		// Otherwise, it doesn't hide the status bar correctly.
 		this.showStatusBar = showStatusBar;
