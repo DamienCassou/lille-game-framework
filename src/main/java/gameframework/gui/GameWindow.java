@@ -14,9 +14,9 @@ import java.awt.Component;
 
 public class GameWindow {
 
-	protected Frame frame;
-	protected GameCanvas gameCanvas;
-	protected GameStatusBar statusBar = new GameStatusBar();
+	protected final Frame frame;
+	protected final GameCanvas gameCanvas;
+	protected final GameStatusBar statusBar = new GameStatusBar();
 	protected boolean showStatusBar = true;
 
 	@Deprecated
