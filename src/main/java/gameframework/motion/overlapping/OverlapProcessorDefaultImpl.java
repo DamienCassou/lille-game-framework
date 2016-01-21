@@ -52,7 +52,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 	}
 
 	// for optimization purpose : prevents to compute two times the overlaps
-	private List<Overlappable> movablesTmp;
+	protected List<Overlappable> movablesTmp;
 
 	@Override
 	public void processOverlapsAll() {
@@ -98,7 +98,16 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 		}
 	}
 
-	private void overlapRectangle(Overlappable movableOverlappable, Vector<Overlap> overlaps, 
+	
+	/**
+	 * Add in a list an Overlap's instance if the target is intersected by the object Overlappable in first parameter
+	 * 
+	 * @param movableOverlappable the object you want know if there are an intersection with the last parameter
+	 * @param overlaps list of Overlap's object
+	 * @param targetNonMovableOverlappable the object to create Overlap in a list, the last parameter is created by its
+	 * @param targetShape the second object you want know if there are an intersection with the first parameter
+	 */
+	protected void overlapRectangle(Overlappable movableOverlappable, Vector<Overlap> overlaps, 
 			Overlappable targetNonMovableOverlappable, Shape targetShape) {
 
 		Shape intersectShape = intersectionComputation(movableOverlappable);
