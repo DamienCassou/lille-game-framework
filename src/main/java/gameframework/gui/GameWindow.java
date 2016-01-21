@@ -16,8 +16,8 @@ public class GameWindow {
 
 	protected Frame frame;
 	protected GameCanvas gameCanvas;
-	protected final GameStatusBar statusBar = new GameStatusBar();
-
+	protected GameStatusBar statusBar = new GameStatusBar();
+	protected boolean showStatusBar = true;
 
 	@Deprecated
 	public GameWindow(GameCanvas gameCanvas, GameConfiguration configuration,
@@ -26,6 +26,23 @@ public class GameWindow {
 		this("Default Game", gameCanvas, configuration,
 				new GameStatusBarElement<>("Score:", score),
 				new GameStatusBarElement<>("Life:", life));
+	}
+	
+	/**
+	 * add a new status bar element to the status bar
+	 * @param elementName the name of the element
+	 * @param observableValue the observable value of the element
+	 */
+	public void addStatusBarElement(String elementName, ObservableValue<?> observableValue) {
+		addStatusBarElement(new GameStatusBarElement<>(elementName, observableValue));
+	}
+	
+	/**
+	 * add the status bar element to the game status bar.
+	 * @param gameStatusBarElement the statusBarElement to add.
+	 */
+	public void addStatusBarElement(GameStatusBarElement<?> gameStatusBarElement) {
+		statusBar.add(gameStatusBarElement);
 	}
 	
 	/**
@@ -38,22 +55,6 @@ public class GameWindow {
 				new GameStatusBarElement<>("Score:", data.getScore()),
 				new GameStatusBarElement<>("Life:", data.getLife()));
 	}
-	
-	/**
-	 * @param gameName the name of the window
-	 * @param gameCanvas the canvas (View in MVC design pattern)
-	 * @param data the game data (Model in MVC design pattern)
-	 * @param enableStatusBar true or false to enable or disable Game Status Bar
-	 */
-	public GameWindow(String gameName, GameCanvas gameCanvas, GameData data, boolean enableStatusBar) {
-		if (enableStatusBar) {
-			init(gameName, gameCanvas, data.getConfiguration(),
-					new GameStatusBarElement<>("Score:", data.getScore()),
-					new GameStatusBarElement<>("Life:", data.getLife()));
-		} else {
-			init(gameName, gameCanvas, data.getConfiguration());
-		}
-	}
 
 	/**
 	 * @param gameName the name of the window
@@ -62,19 +63,6 @@ public class GameWindow {
 	 * @param elementsStatusBar list of element(s) for the status bar
 	 */
 	public GameWindow(String gameName, GameCanvas gameCanvas,
-			GameConfiguration configuration,
-			GameStatusBarElement<?>... elementsStatusBar) {
-		init(gameName, gameCanvas, configuration, elementsStatusBar);
-	}
-	
-	/**
-	 * Initialize the game window
-	 * @param gameName the name of the window
-	 * @param gameCanvas the canvas (View in MVC design pattern)
-	 * @param configuration the game configuration
-	 * @param elementsStatusBar list of element(s) for the status bar
-	 */
-	private void init(String gameName, GameCanvas gameCanvas,
 			GameConfiguration configuration,
 			GameStatusBarElement<?>... elementsStatusBar) {
 		if (gameCanvas == null) {
@@ -87,6 +75,17 @@ public class GameWindow {
 				configuration.getSpriteSize() * configuration.getNbColumns(), 
 				configuration.getSpriteSize() * configuration.getNbRows());
 	}
+	
+	/**
+	 * Shows or hide the status bar depending of the value of parameter showStatusBar.
+	 * @param showStatusBar if true - shows the status bar; otherwise, hides the status bar.
+	 */
+	public void showStatusBar(boolean showStatusBar) {
+		// "showStatusBar" attribute must be set in case of this function is called before "createGUI".
+		// Otherwise, it doesn't hide the status bar correctly.
+		this.showStatusBar = showStatusBar;
+		statusBar.getContainer().setVisible(showStatusBar);
+	}
 
 	/**
 	 * Create the main frame of the game.
@@ -98,7 +97,7 @@ public class GameWindow {
 		frame.add(this.statusBar.getContainer(), BorderLayout.NORTH);
 		frame.pack();
 		frame.setVisible(true);
-
+		showStatusBar(showStatusBar);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {

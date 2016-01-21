@@ -8,11 +8,17 @@ import gameframework.motion.overlapping.OverlapProcessor;
 import gameframework.motion.overlapping.OverlapRulesApplier;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GameData {
 
 	protected final GameCanvas canvas;
+	/**
+	 * Map of observable values to save any needed data.
+	 */
+	protected final Map<String, ObservableValue<?>> observableValues;
 	protected final ObservableValue<Integer> score;
 	protected final ObservableValue<Integer> life;
 	protected final GameConfiguration configuration;
@@ -28,6 +34,7 @@ public class GameData {
 		this.configuration = configuration;
 
 		canvas = configuration.createCanvas();
+		observableValues = new HashMap<>();
 		score = new ObservableValue<Integer>(0);
 		life = new ObservableValue<Integer>(configuration.getDefaultNbLives());
 		endOfGame = new ObservableValue<Boolean>(false);
@@ -47,6 +54,14 @@ public class GameData {
 		overlapProcessor.setOverlapRules(overlapRulesApplier);
 
 
+	}
+	
+	public ObservableValue<?> getObservableValue(String key) {
+		return this.observableValues.get(key);
+	}
+	
+	public void setObservableValue(String key, ObservableValue<?> value) {
+		this.observableValues.put(key, value);
 	}
 
 	public GameConfiguration getConfiguration() {
