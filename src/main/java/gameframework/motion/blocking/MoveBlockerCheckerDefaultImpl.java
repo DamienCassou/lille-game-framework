@@ -7,6 +7,7 @@ import gameframework.motion.SpeedVector;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Area;
+import java.util.Iterator;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -27,6 +28,11 @@ public class MoveBlockerCheckerDefaultImpl implements MoveBlockerChecker {
 	@Override
 	public void removeMoveBlocker(MoveBlocker p) {
 		moveBlockers.remove(p);
+	}
+	
+	@Override
+	public Iterator<MoveBlocker> getMoveBlockerIterator() {
+		return this.moveBlockers.iterator();
 	}
 
 	@Override

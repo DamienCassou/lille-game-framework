@@ -1,6 +1,7 @@
 package gameframework.game;
 
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * stores all the gameframework.game entities of a gameframework.game level:
