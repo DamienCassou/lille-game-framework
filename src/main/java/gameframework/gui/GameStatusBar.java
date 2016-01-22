@@ -11,18 +11,21 @@ import javax.swing.JPanel;
 public class GameStatusBar implements Observer {
 
 	protected final ArrayList<GameStatusBarElement<?>> elements = new ArrayList<GameStatusBarElement<?>>();
-
+	protected Container container;
+	
 	public Container getContainer() {
-		JPanel container = new JPanel();
-		GridBagLayout layout = new GridBagLayout();
-		container.setLayout(layout);
-
-		for (GameStatusBarElement<?> element : elements) {
-			container.add(element.getElementText());
-			container.add(element.getElementValue());
+		if(container == null) {
+			container = new JPanel();
+			GridBagLayout layout = new GridBagLayout();
+			container.setLayout(layout);
+	
+			for (GameStatusBarElement<?> element : elements) {
+				container.add(element.getElementText());
+				container.add(element.getElementValue());
+			}
+	
+			update();
 		}
-
-		update();
 		return container;
 	}
 

@@ -67,25 +67,19 @@ public class GameWindow {
 				configuration.getSpriteSize() * configuration.getNbRows());
 	}
 	
-	/**
-	 * hide the status bar
-	 */
 	public void hideStatusBar() {
-		showStatusBar(false);
+		setStatusBarVisibility(false);
 	}
 	
-	/**
-	 * show the status bar
-	 */
 	public void showStatusBar() {
-		showStatusBar(true);
+		setStatusBarVisibility(true);
 	}
 	
 	/**
 	 * Shows or hide the status bar depending of the value of parameter showStatusBar.
 	 * @param showStatusBar if true - shows the status bar; otherwise, hides the status bar.
 	 */
-	private void showStatusBar(boolean showStatusBar) {
+	protected void setStatusBarVisibility(boolean showStatusBar) {
 		// "showStatusBar" attribute must be set in case of this function is called before "createGUI".
 		// Otherwise, it doesn't hide the status bar correctly.
 		this.showStatusBar = showStatusBar;
@@ -102,7 +96,7 @@ public class GameWindow {
 		frame.add(this.statusBar.getContainer(), BorderLayout.NORTH);
 		frame.pack();
 		frame.setVisible(true);
-		showStatusBar(showStatusBar);
+		setStatusBarVisibility(showStatusBar);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -112,8 +106,8 @@ public class GameWindow {
 	}
 
 	/**
-	 * @param comp
-	 * @param layout
+	 * @param comp component to add
+	 * @param layout the layout in which you want to add the component
 	 */
 	public void add(Component comp, String layout) {
 		this.frame.add(comp, layout);
