@@ -5,6 +5,7 @@ import gameframework.motion.blocking.MoveBlockerChecker;
 import gameframework.motion.overlapping.OverlapProcessor;
 import gameframework.motion.overlapping.Overlappable;
 import gameframework.motion.GameMovable;
+import gameframework.motion.SpeedVector;
 
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -44,7 +45,13 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 	public void allOneStepMoves() {
 		for (GameEntity entity : gameEntities) {
 			if (entity.isMovable()) {
-				((GameMovable) entity).oneStepMove();
+				GameMovable movable = (GameMovable) entity;
+				SpeedVector vector = movable.getSpeedVector();
+				if (getMoveBlockerChecker().moveValidation(movable, vector)) {
+					movable.oneStepMove();
+				} else {
+					movable.onMoveFailure(data.getMoveBlockerRulesApplier().getLastBlockingBlocker());
+				}
 			}
 		}
 	}

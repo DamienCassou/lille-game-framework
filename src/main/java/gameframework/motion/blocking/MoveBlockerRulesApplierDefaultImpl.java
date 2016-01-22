@@ -2,7 +2,9 @@ package gameframework.motion.blocking;
 
 import gameframework.game.GameData;
 import gameframework.motion.GameMovable;
+import gameframework.motion.IllegalMoveException;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Vector;
 
@@ -31,9 +33,14 @@ import java.util.Vector;
  * 
  */
 public class MoveBlockerRulesApplierDefaultImpl implements
-		MoveBlockerRulesApplier {
+MoveBlockerRulesApplier {
 
 	protected GameData gameData;
+	
+	/**
+	 * The last moveBlocker in date to provoke a blocking rule that forbid a movement 
+	 */
+	protected MoveBlocker lastBlockingBlocker = null;
 
 	@Override
 	public boolean moveValidationProcessing(GameMovable movable,
@@ -41,20 +48,23 @@ public class MoveBlockerRulesApplierDefaultImpl implements
 		for (MoveBlocker moveBlocker : blockers) {
 			try {
 				moveBlockerRuleApply(movable, moveBlocker);
-			} catch (Exception e) {
+			} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException exception) {
 				/*
 				 * by default the moveBlocker implies the invalidation of the
 				 * move (in particular, if no method has been found by
 				 * moveBlockerRuleApply)
 				 */
+				lastBlockingBlocker = moveBlocker;
+				return false;
+			} catch (Exception exception) {
+				exception.printStackTrace();
 				return false;
 			}
 		}
 		return true;
 	}
 
-	private void moveBlockerRuleApply(GameMovable movable, MoveBlocker blocker)
-			throws Exception {
+	protected void moveBlockerRuleApply(GameMovable movable, MoveBlocker blocker) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 		Method m = null;
 		m = (getClass()).getMethod("moveBlockerRule", movable.getClass(),
 				blocker.getClass());
@@ -64,5 +74,10 @@ public class MoveBlockerRulesApplierDefaultImpl implements
 	@Override
 	public void setGameData(GameData gameData) {
 		this.gameData = gameData;
+	}
+	
+	@Override
+	public MoveBlocker getLastBlockingBlocker() {
+		return lastBlockingBlocker;
 	}
 }

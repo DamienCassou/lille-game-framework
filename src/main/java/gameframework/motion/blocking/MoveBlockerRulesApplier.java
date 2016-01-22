@@ -9,4 +9,6 @@ public interface MoveBlockerRulesApplier {
 	public boolean moveValidationProcessing(GameMovable m, Vector<MoveBlocker> obs);
 
 	public void setGameData(GameData gameData);
+
+	public MoveBlocker getLastBlockingBlocker();
 }
