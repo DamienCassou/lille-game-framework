@@ -130,7 +130,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <project.build.jacoco.coveredRatio>0.5</project.build.jacoco.coveredRatio>
+    <project.build.jacoco.coveredRatio>0.62</project.build.jacoco.coveredRatio>
   </properties>
 
 </project>
