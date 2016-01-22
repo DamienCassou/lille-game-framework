@@ -10,30 +10,54 @@ import java.awt.geom.Area;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+/**
+ * Default implementation of the MoveBLockerChecker interface. For more informations,
+ * please refer to the MoveBlockerChecker interface.
+ */
 public class MoveBlockerCheckerDefaultImpl implements MoveBlockerChecker {
-	private ConcurrentLinkedQueue<MoveBlocker> moveBlockers;
-	private MoveBlockerRulesApplier moveBlockerRuleApplier;
+	/**
+	 * A queue containing all the moveBlockers to check for when verifying if a
+	 * GameMovable can move
+	 */
+	protected ConcurrentLinkedQueue<MoveBlocker> moveBlockers;
+
+	/**
+	 * The rule applier used when checking if a GameMovable can move
+	 */
+	protected MoveBlockerRulesApplier moveBlockerRuleApplier;
 
 	public MoveBlockerCheckerDefaultImpl() {
 		moveBlockers = new ConcurrentLinkedQueue<MoveBlocker>();
 		this.moveBlockerRuleApplier = new MoveBlockerRulesApplierDefaultImpl();
 	}
 
+	/**
+	 * @see gameframework.motion.blocking.MoveBlockerChecker#addMoveBlocker(gameframework.motion.blocking.MoveBlocker)
+	 */
 	@Override
 	public void addMoveBlocker(MoveBlocker p) {
 		moveBlockers.add(p);
 	}
 
+	/**
+	 * @see gameframework.motion.blocking.MoveBlockerChecker#removeMoveBlocker(gameframework.motion.blocking.MoveBlocker)
+	 */
 	@Override
 	public void removeMoveBlocker(MoveBlocker p) {
 		moveBlockers.remove(p);
 	}
 
+	/**
+	 * @see gameframework.motion.blocking.MoveBlockerChecker#setMoveBlockerRules(gameframework.motion.blocking.MoveBlockerRulesApplier)
+	 */
 	@Override
 	public void setMoveBlockerRules(MoveBlockerRulesApplier moveBlockerRules) {
 		this.moveBlockerRuleApplier = moveBlockerRules;
 	}
 
+	/**
+	 * @see gameframework.motion.blocking.MoveBlockerChecker#moveValidation(gameframework.motion.GameMovable, gameframework.motion.SpeedVector)
+	 */
 	@Override
 	public boolean moveValidation(GameMovable m, SpeedVector mov) {
 		Shape intersectShape = IntersectTools.getIntersectShape(m, mov);
