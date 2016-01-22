@@ -18,7 +18,7 @@ public class MoveBlockerCheckerDefaultImpl implements MoveBlockerChecker {
 		moveBlockers = new ConcurrentLinkedQueue<MoveBlocker>();
 		this.moveBlockerRuleApplier = new MoveBlockerRulesApplierDefaultImpl();
 	}
-
+	
 	@Override
 	public void addMoveBlocker(MoveBlocker p) {
 		moveBlockers.add(p);

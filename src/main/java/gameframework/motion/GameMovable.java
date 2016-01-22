@@ -1,6 +1,7 @@
 package gameframework.motion;
 
 import gameframework.base.ObjectWithBoundedBox;
+import gameframework.motion.blocking.MoveBlocker;
 
 import java.awt.Point;
 
@@ -56,4 +57,10 @@ public abstract class GameMovable implements ObjectWithBoundedBox {
 	public boolean isMovable(){
 		return true;
 	}
+
+	/**
+	 * This method is called when this movable collides with a move blocker.
+	 * @param lastBlockingBlocker the blocker the player collided with
+	 */
+	public void onMoveFailure(MoveBlocker lastBlockingBlocker) {	}
 }

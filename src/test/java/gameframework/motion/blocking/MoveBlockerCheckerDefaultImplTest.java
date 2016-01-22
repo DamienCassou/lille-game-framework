@@ -57,6 +57,10 @@ public class MoveBlockerCheckerDefaultImplTest {
 			@Override
 			public void setGameData(GameData gameData) {
 			}
+			
+			public MoveBlocker getLastBlockingBlocker() {
+				return null;
+			}
 		});
 	}
 
