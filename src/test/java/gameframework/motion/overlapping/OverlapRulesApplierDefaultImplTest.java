@@ -1,7 +1,5 @@
 package gameframework.motion.overlapping;
 
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.Arrays;
 import java.util.Vector;
 
