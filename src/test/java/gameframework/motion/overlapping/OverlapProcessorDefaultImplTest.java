@@ -41,26 +41,33 @@ public class OverlapProcessorDefaultImplTest {
 	
 	@Test
 	public void intersectionBetweenOverlapSObjectTest() {
-		int width1 = 10;
-		int height1 = 20;
-		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1, height1);
-		Overlappable overlappable2 = createOverlappable(1,1,width1, height1);
-		Shape targetShape = overlappable2.getBoundingBox();
-		Vector<Overlap> overlaps = new Vector<Overlap>();
-		this.overlapProcessor.overlapRectangle(overlappable1, overlaps, overlappable2, targetShape);
-		assertSame(1, overlaps.size());
+		Vector<Overlap> overlaps = doOverlapRectangle(1);
+		assertEquals(1, overlaps.size());
 	}
+	
 	
 	@Test
 	public void NoIntersectionBetweenOverlapSObjectTest() {
+		Vector<Overlap> overlaps = doOverlapRectangle(30);
+		assertEquals(0, overlaps.size());
+	}
+
+	/**
+	 * return a vector containing Overlap according to the x parameter if there are an intersection 
+	 * else return a empty vector
+	 * 
+	 * @param x the coordinate (x,x) of the second Overlap 
+	 * @return a Vector containing Overlap
+	 */
+	protected Vector<Overlap> doOverlapRectangle(int x) {
 		int width1 = 10;
 		int height1 = 20;
 		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1, height1);
-		Overlappable overlappable2 = createOverlappable(30,30,width1, height1);
+		Overlappable overlappable2 = createOverlappable(x,x,width1, height1);
 		Shape targetShape = overlappable2.getBoundingBox();
 		Vector<Overlap> overlaps = new Vector<Overlap>();
 		this.overlapProcessor.overlapRectangle(overlappable1, overlaps, overlappable2, targetShape);
-		assertSame(0, overlaps.size());
+		return overlaps;
 	}
 
 	@Test
