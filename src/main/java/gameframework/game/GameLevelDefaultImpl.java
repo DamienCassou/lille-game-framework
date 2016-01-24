@@ -62,6 +62,7 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 		}
 	}
 
+	@Override
 	public void end() {
 		stopGameLoop = true;
 	}
