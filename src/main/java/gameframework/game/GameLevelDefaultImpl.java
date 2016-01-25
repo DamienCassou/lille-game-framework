@@ -67,7 +67,4 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 		stopGameLoop = true;
 	}
 
-	protected void overlap_handler() {
-	}
-
 }
