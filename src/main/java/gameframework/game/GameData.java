@@ -33,8 +33,7 @@ public class GameData {
 		endOfGame = new ObservableValue<Boolean>(false);
 		levels = new ArrayList<GameLevel>();
 
-		universe = configuration.createUniverse();
-		universe.setGameData(this);
+		universe = configuration.createUniverse(this);
 
 		moveBlockerRulesApplier = configuration.createMoveBlockerRulesApplier();
 		moveBlockerRulesApplier.setGameData(this);
