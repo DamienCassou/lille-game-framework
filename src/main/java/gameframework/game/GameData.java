@@ -64,7 +64,13 @@ public class GameData {
 	}
 	
 	public void increaseLife(int lifeToAdd) {
-		life.setValue(life.getValue() + lifeToAdd);
+		if (lifeToAdd > 0)	{
+			life.setValue(life.getValue() + lifeToAdd);
+		}
+		else	{
+			System.out.println("Try decreasing instead of addind negative value");
+		}
+		
 	}
 	
 	public void decreaseLife(int lifeToRemove) {

@@ -48,7 +48,10 @@ public class GameDataTest {
 		
 		// This should not be possible but still testing
 		gd.increaseLife(-25);
-		assertEquals(new ObservableValue<Integer>(2).getValue(), gd.getLife().getValue());
+		assertEquals(new ObservableValue<Integer>(27).getValue(), gd.getLife().getValue());
+		
+		// To keep tests good running
+		gd.decreaseLife(25);
 	}
 	
 	@Test
