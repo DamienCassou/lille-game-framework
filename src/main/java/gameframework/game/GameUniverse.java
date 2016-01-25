@@ -19,6 +19,4 @@ public interface GameUniverse {
 
 	public void processAllOverlaps();
 	
-	public void setGameData(GameData data);
-
 }
