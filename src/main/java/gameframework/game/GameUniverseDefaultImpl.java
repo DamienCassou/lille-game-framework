@@ -6,6 +6,7 @@ import gameframework.motion.overlapping.OverlapProcessor;
 import gameframework.motion.overlapping.Overlappable;
 import gameframework.motion.GameMovable;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -34,15 +35,19 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 		}
 	}
 
-	@Override
-	public synchronized void removeGameEntity(GameEntity gameEntity) {
-		gameEntities.remove(gameEntity);
+	protected synchronized void removeOverlappableAndBlockerGameEntity(GameEntity gameEntity) {
 		if (gameEntity instanceof Overlappable) {
 			getOverlapProcessor().removeOverlappable((Overlappable) gameEntity);
 		}
 		if (gameEntity instanceof MoveBlocker) {
 			getMoveBlockerChecker().removeMoveBlocker((MoveBlocker) gameEntity);
 		}
+	}
+
+	@Override
+	public synchronized void removeGameEntity(GameEntity gameEntity) {
+		gameEntities.remove(gameEntity);
+		this.removeOverlappableAndBlockerGameEntity(gameEntity);
 	}
 
 	@Override
@@ -67,4 +72,16 @@ public class GameUniverseDefaultImpl implements GameUniverse {
 		return data.getOverlapProcessor();
 	}
 
+	@Override
+	public synchronized void removeAllGameEntities() {
+		for (GameEntity gameEntity : gameEntities)
+			removeOverlappableAndBlockerGameEntity(gameEntity);
+		this.gameEntities.clear();
+	}
+
+	@Override
+	public synchronized void removeGameEntities(Collection<GameEntity> gameEntities) {
+		for (GameEntity gameEntity : gameEntities)
+			removeGameEntity(gameEntity);
+	}
 }
