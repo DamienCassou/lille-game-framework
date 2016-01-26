@@ -16,7 +16,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 
 public class OverlapProcessorDefaultImplTest {
 
@@ -40,24 +39,24 @@ public class OverlapProcessorDefaultImplTest {
 	}
 	
 	@Test
-	public void intersectionBetweenOverlapSObjectTest() {
+	public void intersectionBetweenOverlapObjectTest() {
 		Vector<Overlap> overlaps = doOverlapRectangle(1);
 		assertEquals(1, overlaps.size());
 	}
 	
 	
 	@Test
-	public void NoIntersectionBetweenOverlapSObjectTest() {
+	public void noIntersectionBetweenOverlapObjectTest() {
 		Vector<Overlap> overlaps = doOverlapRectangle(30);
 		assertEquals(0, overlaps.size());
 	}
 
 	/**
-	 * return a vector containing Overlap according to the x parameter if there are an intersection 
-	 * else return a empty vector
+	 * return a vector containing Overlap if there are an intersection between two objects, defined in the test code with the parameter,
+	 * else return an empty vector
 	 * 
-	 * @param x the coordinate (x,x) of the second Overlap 
-	 * @return a Vector containing Overlap
+	 * @param x the coordinate (x,x) of the first corner of the second Overlap 
+	 * @return a Vector containing Overlap if there are an intersection between two objects else return an empty vector
 	 */
 	protected Vector<Overlap> doOverlapRectangle(int x) {
 		int width1 = 10;
@@ -87,7 +86,7 @@ public class OverlapProcessorDefaultImplTest {
 		this.overlapProcessor.addOverlappable(overlappable4);
 		this.overlapProcessor.movablesTmp = new Vector<Overlappable>(this.overlapProcessor.movableOverlappables);
 		this.overlapProcessor.computeOneOverlap(overlappable1, overlaps);
-		assertSame(2, overlaps.size());
+		assertEquals(2, overlaps.size());
 	}
 	
 	@Test
