@@ -20,10 +20,12 @@ public class MoveStrategyRandom implements MoveStrategy {
 		this.currentMove = new SpeedVector(new Point(0, 0), speed);
 	}
 	
+	@Override
 	public int getSpeed() {
 		return this.currentMove.getSpeed();
 	}
 	
+	@Override
 	public void setSpeed(int speed) {
 		this.currentMove.setSpeed(speed);
 	}
