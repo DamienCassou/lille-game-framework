@@ -51,6 +51,12 @@ public class MoveStrategyRandomTest extends
 		assertDown();
 	}
 	
+	@Test(expected=IllegalStateException.class)
+	public void randomExceptionTest() throws IllegalStateException{
+		setRandom(5);
+		assertDown();
+	}
+	
 	@Test
 	public void goodSpeed() throws Exception {
 

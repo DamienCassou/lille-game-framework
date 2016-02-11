@@ -1,5 +1,6 @@
 package gameframework.game;
 
+import java.util.Collection;
 import java.util.Iterator;
 
 /**
@@ -18,7 +19,8 @@ public interface GameUniverse {
 	public void allOneStepMoves();
 
 	public void processAllOverlaps();
-	
-	public void setGameData(GameData data);
 
+	public void removeAllGameEntities();
+
+	public void removeGameEntities(Collection<GameEntity> gameEntities);
 }

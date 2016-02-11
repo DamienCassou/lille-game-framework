@@ -54,39 +54,51 @@ public class IntersectTools {
 
 			// If it is not in the first quarter of the plane
 			if (!((dX < 0) && (dY > 0))) {
-				((Polygon) intersectShape).addPoint(x1, y1);
-				((Polygon) intersectShape).addPoint(x2 + dX * v, y2 + dY * v);
+				addPointInIntersectShape(x1, y1, x2 + dX * v, y2 + dY * v, (Polygon)intersectShape);
 			}
 			// If it is not in the fourth quarter of the plane
 			if (!((dX > 0) && (dY < 0))) {
-				((Polygon) intersectShape).addPoint(x2, y2);
-				((Polygon) intersectShape).addPoint(x1 + dX * v, y1 + dY * v);
+				addPointInIntersectShape(x2, y2, x1 + dX * v, y1 + dY * v, (Polygon)intersectShape);
 			}
 			// If it is not in the third quarter of the plane
 			if (!((dX < 0) && (dY < 0))) {
-				((Polygon) intersectShape).addPoint(x1, y2);
-				((Polygon) intersectShape).addPoint(x2 + dX * v, y1 + dY * v);
+				addPointInIntersectShape(x1, y2, x2 + dX * v, y1 + dY * v, (Polygon)intersectShape);
 			}
 			// If it is not in the second quarter of the plane
 			if (!((dX > 0) && (dY > 0))) {
-				((Polygon) intersectShape).addPoint(x2, y1);
-				((Polygon) intersectShape).addPoint(x1 + dX * v, y2 + dY * v);
+				addPointInIntersectShape(x2, y1, x1 + dX * v, y2 + dY * v, (Polygon)intersectShape);
 			}
-		}
-		// And now the axis
-		else if ((dX == 0) && (dY > 0)) {
-			intersectShape = new Rectangle(x1, y1, x2 - x1, y2 - y1 + dY * v);
-		} else if (dY < 0) { // we know that dX == 0
-			intersectShape = new Rectangle(x1, y1 + dY * v, x2 - x1, y2 - (y1 + dY * v));
-		} else if (dX > 0) { // we know that dY == 0
-			intersectShape = new Rectangle(x1, y1, x2 - x1 + dX * v, y2 - y1);
-		} else if (dX < 0) { // we know that dY == 0
-			intersectShape = new Rectangle(x1 + dX * v, y1, x2 - (x1 + dX * v), y2 - y1);
+			return intersectShape;
 		} else {
-			intersectShape = new Rectangle(x1, y1, x2 - x1, y2 - y1);
+			// And now the axis
+			int a = x1, b = y1, c = x2, d = y2;
+			if ((dX == 0) && (dY > 0)) {
+				c = x2 - x1;
+				d = y2 - y1 + dY * v;
+			} else if (dY < 0) { // we know that dX == 0
+				b = y1 + dY * v;
+				c = x2 - x1;
+				d = y2 - (y1 + dY * v);
+			} else if (dX > 0) { // we know that dY == 0
+				c = x2 - x1 + dX * v;
+				d = y2 - y1;
+			} else if (dX < 0) { // we know that dY == 0
+				a = x1 + dX * v;
+				c = x2 - (x1 + dX * v);
+				d = y2 - y1;
+			} else {
+				c = x2 - x1;
+				d = y2 - y1;
+			}
+			intersectShape = new Rectangle (a,b,c,d);
+			return intersectShape;
 		}
-		return intersectShape;
 
+	}
+	
+	protected static void addPointInIntersectShape(int x1, int y1, int x2, int y2, Polygon intersectShape) {
+		((Polygon) intersectShape).addPoint(x1, y1);
+		((Polygon) intersectShape).addPoint(x2, y2);
 	}
 
 }

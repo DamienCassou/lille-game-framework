@@ -43,6 +43,7 @@ public class GameWindow {
 		gameCanvas.addTo(frame);
 		frame.add(this.statusBar.getContainer(), BorderLayout.NORTH);
 		frame.pack();
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 
 		frame.addWindowListener(new WindowAdapter() {

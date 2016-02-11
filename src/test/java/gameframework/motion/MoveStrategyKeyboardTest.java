@@ -8,8 +8,7 @@ import java.awt.event.KeyEvent;
 
 import org.junit.Test;
 
-public class MoveStrategyKeyboardTest extends
-		MoveStrategyTest<MoveStrategyKeyboard> {
+public class MoveStrategyKeyboardTest extends MoveStrategyConfigurableKeyboardTest {
 
 	@Override
 	protected MoveStrategyKeyboard createStrategy() {
@@ -26,6 +25,7 @@ public class MoveStrategyKeyboardTest extends
 	/**
 	 * Use the constructor with 1 parameter (Boolean).
 	 */
+	@Override
 	protected MoveStrategyKeyboard createStrategyKeyboard(Boolean alwaysMove) {
 		return new MoveStrategyKeyboard(alwaysMove);
 	}
@@ -33,6 +33,7 @@ public class MoveStrategyKeyboardTest extends
 	/**
 	 * Use the constructor with 2 parameters (Boolean, SpeedVector).
 	 */
+	@Override
 	protected MoveStrategyKeyboard createStrategyKeyboard(Boolean alwaysMove, SpeedVector speedVector) {
 		return new MoveStrategyKeyboard(alwaysMove, speedVector);
 	}
@@ -61,6 +62,7 @@ public class MoveStrategyKeyboardTest extends
 		assertDown();
 	}
 
+	@Override
 	@Test
 	public void stopWhenAlwaysMoveisOff() throws Exception {
 		strategy = createStrategyKeyboard(false);
@@ -69,6 +71,7 @@ public class MoveStrategyKeyboardTest extends
 		assertNoMovement();
 	}
 
+	@Override
 	@Test
 	public void dontStopWhenAlwaysMoveisOn() throws Exception {
 		strategy = createStrategyKeyboard(true);
@@ -77,6 +80,7 @@ public class MoveStrategyKeyboardTest extends
 		assertDown();
 	}
 
+	@Override
 	@Test
 	public void defaultValues() throws Exception {
 		strategy = createStrategyKeyboard();
@@ -84,6 +88,7 @@ public class MoveStrategyKeyboardTest extends
 		assertNoMovement();
 	}
 	
+	@Override
 	@Test
 	public void settableSpeed() throws Exception {
 		strategy.setSpeed(3);
@@ -92,6 +97,7 @@ public class MoveStrategyKeyboardTest extends
 		assertEquals(1, strategy.getSpeed());
 	}
 
+	@Override
 	@Test
 	public void initializedValues() throws Exception {
 		SpeedVector speedVector = new SpeedVector(new Point(5,5), 50);
@@ -101,6 +107,7 @@ public class MoveStrategyKeyboardTest extends
 		assertEquals(false, strategy.alwaysMove);
 	}
 
+	@Override
 	@Test
 	public void shouldMoveRightWhenAlwaysMoveisOn() {
 		strategy = createStrategyKeyboard(true);

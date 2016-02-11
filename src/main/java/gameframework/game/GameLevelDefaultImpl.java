@@ -2,8 +2,6 @@ package gameframework.game;
 
 import gameframework.drawing.GameUniverseViewPort;
 
-import java.util.Date;
-
 /**
  * To be implemented with respect to a specific game. Expected to initialize the
  * universe and the gameBoard
@@ -48,12 +46,12 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 		// main game loop :
 		long start;
 		while (!stopGameLoop && !this.isInterrupted()) {
-			start = new Date().getTime();
+			start = System.currentTimeMillis();
 			gameBoard.paint();
 			universe.allOneStepMoves();
 			universe.processAllOverlaps();
 			long sleepTime = minimumDelayBetweenCycles
-					- (new Date().getTime() - start);
+					- (System.currentTimeMillis() - start);
 			if (sleepTime > 0) {
 				try {
 					Thread.sleep(sleepTime);
@@ -64,11 +62,9 @@ public abstract class GameLevelDefaultImpl extends Thread implements GameLevel {
 		}
 	}
 
+	@Override
 	public void end() {
 		stopGameLoop = true;
-	}
-
-	protected void overlap_handler() {
 	}
 
 }

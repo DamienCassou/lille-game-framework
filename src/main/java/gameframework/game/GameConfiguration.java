@@ -97,8 +97,11 @@ public class GameConfiguration {
 	}
 
 	public GameUniverse createUniverse() {
-		return new GameUniverseDefaultImpl();
+		return createUniverse(new GameData(this));
 	}
 
+	public GameUniverse createUniverse(GameData gameData) {
+		return new GameUniverseDefaultImpl(gameData);
+	}
 }
 

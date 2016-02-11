@@ -36,6 +36,7 @@ public class MoveStrategyStraightLineTest extends
 
 	}
 	
+	@Test
 	public void goodSpeed() throws Exception {
 		Point origin = new Point(0, 0);
 		Point goal = new Point(2, 1);

@@ -53,6 +53,7 @@ public abstract class GameMovable implements ObjectWithBoundedBox {
 
 	public abstract void oneStepMoveAddedBehavior();
 	
+	@Override
 	public boolean isMovable(){
 		return true;
 	}
