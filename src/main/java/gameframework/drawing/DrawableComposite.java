@@ -20,4 +20,11 @@ public class DrawableComposite implements Drawable {
 			elem.draw(g);
 		}
 	}
+
+	@Override
+	public void draw(Graphics g, int x, int y) {
+		for (Drawable elem : drawables) {
+			elem.draw(g, x, y);
+		}
+	}
 }
