@@ -90,6 +90,16 @@ public class Sound {
 	 * start again from the beginning.
 	 */
 	public void play() {
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				playSound();
+			}
+		}).start();
+	}
+
+	protected void playSound() {
 		clip.setFramePosition(0);
 
 		final int loopCount = this.isLooping() ? Clip.LOOP_CONTINUOUSLY : 0;
