@@ -2,24 +2,19 @@ package gameframework.motion.overlapping;
 
 import gameframework.game.GameData;
 import gameframework.motion.GameMovable;
-
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Vector;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class OverlapProcessorDefaultImplTest {
 
 	OverlapProcessorDefaultImpl overlapProcessor;
-	Vector<Overlap> actualOverlaps;
+	List<Overlap> actualOverlaps;
 
 	@Before
 	public void createOverlapProcessor() {
@@ -27,7 +22,7 @@ public class OverlapProcessorDefaultImplTest {
 		overlapProcessor.setOverlapRules(new OverlapRulesApplier() {
 
 			@Override
-			public void applyOverlapRules(Vector<Overlap> overlaps) {
+			public void applyOverlapRules(List<Overlap> overlaps) {
 				actualOverlaps = overlaps;
 			}
 

@@ -7,8 +7,8 @@ import gameframework.motion.GameMovable;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Area;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class OverlapProcessorDefaultImpl implements OverlapProcessor {
@@ -56,8 +56,8 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 
 	@Override
 	public void processOverlapsAll() {
-		Vector<Overlap> overlaps = new Vector<>();
-		movablesTmp = new Vector<>(movableOverlappables);
+		List<Overlap> overlaps = new ArrayList<>();
+		movablesTmp = new ArrayList<>(movableOverlappables);
 		for (Overlappable movableOverlappable : movableOverlappables) {
 			movablesTmp.remove(movableOverlappable);
 			computeOneOverlap(movableOverlappable, overlaps);
@@ -66,7 +66,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 	}
 
 	protected void computeOneOverlap(Overlappable movableOverlappable,
-			Vector<Overlap> overlaps) {
+			List<Overlap> overlaps) {
 		Area overlappableArea;
 		Rectangle boundingBoxOverlappable;
 		assert movableOverlappable.isMovable();
@@ -83,7 +83,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 	}
 
 	protected void computeOneOverlapMovables(Overlappable movableOverlappable,
-			Vector<Overlap> overlaps, Rectangle boundingBoxOverlappable,
+			List<Overlap> overlaps, Rectangle boundingBoxOverlappable,
 			Area overlappableArea){
 
 		Rectangle boundingBoxTarget;
@@ -104,7 +104,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 	}
 
 	protected void computeOneOverlapNonMovableOverlappables(Overlappable movableOverlappable,
-			Vector<Overlap> overlaps, Rectangle boundingBoxOverlappable,
+			List<Overlap> overlaps, Rectangle boundingBoxOverlappable,
 			Area overlappableArea){
 		Rectangle boundingBoxTarget;
 		for (Overlappable targetNonMovableOverlappable : nonMovableOverlappables) {
@@ -121,7 +121,7 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 	}
 
 	protected void addOverlapsIfIntersect(Rectangle boundingBoxOverlappable, Rectangle boundingBoxTarget,
-			Shape targetShape, Area overlappableArea, Vector<Overlap> overlaps,
+			Shape targetShape, Area overlappableArea, List<Overlap> overlaps,
 			Overlappable movableOverlappable, Overlappable targetOverlappable){
 		if (boundingBoxOverlappable.intersects(boundingBoxTarget)) {
 			Area targetArea = new Area(targetShape);

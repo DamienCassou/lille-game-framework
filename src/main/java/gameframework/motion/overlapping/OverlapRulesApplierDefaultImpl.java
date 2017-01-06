@@ -4,14 +4,15 @@ import gameframework.game.GameData;
 import gameframework.game.GameUniverse;
 
 import java.lang.reflect.Method;
-import java.util.Vector;
+import java.util.List;
+
 
 public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 
 	protected GameData data;
 	
 	@Override
-	public void applyOverlapRules(Vector<Overlap> overlaps) {
+	public void applyOverlapRules(List<Overlap> overlaps) {
 		for (Overlap col : overlaps) {
 			applySpecificOverlapRule(col.getOverlappable1(), col.getOverlappable2(),
 					true);
