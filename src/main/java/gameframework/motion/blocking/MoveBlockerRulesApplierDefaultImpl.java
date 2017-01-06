@@ -5,7 +5,7 @@ import gameframework.motion.GameMovable;
 import gameframework.motion.IllegalMoveException;
 
 import java.lang.reflect.Method;
-import java.util.Vector;
+import java.util.List;
 
 /**
  * Take care of special blocking rules for your game. By default, a
@@ -38,10 +38,10 @@ public class MoveBlockerRulesApplierDefaultImpl implements
 	protected GameData gameData;
 
 	/**
-	 * @see gameframework.motion.blocking.MoveBlockerRulesApplier#moveValidationProcessing(gameframework.motion.GameMovable, java.util.Vector)
+	 * @see gameframework.motion.blocking.MoveBlockerRulesApplier#moveValidationProcessing(gameframework.motion.GameMovable, java.util.List)
 	 */
 	@Override
-	public boolean moveValidationProcessing(GameMovable movable, Vector<MoveBlocker> blockers) {
+	public boolean moveValidationProcessing(GameMovable movable, List<MoveBlocker> blockers) {
 		for (MoveBlocker moveBlocker : blockers) {
 			try {
 				moveBlockerRuleApply(movable, moveBlocker);

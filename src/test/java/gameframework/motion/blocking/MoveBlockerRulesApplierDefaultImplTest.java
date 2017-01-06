@@ -2,20 +2,18 @@ package gameframework.motion.blocking;
 
 import gameframework.motion.GameMovable;
 import gameframework.motion.IllegalMoveException;
-
-import java.awt.Rectangle;
-import java.util.Vector;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class MoveBlockerRulesApplierDefaultImplTest {
 
-	Vector<MoveBlocker> moveBlockers = new Vector<MoveBlocker>();
+	List<MoveBlocker> moveBlockers = new ArrayList<MoveBlocker>();
 	MyMovable movable = new MyMovable();
 	int rulesApplied = 0;
 	MoveBlockerRulesApplier rulesApplier;

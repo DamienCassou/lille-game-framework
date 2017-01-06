@@ -3,7 +3,7 @@ package gameframework.motion.blocking;
 import gameframework.game.GameData;
 import gameframework.motion.GameMovable;
 
-import java.util.Vector;
+import java.util.List;
 
 /**
  *  The classes implementing this interface are used to apply movement rules
@@ -23,7 +23,7 @@ public interface MoveBlockerRulesApplier {
 	 * @param obs the MoveBlocker vector
 	 * @return true if the movable is allowed to move, false otherwise
 	 */
-	public boolean moveValidationProcessing(GameMovable m, Vector<MoveBlocker> obs);
+	public boolean moveValidationProcessing(GameMovable m, List<MoveBlocker> obs);
 
 	public void setGameData(GameData gameData);
 }
