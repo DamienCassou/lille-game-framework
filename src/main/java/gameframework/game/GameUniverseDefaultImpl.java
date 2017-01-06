@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class GameUniverseDefaultImpl implements GameUniverse {
-	protected ConcurrentLinkedQueue<GameEntity> gameEntities = new ConcurrentLinkedQueue<GameEntity>();
+	protected ConcurrentLinkedQueue<GameEntity> gameEntities = new ConcurrentLinkedQueue<>();
 	protected final GameData data;
 
 	

@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class GameStatusBar implements Observer {
 
-	protected final ArrayList<GameStatusBarElement<?>> elements = new ArrayList<GameStatusBarElement<?>>();
+	protected final ArrayList<GameStatusBarElement<?>> elements = new ArrayList<>();
 
 	public Container getContainer() {
 		JPanel container = new JPanel();
