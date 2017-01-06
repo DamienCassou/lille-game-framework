@@ -28,10 +28,10 @@ public class GameData {
 		this.configuration = configuration;
 
 		canvas = configuration.createCanvas();
-		score = new ObservableValue<Integer>(0);
-		life = new ObservableValue<Integer>(configuration.getDefaultNbLives());
-		endOfGame = new ObservableValue<Boolean>(false);
-		levels = new ArrayList<GameLevel>();
+		score = new ObservableValue<>(0);
+		life = new ObservableValue<>(configuration.getDefaultNbLives());
+		endOfGame = new ObservableValue<>(false);
+		levels = new ArrayList<>();
 
 		universe = configuration.createUniverse(this);
 

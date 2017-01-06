@@ -24,8 +24,8 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 	protected OverlapRulesApplier overlapRules;
 
 	public OverlapProcessorDefaultImpl() {
-		nonMovableOverlappables = new ConcurrentLinkedQueue<Overlappable>();
-		movableOverlappables = new ConcurrentLinkedQueue<Overlappable>();
+		nonMovableOverlappables = new ConcurrentLinkedQueue<>();
+		movableOverlappables = new ConcurrentLinkedQueue<>();
 	}
 
 	@Override
@@ -56,8 +56,8 @@ public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 
 	@Override
 	public void processOverlapsAll() {
-		Vector<Overlap> overlaps = new Vector<Overlap>();
-		movablesTmp = new Vector<Overlappable>(movableOverlappables);
+		Vector<Overlap> overlaps = new Vector<>();
+		movablesTmp = new Vector<>(movableOverlappables);
 		for (Overlappable movableOverlappable : movableOverlappables) {
 			movablesTmp.remove(movableOverlappable);
 			computeOneOverlap(movableOverlappable, overlaps);

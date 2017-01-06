@@ -31,7 +31,7 @@ public class SpriteManagerDefaultImpl implements SpriteManager {
 	@Override
 	public void setTypes(String... types) {
 		int i = 0;
-		this.types = new HashMap<String, Integer>(types.length);
+		this.types = new HashMap<>(types.length);
 		for (String type : types) {
 			this.types.put(type, i);
 			i++;

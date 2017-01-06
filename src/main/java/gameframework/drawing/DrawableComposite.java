@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.util.Vector;
 
 public class DrawableComposite implements Drawable {
-	protected Vector<Drawable> drawables = new Vector<Drawable>();
+	protected Vector<Drawable> drawables = new Vector<>();
 
 	public void add(Drawable e) {
 		drawables.addElement(e);

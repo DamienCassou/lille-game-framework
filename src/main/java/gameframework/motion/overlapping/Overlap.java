@@ -23,8 +23,8 @@ public class Overlap {
 	}
 
 	public Set<Overlappable> getOverlappables() {
-		return new HashSet<Overlappable>(Arrays.asList(overlappable1,
-				overlappable2));
+		return new HashSet<>(Arrays.asList(overlappable1,
+                overlappable2));
 	}
 
 }

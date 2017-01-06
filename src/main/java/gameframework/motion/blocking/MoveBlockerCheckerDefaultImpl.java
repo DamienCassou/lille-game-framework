@@ -27,7 +27,7 @@ public class MoveBlockerCheckerDefaultImpl implements MoveBlockerChecker {
 	protected MoveBlockerRulesApplier moveBlockerRuleApplier;
 
 	public MoveBlockerCheckerDefaultImpl() {
-		moveBlockers = new ConcurrentLinkedQueue<MoveBlocker>();
+		moveBlockers = new ConcurrentLinkedQueue<>();
 		this.moveBlockerRuleApplier = new MoveBlockerRulesApplierDefaultImpl();
 	}
 
@@ -61,7 +61,7 @@ public class MoveBlockerCheckerDefaultImpl implements MoveBlockerChecker {
 	@Override
 	public boolean moveValidation(GameMovable m, SpeedVector mov) {
 		Shape intersectShape = IntersectTools.getIntersectShape(m, mov);
-		Vector<MoveBlocker> moveBlockersInIntersection = new Vector<MoveBlocker>();
+		Vector<MoveBlocker> moveBlockersInIntersection = new Vector<>();
 		Area intersectArea = new Area(intersectShape);
 		Rectangle tmpIntersec = (intersectShape.getBounds());
 
