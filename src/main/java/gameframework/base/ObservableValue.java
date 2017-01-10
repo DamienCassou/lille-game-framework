@@ -3,9 +3,17 @@ package gameframework.base;
 import java.util.Observable;
 
 /**
- * Class that represent an observable value.
- * Observable values are ideal to "trigger events"
- * upon value changes.
+ * Class whose role is quite similar to a variable except that
+ * it can be observed to use callbacks.
+ *
+ * Example: suppose you have a method called "OnPlayerDeath",
+ * you can use this class to see if a player's life reaches 0
+ * and tell that the observers to call that method.
+ *
+ * For more information, search the "Observer" design pattern
+ * on the Internet.
+ *
+ * @see java.util.Observable
  */
 public class ObservableValue<T> extends Observable {
 
@@ -36,8 +44,8 @@ public class ObservableValue<T> extends Observable {
 	}
 
 	/**
-	 * Returns the value of this observed value.
-	 * @return The value of this observed value.
+	 * Returns the value itself.
+	 * @return The value.
 	 */
 	public T getValue() {
 		return value;
