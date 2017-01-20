@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+/**
+ * Default Implementation of OverlapProcessor
+ *  @see OverlapProcessor 
+ *
+ */
 public class OverlapProcessorDefaultImpl implements OverlapProcessor {
 
 	/**

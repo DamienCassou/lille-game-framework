@@ -18,4 +18,5 @@ public interface GameUniverseViewPort {
 	 * @param path is the path of the Image to be set
 	 */
 	public void setBackgroundImage(String path);
+	
 }

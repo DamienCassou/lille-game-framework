@@ -5,7 +5,11 @@ import gameframework.game.GameUniverse;
 
 import java.lang.reflect.Method;
 import java.util.Vector;
-
+/**
+ * Default Implementation of OverlapRulesApplier
+ *  @see OverLapRulesApplier 
+ *
+ */
 public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 
 	protected GameData data;
@@ -41,6 +45,7 @@ public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 		}
 		invoke(m, e1, e2);
 	}
+	
 
 	protected void invoke(Method m, Overlappable e1, Overlappable e2) {
 		try {
