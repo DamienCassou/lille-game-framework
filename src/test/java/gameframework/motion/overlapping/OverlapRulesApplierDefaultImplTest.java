@@ -1,17 +1,14 @@
 package gameframework.motion.overlapping;
 
-import java.util.Arrays;
-import java.util.Vector;
-
+import gameframework.motion.overlapping.mocks.OverlappableMock;
+import gameframework.motion.overlapping.mocks.OverlappableMovableMock;
 import org.junit.Before;
 import org.junit.Test;
 
-import gameframework.motion.overlapping.mocks.OverlappableMock;
-import gameframework.motion.overlapping.mocks.OverlappableMovableMock;
+import java.util.ArrayList;
+import java.util.Collections;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class OverlapRulesApplierDefaultImplTest {
 
@@ -46,7 +43,7 @@ public class OverlapRulesApplierDefaultImplTest {
 	@Test
 	public void testApplyRuleInCorrectOrder() {
 		ruleApplier.applyOverlapRules(
-			new Vector<Overlap>(Arrays.asList(
+				new ArrayList<>(Collections.singletonList(
 					new Overlap(overlappable, overlappableMovable)
 				)));
 		assertEquals(1, rulesApplied);
@@ -55,8 +52,8 @@ public class OverlapRulesApplierDefaultImplTest {
 	@Test
 	public void testApplyRuleInReverseOrder() {
 		ruleApplier.applyOverlapRules(
-			new Vector<Overlap>(Arrays.asList(
-					new Overlap(overlappableMovable, overlappable)
+				new ArrayList<>(Collections.singletonList(
+						new Overlap(overlappableMovable, overlappable)
 				)));
 		assertEquals(1, rulesApplied);
 	}
@@ -64,7 +61,7 @@ public class OverlapRulesApplierDefaultImplTest {
 	@Test
 	public void testApplyNonExistingRule() {
 		ruleApplier.applyOverlapRules(
-			new Vector<Overlap>(Arrays.asList(
+				new ArrayList<>(Collections.singletonList(
 					new Overlap(overlappable, overlappable)
 				)));
 		assertEquals(0, rulesApplied);
@@ -75,7 +72,7 @@ public class OverlapRulesApplierDefaultImplTest {
 		ruleShouldCrash = true;
 		try {
 			ruleApplier.applyOverlapRules(
-				new Vector<Overlap>(Arrays.asList(
+					new ArrayList<>(Collections.singletonList(
 						new Overlap(overlappable, overlappableMovable)
 					)));
 			fail("Previous instruction should have crashed");

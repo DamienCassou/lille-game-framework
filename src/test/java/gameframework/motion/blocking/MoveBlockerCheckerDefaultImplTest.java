@@ -3,19 +3,16 @@ package gameframework.motion.blocking;
 import gameframework.game.GameData;
 import gameframework.motion.GameMovable;
 import gameframework.motion.SpeedVector;
-
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Vector;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class MoveBlockerCheckerDefaultImplTest {
 
@@ -24,7 +21,7 @@ public class MoveBlockerCheckerDefaultImplTest {
 	GameMovable movable;
 	int width = 100;
 	int height = 200;
-	Vector<MoveBlocker> foundBlockers = new Vector<MoveBlocker>();
+	List<MoveBlocker> foundBlockers = new ArrayList<MoveBlocker>();
 
 	@Before
 	public void createMovable() {
@@ -48,7 +45,7 @@ public class MoveBlockerCheckerDefaultImplTest {
 
 			@Override
 			public boolean moveValidationProcessing(GameMovable m,
-					Vector<MoveBlocker> blockers) {
+					List<MoveBlocker> blockers) {
 				foundBlockers = blockers;
 				// by default, a blocker invalidates the move
 				return false;

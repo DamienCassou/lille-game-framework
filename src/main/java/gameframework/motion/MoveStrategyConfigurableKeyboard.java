@@ -66,8 +66,8 @@ public class MoveStrategyConfigurableKeyboard extends KeyAdapter implements Move
 	public MoveStrategyConfigurableKeyboard(Boolean alwaysMove, SpeedVector speedVector, Boolean combineDirections) {
 		this.alwaysMove = alwaysMove;
 		this.speedVector = speedVector;
-		this.directions = new HashMap<Integer, Point>();
-		this.keyPressed = new HashSet<Integer>();
+		this.directions = new HashMap<>();
+		this.keyPressed = new HashSet<>();
 		this.combineDirections = combineDirections;
 	}
 	
