@@ -1,17 +1,18 @@
 package gameframework.drawing;
 
-import java.awt.Graphics;
-import java.util.Vector;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DrawableComposite implements Drawable {
-	protected Vector<Drawable> drawables = new Vector<Drawable>();
+	protected List<Drawable> drawables = new ArrayList<>();
 
 	public void add(Drawable e) {
-		drawables.addElement(e);
+		drawables.add(e);
 	}
 
 	public void remove(Drawable e) {
-		drawables.removeElement(e);
+		drawables.remove(e);
 	}
 
 	@Override
