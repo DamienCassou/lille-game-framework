@@ -3,7 +3,10 @@ package gameframework.motion;
 import gameframework.base.ObjectWithBoundedBox;
 
 import java.awt.Point;
-
+/**
+ * 
+ * Class of a movable object in the Canvas
+ */
 public abstract class GameMovable implements ObjectWithBoundedBox {
 	protected GameMovableDriver moveDriver ;
 	protected Point position = new Point();
