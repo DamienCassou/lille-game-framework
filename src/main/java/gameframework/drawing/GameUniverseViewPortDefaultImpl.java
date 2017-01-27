@@ -10,8 +10,8 @@ import java.net.URL;
 import java.util.Iterator;
 
 /**
- * Default Implementation of GameUniverseVewPort.
- * Provide a sample class to use or inherit if needed
+ * Default Implementation of @see GameUniverseViewPort.
+ * Provide a sample class to use or inherit from, if needed.
  *
  */
 public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
@@ -32,7 +32,7 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 	
 	/**
 	 * 
-	 * @return the URl of the background Image of the ViewPort. It should be inherited if you use a child class
+	 * @return the URl of the background Image of the ViewPort. It should be redefined if you use a subclass
 	 */
 	protected URL backgroundImage() {
 		return backgroundImage("/images/black_background.png");

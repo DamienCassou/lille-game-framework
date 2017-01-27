@@ -6,7 +6,10 @@ import java.awt.Point;
 
 /**
  * 
- * Class of a movable object in the Canvas
+ * Class of a movable object in the Canvas. this class implements @see ObjectWithBoundedBox.
+ * a GameMovable provide tools to define the behavior of an entity : Is it movable ? What's his position ? At what speed is he moving ?
+ * 
+ * 
  */
 public abstract class GameMovable implements ObjectWithBoundedBox {
 	protected GameMovableDriver moveDriver ;
@@ -53,7 +56,8 @@ public abstract class GameMovable implements ObjectWithBoundedBox {
 	}
 	
 	/**
-	 * Realize a single movement based on the Speed and the Direction of the SpeedVector
+	 * Move the GameMovable to the next position, based on the Speed and the Direction of the SpeedVector.
+	 * Note that the GameMovable is moving one step at a time.
 	 */
 	public void oneStepMove() {
 		SpeedVector m = moveDriver.getSpeedVector(this);
@@ -66,7 +70,9 @@ public abstract class GameMovable implements ObjectWithBoundedBox {
 	}
 	
 	/**
-	 * this method is used to add a new Behavior to oneStepMove
+	 * This method is used to add a new Behavior to oneStepMove, allowing you to personnalize the comportment of your GameMovable.
+	 * For example, you can create a entity that can regenerate his health at every step. 
+	 * You can also define a comportment for entities that can't move.
 	 */
 	public abstract void oneStepMoveAddedBehavior();
 	
