@@ -41,6 +41,7 @@ public class OverlapRulesApplierDefaultImpl implements OverlapRulesApplier {
 		}
 		invoke(m, e1, e2);
 	}
+	
 
 	protected void invoke(Method m, Overlappable e1, Overlappable e2) {
 		try {

@@ -9,6 +9,11 @@ import java.awt.Image;
 import java.net.URL;
 import java.util.Iterator;
 
+/**
+ * Default Implementation of @see GameUniverseViewPort.
+ * Provide a sample class to use or inherit from, if needed.
+ *
+ */
 public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 
 	private Image buffer;
@@ -24,10 +29,15 @@ public class GameUniverseViewPortDefaultImpl implements GameUniverseViewPort {
 	public GameUniverseViewPortDefaultImpl(GameData data) {
 		setGameData(data);
 	}
-
+	
+	/**
+	 * 
+	 * @return the URl of the background Image of the ViewPort. It should be redefined if you use a subclass
+	 */
 	protected URL backgroundImage() {
 		return backgroundImage("/images/black_background.png");
 	}
+	
 	
 	@Override
 	public void setBackgroundImage(String path) {
