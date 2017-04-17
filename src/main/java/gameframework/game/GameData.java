@@ -8,13 +8,19 @@ import gameframework.motion.overlapping.OverlapProcessor;
 import gameframework.motion.overlapping.OverlapRulesApplier;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GameData {
 
+	private static final String SCORE_KEY = "score";
+	private static final String LIFE_KEY = "life";
 	protected final GameCanvas canvas;
-	protected final ObservableValue<Integer> score;
-	protected final ObservableValue<Integer> life;
+	/**
+	 * Map of observable values to save any needed data.
+	 */
+	protected final Map<String, ObservableValue<?>> observableValues;
 	protected final GameConfiguration configuration;
 	protected final ObservableValue<Boolean> endOfGame;
 	protected final List<GameLevel> levels;
@@ -28,8 +34,9 @@ public class GameData {
 		this.configuration = configuration;
 
 		canvas = configuration.createCanvas();
-		score = new ObservableValue<Integer>(0);
-		life = new ObservableValue<Integer>(configuration.getDefaultNbLives());
+		observableValues = new HashMap<>();
+		observableValues.put(SCORE_KEY, new ObservableValue<Integer>(0));
+		observableValues.put(LIFE_KEY, new ObservableValue<Integer>(configuration.getDefaultNbLives()));
 		endOfGame = new ObservableValue<Boolean>(false);
 		levels = new ArrayList<GameLevel>();
 
@@ -47,13 +54,21 @@ public class GameData {
 
 
 	}
+	
+	public ObservableValue<?> getObservableValue(String key) {
+		return this.observableValues.get(key);
+	}
+	
+	public void setObservableValue(String key, ObservableValue<?> value) {
+		this.observableValues.put(key, value);
+	}
 
 	public GameConfiguration getConfiguration() {
 		return configuration;
 	}
 
 	public ObservableValue<Integer> getScore() {
-		return score;
+		return (ObservableValue<Integer>) observableValues.get(SCORE_KEY);
 	}
 
 	public GameCanvas getCanvas() {
@@ -61,18 +76,18 @@ public class GameData {
 	}
 
 	public ObservableValue<Integer> getLife() {
-		return life;
+		return (ObservableValue<Integer>) observableValues.get(LIFE_KEY);
 	}
 	
 	public void increaseLife(int lifeToAdd) {
-		life.setValue(life.getValue() + lifeToAdd);
+		getLife().setValue(getLife().getValue() + lifeToAdd);
 	}
 	
 	public void decreaseLife(int lifeToRemove) {
-		if(lifeToRemove >= life.getValue())
-			life.setValue(0);
+		if(lifeToRemove >= getLife().getValue())
+			getLife().setValue(0);
 		else
-			life.setValue(life.getValue() - lifeToRemove);
+			getLife().setValue(getLife().getValue() - lifeToRemove);
 	}
 
 	public ObservableValue<Boolean> getEndOfGame() {
