@@ -5,6 +5,7 @@ import gameframework.motion.GameMovable;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -36,7 +37,58 @@ public class OverlapProcessorDefaultImplTest {
 			}
 		});
 	}
+	
+	@Test
+	public void intersectionBetweenOverlapObjectTest() {
+		Vector<Overlap> overlaps = doOverlapRectangle(1);
+		assertEquals(1, overlaps.size());
+	}
+	
+	
+	@Test
+	public void noIntersectionBetweenOverlapObjectTest() {
+		Vector<Overlap> overlaps = doOverlapRectangle(30);
+		assertEquals(0, overlaps.size());
+	}
 
+	/**
+	 * return a vector containing Overlap if there are an intersection between two objects, defined in the test code with the parameter,
+	 * else return an empty vector
+	 * 
+	 * @param x the coordinate (x,x) of the first corner of the second Overlap 
+	 * @return a Vector containing Overlap if there are an intersection between two objects else return an empty vector
+	 */
+	protected Vector<Overlap> doOverlapRectangle(int x) {
+		int width1 = 10;
+		int height1 = 20;
+		Overlappable overlappable1 = createOverlappableMovable(0, 0, width1, height1);
+		Overlappable overlappable2 = createOverlappable(x,x,width1, height1);
+		Shape targetShape = overlappable2.getBoundingBox();
+		Vector<Overlap> overlaps = new Vector<Overlap>();
+		this.overlapProcessor.overlapRectangle(overlappable1, overlaps, overlappable2, targetShape);
+		return overlaps;
+	}
+
+	@Test
+	public void computeOneOverlapTest() {
+		Vector<Overlap> overlaps = new Vector<Overlap>();
+		Overlappable overlappable1 = new MovableOverlappable() {
+			@Override
+			public Rectangle getBoundingBox() {
+				return new Rectangle(0, 0, 10, 10);
+			}
+		};
+		Overlappable overlappable2 = createOverlappable(0, 0, 5, 5);
+		Overlappable overlappable3 = createOverlappableMovable(0,0 , 2, 2);
+		Overlappable overlappable4 = createOverlappableMovable(20, 20, 2, 2);
+		this.overlapProcessor.addOverlappable(overlappable2);
+		this.overlapProcessor.addOverlappable(overlappable3);
+		this.overlapProcessor.addOverlappable(overlappable4);
+		this.overlapProcessor.movablesTmp = new Vector<Overlappable>(this.overlapProcessor.movableOverlappables);
+		this.overlapProcessor.computeOneOverlap(overlappable1, overlaps);
+		assertEquals(2, overlaps.size());
+	}
+	
 	@Test
 	public void twoOverlappingMovables() throws Exception {
 		int width1 = 10;
